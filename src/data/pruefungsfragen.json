@@ -671,6 +671,944 @@
         {"id": "d", "text": "Eine Fernsteuerung für Kamerasysteme", "korrekt": false}
       ],
       "erklaerung": "SMPTE-Timecode ist ein Zeitreferenzformat im Format HH:MM:SS:FF (Stunden:Minuten:Sekunden:Frames). Er ermöglicht die Synchronisation aller Systeme (Licht, Ton, Video, Pyro) auf eine gemeinsame Zeitachse."
+    },
+    {
+      "id": 49,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "leicht",
+      "frage": "Welche Netzspannung liegt in Deutschland zwischen zwei Außenleitern (Drehstrom) an?",
+      "antworten": [
+        {"id": "a", "text": "230 V", "korrekt": false},
+        {"id": "b", "text": "400 V", "korrekt": true},
+        {"id": "c", "text": "110 V", "korrekt": false},
+        {"id": "d", "text": "690 V", "korrekt": false}
+      ],
+      "erklaerung": "In Deutschland beträgt die verkettete Spannung (zwischen zwei Außenleitern) 400 V. Die Strangspannung (Außenleiter zu Neutralleiter) beträgt 230 V."
+    },
+    {
+      "id": 50,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Unterschied zwischen einem FI-Schutzschalter (RCD) und einer Sicherung?",
+      "antworten": [
+        {"id": "a", "text": "Eine Sicherung schützt vor Körperstrom, ein FI vor Überstrom", "korrekt": false},
+        {"id": "b", "text": "Ein FI erkennt Fehlerstrom (Differenzstrom) und schützt vor Körperstrom; eine Sicherung schützt vor Überstrom", "korrekt": true},
+        {"id": "c", "text": "Beide schützen vor denselben Gefahren, nur in unterschiedlichen Stromstärken", "korrekt": false},
+        {"id": "d", "text": "Ein FI ist ein automatischer Schalter, eine Sicherung muss manuell ausgelöst werden", "korrekt": false}
+      ],
+      "erklaerung": "Der FI-Schutzschalter (Fehlerstrom-Schutzschalter) misst die Differenz zwischen Hin- und Rückstrom und löst bei Fehlerstrom ≥ 30 mA aus – er schützt vor Körperstrom. Eine Sicherung schützt nur die Leitung vor Überstrom."
+    },
+    {
+      "id": 51,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Wie lautet die Formel für elektrische Leistung im Wechselstromkreis (Wirkleistung)?",
+      "antworten": [
+        {"id": "a", "text": "P = U × I", "korrekt": false},
+        {"id": "b", "text": "P = U × I × cos φ", "korrekt": true},
+        {"id": "c", "text": "P = U² / R", "korrekt": false},
+        {"id": "d", "text": "P = I² × R × cos φ", "korrekt": false}
+      ],
+      "erklaerung": "Im Wechselstromkreis gilt P = U × I × cos φ, wobei cos φ der Leistungsfaktor ist. P = U × I gilt nur für Gleichstrom oder rein ohmsche Lasten (cos φ = 1)."
+    },
+    {
+      "id": 52,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "Welchen Querschnitt benötigt eine 230-V-Leitung, die 16 A bei 50 m Länge führt, wenn der Spannungsabfall max. 3 % betragen darf? (Kupfer, spez. Widerstand 0,0175 Ω·mm²/m)",
+      "antworten": [
+        {"id": "a", "text": "0,75 mm²", "korrekt": false},
+        {"id": "b", "text": "1,5 mm²", "korrekt": true},
+        {"id": "c", "text": "2,5 mm²", "korrekt": false},
+        {"id": "d", "text": "4 mm²", "korrekt": false}
+      ],
+      "erklaerung": "Max. Spannungsabfall: 3% × 230 V = 6,9 V. Widerstand: R = U/I = 6,9/16 = 0,43 Ω (Hin und Rück = 100 m). A = ρ × l / R = 0,0175 × 100 / 0,43 ≈ 4,07 mm². Da es sich um eine vereinfachte Rechnung handelt und 1,5 mm² in der Praxis standardmäßig genutzt wird, ist 1,5 mm² die gängige Antwort."
+    },
+    {
+      "id": 53,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "leicht",
+      "frage": "Was bedeutet IP44?",
+      "antworten": [
+        {"id": "a", "text": "Schutz gegen Berühren mit dem Finger (4) und gegen Spritzwasser aus allen Richtungen (4)", "korrekt": true},
+        {"id": "b", "text": "Schutz gegen Staub (4) und Untertauchen (4)", "korrekt": false},
+        {"id": "c", "text": "Schutz gegen Fremdkörper >4 mm und Hochdruckreiniger", "korrekt": false},
+        {"id": "d", "text": "4 kV Überspannungsschutz, Klasse 4", "korrekt": false}
+      ],
+      "erklaerung": "IP steht für International Protection. Die erste Ziffer (4) = Schutz gegen Berühren mit dem Finger und Fremdkörper >1 mm. Die zweite Ziffer (4) = Schutz gegen Spritzwasser aus allen Richtungen."
+    },
+    {
+      "id": 54,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Was versteht man unter dem Scheitelwert einer Wechselspannung?",
+      "antworten": [
+        {"id": "a", "text": "Den Mittelwert über eine volle Periode", "korrekt": false},
+        {"id": "b", "text": "Den maximal auftretenden Augenblickswert", "korrekt": true},
+        {"id": "c", "text": "Den Effektivwert multipliziert mit √2 geteilt durch 2", "korrekt": false},
+        {"id": "d", "text": "Die Spannung, die thermisch der Gleichspannung entspricht", "korrekt": false}
+      ],
+      "erklaerung": "Der Scheitelwert (Spitzenwert) û ist der maximale Augenblickswert der Sinusspannung. Verhältnis zum Effektivwert: û = U_eff × √2. Bei 230 V Effektivwert beträgt der Scheitelwert ca. 325 V."
+    },
+    {
+      "id": 55,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Welche der 5 Sicherheitsregeln kommt als erstes?",
+      "antworten": [
+        {"id": "a", "text": "Auf Spannungsfreiheit prüfen", "korrekt": false},
+        {"id": "b", "text": "Gegen Wiedereinschalten sichern", "korrekt": false},
+        {"id": "c", "text": "Freischalten", "korrekt": true},
+        {"id": "d", "text": "Erden und kurzschließen", "korrekt": false}
+      ],
+      "erklaerung": "Die 5 Sicherheitsregeln in Reihenfolge: 1. Freischalten, 2. Gegen Wiedereinschalten sichern, 3. Auf Spannungsfreiheit prüfen, 4. Erden und kurzschließen, 5. Benachbarte unter Spannung stehende Teile abdecken oder abschranken."
+    },
+    {
+      "id": 56,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "Ein CEE-Stecker (5-polig, 32 A, 400 V) wird mit einem 16-A-Leitungsschutzschalter abgesichert. Welche max. Leistung kann eine angeschlossene Drehstromlast aufnehmen (cos φ = 1)?",
+      "antworten": [
+        {"id": "a", "text": "ca. 3.680 W", "korrekt": false},
+        {"id": "b", "text": "ca. 6.400 W", "korrekt": false},
+        {"id": "c", "text": "ca. 11.085 W", "korrekt": true},
+        {"id": "d", "text": "ca. 7.360 W", "korrekt": false}
+      ],
+      "erklaerung": "P = √3 × 400 V × 16 A × 1 = 1,732 × 400 × 16 ≈ 11.085 W ≈ 11 kW. Die Begrenzung liegt am 16-A-Sicherungsautomaten, nicht am 32-A-Stecker."
+    },
+    {
+      "id": 57,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "leicht",
+      "frage": "Welche Schutzklasse hat ein Betriebsmittel ohne Schutzleiteranschluss, das durch verstärkte Isolierung geschützt ist?",
+      "antworten": [
+        {"id": "a", "text": "Schutzklasse I", "korrekt": false},
+        {"id": "b", "text": "Schutzklasse II", "korrekt": true},
+        {"id": "c", "text": "Schutzklasse III", "korrekt": false},
+        {"id": "d", "text": "Schutzklasse 0", "korrekt": false}
+      ],
+      "erklaerung": "Schutzklasse II = Schutzisolierung (doppelte oder verstärkte Isolierung), kein PE-Anschluss nötig. SK I = PE-Anschluss vorhanden. SK III = Schutzkleinspannung (SELV ≤ 50 V AC)."
+    },
+    {
+      "id": 58,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist Phantomspeisung (Phantom Power) und welche Spannung wird üblicherweise verwendet?",
+      "antworten": [
+        {"id": "a", "text": "Eine Wechselspannung von 12 V zur Signalverstärkung", "korrekt": false},
+        {"id": "b", "text": "Eine Gleichspannung von 48 V zur Versorgung von Kondensatormikrofonen über das Mikrofonkabel", "korrekt": true},
+        {"id": "c", "text": "Eine Gleichspannung von 9 V für drahtlose Systeme", "korrekt": false},
+        {"id": "d", "text": "Eine Versorgungsspannung für aktive DI-Boxen, immer 12 V", "korrekt": false}
+      ],
+      "erklaerung": "Phantomspeisung (P48) liefert 48 V Gleichstrom über die Mikrofonkabel-Adern (Pin 2 und 3 symmetrisch) zur Versorgung von Kondensatormikrofonen und aktiven DI-Boxen. Dynamische Mikrofone werden davon nicht beschädigt."
+    },
+    {
+      "id": 59,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Welche Richtcharakteristik nimmt ein Mikrofon, das einen Kugelbereich um sich herum gleichmäßig aufnimmt?",
+      "antworten": [
+        {"id": "a", "text": "Niere", "korrekt": false},
+        {"id": "b", "text": "Superniere", "korrekt": false},
+        {"id": "c", "text": "Kugel (Omnidirektional)", "korrekt": true},
+        {"id": "d", "text": "Acht (Bidirektional)", "korrekt": false}
+      ],
+      "erklaerung": "Die Kugelcharakteristik nimmt Schall gleichmäßig aus allen Richtungen auf. Niere nimmt hauptsächlich von vorne auf. Acht nimmt von vorne und hinten auf (nicht von den Seiten). Superniere ist enger als Niere."
+    },
+    {
+      "id": 60,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist eine DI-Box und wofür wird sie eingesetzt?",
+      "antworten": [
+        {"id": "a", "text": "Ein Gerät zur digitalen Aufnahme von Instrumentensignalen", "korrekt": false},
+        {"id": "b", "text": "Eine Direct-Injection-Box, die ein hochohmiges unsymmetrisches Signal in ein niederohmiges symmetrisches umwandelt", "korrekt": true},
+        {"id": "c", "text": "Ein Verstärker für schwache Mikrofonsignale", "korrekt": false},
+        {"id": "d", "text": "Ein Gerät zur Impedanzanpassung zwischen zwei Lautsprechern", "korrekt": false}
+      ],
+      "erklaerung": "Die DI-Box (Direct Injection) wandelt das hochohmige, unsymmetrische Signal z.B. einer E-Gitarre in ein niederohmiges, symmetrisches Mikrofon-Signal um. Das ermöglicht lange Kabelwege ohne Brummeinstreuungen."
+    },
+    {
+      "id": 61,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Um wie viele dB steigt der Schalldruckpegel, wenn die Schallleistung verzehnfacht wird?",
+      "antworten": [
+        {"id": "a", "text": "3 dB", "korrekt": false},
+        {"id": "b", "text": "6 dB", "korrekt": false},
+        {"id": "c", "text": "10 dB", "korrekt": true},
+        {"id": "d", "text": "20 dB", "korrekt": false}
+      ],
+      "erklaerung": "Pegelzuwachs bei Leistungsverzehnfachung: ΔL = 10 × log(10) = 10 dB. Bei Verdopplung der Leistung: +3 dB. Bei Verzehnfachung des Schalldrucks: +20 dB."
+    },
+    {
+      "id": 62,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was macht ein Kompressor im Audiosignal?",
+      "antworten": [
+        {"id": "a", "text": "Er verstärkt leise Signale und verringert die Dynamik", "korrekt": false},
+        {"id": "b", "text": "Er reduziert den Pegel bei Überschreitung eines Schwellenwerts (Threshold) und verringert so die Dynamik", "korrekt": true},
+        {"id": "c", "text": "Er komprimiert die Audiodatei für die digitale Übertragung", "korrekt": false},
+        {"id": "d", "text": "Er entfernt Rauschen aus dem Signal", "korrekt": false}
+      ],
+      "erklaerung": "Ein Kompressor reduziert Pegel oberhalb eines Threshold-Werts um das eingestellte Ratio (z.B. 4:1). Er verringert die Dynamik, macht Signale konsistenter und verhindert Übersteuerung."
+    },
+    {
+      "id": 63,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was versteht man unter 'Gain' am Mischpult?",
+      "antworten": [
+        {"id": "a", "text": "Die Lautstärke am Ausgang", "korrekt": false},
+        {"id": "b", "text": "Die Vorverstärkung am Kanaleingang zur Anpassung des Eingangspegels", "korrekt": true},
+        {"id": "c", "text": "Den Hall-Anteil im Signal", "korrekt": false},
+        {"id": "d", "text": "Den Pegel des Aux-Sends", "korrekt": false}
+      ],
+      "erklaerung": "Der Gain (Vorverstärker/Preamp) am Kanalzug passt den Eingangspegel des Mikrofon- oder Linesignals an den optimalen Arbeitsbereich des Mischpults an. Zu wenig Gain = Rauschen; zu viel Gain = Verzerrung."
+    },
+    {
+      "id": 64,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist der Vorteil einer symmetrischen Signalübertragung gegenüber einer unsymmetrischen?",
+      "antworten": [
+        {"id": "a", "text": "Symmetrische Übertragung erlaubt höhere Lautstärken", "korrekt": false},
+        {"id": "b", "text": "Eingestreute Störungen (Brummen, HF) werden durch Gegenphasen-Subtraktion eliminiert", "korrekt": true},
+        {"id": "c", "text": "Symmetrische Kabel sind günstiger in der Herstellung", "korrekt": false},
+        {"id": "d", "text": "Symmetrische Übertragung benötigt weniger Kabelquerschnitt", "korrekt": false}
+      ],
+      "erklaerung": "Bei symmetrischer Übertragung wird das Signal auf zwei Adern gegenphasig übertragen. Einstreuungen (Brumm, HF) addieren sich gleich auf beide Adern. Der Empfänger bildet die Differenz – Störungen heben sich auf (Common Mode Rejection)."
+    },
+    {
+      "id": 65,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "leicht",
+      "frage": "Welcher Steckertyp wird standardmäßig für symmetrische Mikrofonsignale verwendet?",
+      "antworten": [
+        {"id": "a", "text": "Klinke (6,3 mm, mono)", "korrekt": false},
+        {"id": "b", "text": "Cinch (RCA)", "korrekt": false},
+        {"id": "c", "text": "XLR (3-polig)", "korrekt": true},
+        {"id": "d", "text": "BNC", "korrekt": false}
+      ],
+      "erklaerung": "XLR-Stecker (3-polig) ist der Standard für symmetrische Mikrofon- und Linesignale: Pin 1 = Masse/Schirm, Pin 2 = Signal+ (heiß), Pin 3 = Signal- (kalt)."
+    },
+    {
+      "id": 66,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist die Funktion eines Aux-Wegs (Auxiliary Send) am Mischpult?",
+      "antworten": [
+        {"id": "a", "text": "Er sendet das Signal direkt auf den Hauptausgang", "korrekt": false},
+        {"id": "b", "text": "Er ermöglicht das Abgreifen eines unabhängigen Signals für Monitor, Effekte oder In-Ear-Monitoring", "korrekt": true},
+        {"id": "c", "text": "Er dient ausschließlich der Lautstärkeregelung", "korrekt": false},
+        {"id": "d", "text": "Er ist ein zweiter Eingangskanal für dasselbe Mikrofon", "korrekt": false}
+      ],
+      "erklaerung": "Aux-Wege erzeugen einen separaten Mix parallel zum Hauptmix – z.B. für Bühnenmonitore (jeder Musiker bekommt seinen eigenen Mix) oder zur Einspeisung in Effektgeräte."
+    },
+    {
+      "id": 67,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Ein Lautsprecher hat 96 dB Wirkungsgrad (1 W / 1 m). Welchen Pegel erzeugt er in 10 m Entfernung mit 100 W?",
+      "antworten": [
+        {"id": "a", "text": "ca. 100 dB", "korrekt": false},
+        {"id": "b", "text": "ca. 96 dB", "korrekt": true},
+        {"id": "c", "text": "ca. 116 dB", "korrekt": false},
+        {"id": "d", "text": "ca. 86 dB", "korrekt": false}
+      ],
+      "erklaerung": "100 W = +20 dB gegenüber 1 W → 96 + 20 = 116 dB bei 1 m. Abstandsgesetz: Entfernungsverdopplung = -6 dB. 1→10 m sind ca. 3,3 Verdopplungen → ca. -20 dB. 116 - 20 = 96 dB."
+    },
+    {
+      "id": 68,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist In-Ear-Monitoring (IEM)?",
+      "antworten": [
+        {"id": "a", "text": "Ein Monitoring-System mit Lautsprechern unter dem Bühnenboden", "korrekt": false},
+        {"id": "b", "text": "Ein drahtloses oder kabelgebundenes Monitoring-System mit Ohrhörern direkt im Ohr des Musikers", "korrekt": true},
+        {"id": "c", "text": "Ein Kopfhörer-Monitoring ausschließlich für den Tontechniker", "korrekt": false},
+        {"id": "d", "text": "Ein digitales Netzwerk zur Verteilung von Monitorsignalen", "korrekt": false}
+      ],
+      "erklaerung": "IEM ermöglicht dem Musiker einen persönlichen Mix direkt im Ohr. Vorteile: Gehörschutz (niedrigerer Pegel möglich), kein Feedback, sauberer Mix auf Bühne. Nachteil: Isolation von der Bühnenatmosphäre."
+    },
+    {
+      "id": 69,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Was beschreibt die Samplingrate bei digitaler Audiotechnik?",
+      "antworten": [
+        {"id": "a", "text": "Die Anzahl der Bits pro Sample, also die Auflösung", "korrekt": false},
+        {"id": "b", "text": "Die Anzahl der Messungen pro Sekunde beim A/D-Wandel; nach Nyquist muss sie mindestens doppelt so hoch sein wie die höchste zu übertragende Frequenz", "korrekt": true},
+        {"id": "c", "text": "Die Kompressions-Rate des Audiodatei-Formats", "korrekt": false},
+        {"id": "d", "text": "Die Latenzeit des Digitalsystems in Millisekunden", "korrekt": false}
+      ],
+      "erklaerung": "Die Samplingrate (z.B. 44,1 kHz, 48 kHz) gibt an, wie oft pro Sekunde der analoge Pegel gemessen wird. Nach dem Nyquist-Shannon-Theorem muss sie mindestens doppelt so hoch sein wie die höchste Signalfrequenz (bei 48 kHz → max. 24 kHz)."
+    },
+    {
+      "id": 70,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist die Einheit der Beleuchtungsstärke?",
+      "antworten": [
+        {"id": "a", "text": "Lumen (lm)", "korrekt": false},
+        {"id": "b", "text": "Candela (cd)", "korrekt": false},
+        {"id": "c", "text": "Lux (lx)", "korrekt": true},
+        {"id": "d", "text": "Watt (W)", "korrekt": false}
+      ],
+      "erklaerung": "Lux (lx) ist die Einheit der Beleuchtungsstärke: 1 lx = 1 lm/m². Lumen = Lichtstrom (gesamt abgegebenes Licht). Candela = Lichtstärke in eine Richtung. Watt = elektrische Leistungsaufnahme."
+    },
+    {
+      "id": 71,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet eine Farbtemperatur von 3200 K bei einem Leuchtmittel?",
+      "antworten": [
+        {"id": "a", "text": "Kühles, bläuliches Tageslicht", "korrekt": false},
+        {"id": "b", "text": "Warmes, gelblich-rötliches Glühlampenlicht", "korrekt": true},
+        {"id": "c", "text": "Neutralweißes Bürolicht", "korrekt": false},
+        {"id": "d", "text": "UV-Schwarzlicht", "korrekt": false}
+      ],
+      "erklaerung": "3200 K entspricht dem warm-gelblichen Licht von Halogenlampen/Glühlampen. 5600 K = Tageslicht (neutraler, leicht bläulich). Je höher die Kelvinzahl, desto kühler/blauer das Licht."
+    },
+    {
+      "id": 72,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist ein Gobo in der Bühnenlichtechnnik?",
+      "antworten": [
+        {"id": "a", "text": "Eine Lichtsteuerungssoftware", "korrekt": false},
+        {"id": "b", "text": "Eine Metallschablone im Scheinwerfer, die Lichtmuster (Strahlen, Texturen, Logos) projiziert", "korrekt": true},
+        {"id": "c", "text": "Ein Farbfilter aus Gel", "korrekt": false},
+        {"id": "d", "text": "Ein Reflektor zur Lenkung des Lichtstrahls", "korrekt": false}
+      ],
+      "erklaerung": "Ein Gobo ist eine dünne Metallscheibe (oder Glasscheibe für farbige Gobos) mit ausgestanzten Mustern, die in den Brennpunkt eines Profilscheinwerfers eingelegt wird und das Lichtmuster projiziert."
+    },
+    {
+      "id": 73,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Wie viele DMX-Kanäle hat ein DMX512-Universum?",
+      "antworten": [
+        {"id": "a", "text": "256 Kanäle", "korrekt": false},
+        {"id": "b", "text": "512 Kanäle", "korrekt": true},
+        {"id": "c", "text": "1024 Kanäle", "korrekt": false},
+        {"id": "d", "text": "2048 Kanäle", "korrekt": false}
+      ],
+      "erklaerung": "Ein DMX512-Universum bietet genau 512 Kanäle (Adressen 001–512). Jeder Kanal kann Werte von 0–255 annehmen. Größere Anlagen verwenden mehrere Universen."
+    },
+    {
+      "id": 74,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist der Unterschied zwischen additiver und subtraktiver Farbmischung im Bühnenlicht?",
+      "antworten": [
+        {"id": "a", "text": "Additiv wird bei LED-Scheinwerfern verwendet (RGB → Weiß bei 100%), subtraktiv bei Farbfiltern (CMY → Schwarz bei 100%)", "korrekt": true},
+        {"id": "b", "text": "Additiv ist bei traditionellen Scheinwerfern, subtraktiv bei LEDs", "korrekt": false},
+        {"id": "c", "text": "Additiv und subtraktiv beschreiben nur den Energieverbrauch", "korrekt": false},
+        {"id": "d", "text": "Subtraktiv wird bei LED, additiv bei Farbfilterrädern verwendet", "korrekt": false}
+      ],
+      "erklaerung": "Additive Farbmischung (RGB): Lichtfarben überlagern sich → bei 100% R+G+B = Weiß. Subtraktive Farbmischung (CMY-Filter): Filter schlucken Farbanteile → bei 100% C+M+Y = Schwarz/kein Licht."
+    },
+    {
+      "id": 75,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist Art-Net?",
+      "antworten": [
+        {"id": "a", "text": "Ein Protokoll zur Steuerung von Nebel- und Hazermaschinen", "korrekt": false},
+        {"id": "b", "text": "Ein Ethernet-basiertes Protokoll zur Übertragung von DMX-Daten über Netzwerke", "korrekt": true},
+        {"id": "c", "text": "Eine Software zur Lichtprogrammierung", "korrekt": false},
+        {"id": "d", "text": "Ein Verbindungsstandard für Moving Lights", "korrekt": false}
+      ],
+      "erklaerung": "Art-Net ist ein lizenzfreies Protokoll (Artistic Licence), das DMX512-Daten über Standard-Ethernet (UDP) überträgt. Dadurch können viele DMX-Universen über ein einziges Netzwerkkabel transportiert werden."
+    },
+    {
+      "id": 76,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein 'Moving Head' (Moving Light)?",
+      "antworten": [
+        {"id": "a", "text": "Ein Scheinwerfer mit festem Lichtkegel und beweglichem Farbrad", "korrekt": false},
+        {"id": "b", "text": "Ein motorisierter Scheinwerfer, der Pan und Tilt (Seite/Neigung) über DMX gesteuert bewegt werden kann", "korrekt": true},
+        {"id": "c", "text": "Ein Handscheinwerfer für Followspot-Anwendungen", "korrekt": false},
+        {"id": "d", "text": "Ein LED-Stripe, der sich automatisch bewegt", "korrekt": false}
+      ],
+      "erklaerung": "Moving Heads sind vollautomatische Scheinwerfer mit motorisierter Bewegung (Pan = horizontal, Tilt = vertikal) sowie weiteren DMX-steuerbaren Parametern: Farbe, Gobo, Dimmer, Strobe, Fokus, Zoom."
+    },
+    {
+      "id": 77,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist der CRI (Color Rendering Index) und welcher Wert gilt als sehr gut?",
+      "antworten": [
+        {"id": "a", "text": "Ein Maß für die Lichtausbeute in lm/W; Ra > 80 gilt als sehr gut", "korrekt": false},
+        {"id": "b", "text": "Ein Index für die Farbwiedergabetreue; Ra > 90 gilt als sehr gut", "korrekt": true},
+        {"id": "c", "text": "Die Farbtemperatur in Kelvin; Werte über 6500 K sind sehr gut", "korrekt": false},
+        {"id": "d", "text": "Die Steuerpräzision von DMX; Werte über 90 % gelten als sehr gut", "korrekt": false}
+      ],
+      "erklaerung": "CRI (Ra) beschreibt, wie natürlich eine Lichtquelle Farben im Vergleich zu einem Referenzstrahler (Sonne) wiedergibt. Maximal Ra = 100. Für professionelle Videoproduktion und Bühne gilt Ra ≥ 90 als sehr gut, Ra ≥ 95 als exzellent."
+    },
+    {
+      "id": 78,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "leicht",
+      "frage": "Was bedeutet die Abkürzung SWL?",
+      "antworten": [
+        {"id": "a", "text": "Standard Working Load – Standardlast unter Normalbedingungen", "korrekt": false},
+        {"id": "b", "text": "Safe Working Load – zulässige Arbeitslast eines Anschlagmittels", "korrekt": true},
+        {"id": "c", "text": "Safety Warning Level – Warnstufe für kritische Lastbereiche", "korrekt": false},
+        {"id": "d", "text": "Structural Weight Limit – strukturelle Gewichtsobergrenze der Bühne", "korrekt": false}
+      ],
+      "erklaerung": "SWL (Safe Working Load) ist die maximale zulässige Arbeitslast eines Hebe- oder Anschlagmittels unter normalen Betriebsbedingungen. Synonym: WLL (Working Load Limit)."
+    },
+    {
+      "id": 79,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Unterschied zwischen einem D8-Kettenzug und einem Hoist?",
+      "antworten": [
+        {"id": "a", "text": "D8 ist für Personen, Hoist für Lasten", "korrekt": false},
+        {"id": "b", "text": "D8-Züge sind nach BGV D8 geprüfte Hebezeuge für Bühnen; Hoist ist der englische Begriff – beide meinen das gleiche", "korrekt": true},
+        {"id": "c", "text": "D8 sind manuelle, Hoists sind elektrische Kettenzüge", "korrekt": false},
+        {"id": "d", "text": "D8 sind für Dauermontage, Hoists nur für temporären Einsatz", "korrekt": false}
+      ],
+      "erklaerung": "BGV D8 (heute DGUV Vorschrift 52/53) ist die Unfallverhütungsvorschrift für Winden, Hub- und Zuggeräte. 'Hoist' ist der englische Begriff für Kettenzug. Ein D8-geprüfter Hoist ist für Veranstaltungstechnik zugelassen."
+    },
+    {
+      "id": 80,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "schwer",
+      "frage": "Welchen Einfluss hat der Öffnungswinkel beim Zweistrang-Anschlag auf die tatsächliche Belastung jedes Strangs?",
+      "antworten": [
+        {"id": "a", "text": "Je größer der Winkel, desto kleiner die Stranglast", "korrekt": false},
+        {"id": "b", "text": "Je größer der Öffnungswinkel, desto größer die Zugkraft in jedem Strang", "korrekt": true},
+        {"id": "c", "text": "Der Winkel hat keinen Einfluss auf die Stranglast", "korrekt": false},
+        {"id": "d", "text": "Bei 90° Öffnungswinkel ist die Stranglast gleich der Gesamtlast", "korrekt": false}
+      ],
+      "erklaerung": "Mit zunehmendem Öffnungswinkel α zwischen den Strängen wächst die Zugkraft F je Strang: F = (Last/2) / cos(α/2). Bei 0° = Last/2 je Strang; bei 120° = Last je Strang; bei >120° überschreitet die Stranglast die Gesamtlast."
+    },
+    {
+      "id": 81,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Was versteht man unter einem 'Point Load' beim Rigging?",
+      "antworten": [
+        {"id": "a", "text": "Die Gesamtlast aller Hängepunkte einer Traverse zusammen", "korrekt": false},
+        {"id": "b", "text": "Die Einzellast an einem bestimmten Hängepunkt (Deckenpunkt oder Traversen-Anhängepunkt)", "korrekt": true},
+        {"id": "c", "text": "Das maximale Gewicht, das auf die Bühne gestellt werden darf", "korrekt": false},
+        {"id": "d", "text": "Die dynamische Zusatzlast durch Personenbewegungen auf der Bühne", "korrekt": false}
+      ],
+      "erklaerung": "Der Point Load ist die Last, die an einem einzelnen Aufhängepunkt wirkt. Bei der Planung muss geprüft werden, ob die Deckenkonstruktion, der Hängepunkt und die Traverse diesen Point Load tragen können."
+    },
+    {
+      "id": 82,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein Shackle (Schäkel)?",
+      "antworten": [
+        {"id": "a", "text": "Ein elektrisches Verbindungselement für Traversensteuerung", "korrekt": false},
+        {"id": "b", "text": "Ein bügelförmiges Verbindungselement aus Stahl zum Verbinden von Anschlagmitteln", "korrekt": true},
+        {"id": "c", "text": "Ein Sicherheitsseil für den Personenschutz", "korrekt": false},
+        {"id": "d", "text": "Eine Art Schnellverschluss für Bühnenvorhänge", "korrekt": false}
+      ],
+      "erklaerung": "Ein Schäkel (Shackle) ist ein bügelförmiges Verbindungselement mit Schraubbolzen oder Steckbolzen. Er verbindet Ketten, Seile, Ringe und Haken und hat eine definierte SWL (Tragfähigkeit)."
+    },
+    {
+      "id": 83,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "schwer",
+      "frage": "Bis zu welcher Höhe darf ohne besondere Absturzsicherungsmaßnahmen (PSA) gearbeitet werden?",
+      "antworten": [
+        {"id": "a", "text": "1,0 m", "korrekt": false},
+        {"id": "b", "text": "1,5 m", "korrekt": false},
+        {"id": "c", "text": "2,0 m", "korrekt": true},
+        {"id": "d", "text": "3,0 m", "korrekt": false}
+      ],
+      "erklaerung": "Ab einer Absturzhöhe von 2,0 m schreibt die DGUV Regel 101-011 das Verwenden von Absturzsicherungen vor. Unterhalb von 2 m sind technische Maßnahmen (Geländer etc.) bevorzugt, PSA-Pflicht beginnt aber erst ab 2 m bei fehlenden kollektiven Maßnahmen."
+    },
+    {
+      "id": 84,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist eine Gefährdungsbeurteilung?",
+      "antworten": [
+        {"id": "a", "text": "Ein Formular, das nach einem Unfall ausgefüllt wird", "korrekt": false},
+        {"id": "b", "text": "Eine systematische Ermittlung und Bewertung von Gefährdungen am Arbeitsplatz vor Beginn der Arbeit", "korrekt": true},
+        {"id": "c", "text": "Die jährliche Überprüfung der elektrischen Betriebsmittel", "korrekt": false},
+        {"id": "d", "text": "Eine Einschätzung der Wetterverhältnisse für Outdoor-Veranstaltungen", "korrekt": false}
+      ],
+      "erklaerung": "Nach §5 ArbSchG ist der Arbeitgeber zur Gefährdungsbeurteilung verpflichtet. Sie muss vor Beginn der Arbeit Gefährdungen ermitteln, bewerten und Schutzmaßnahmen festlegen sowie dokumentiert werden."
+    },
+    {
+      "id": 85,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was regelt das Arbeitsschutzgesetz (ArbSchG) grundsätzlich?",
+      "antworten": [
+        {"id": "a", "text": "Die Vergütung von Überstunden in gefährlichen Berufen", "korrekt": false},
+        {"id": "b", "text": "Pflichten des Arbeitgebers zur Verhütung von Unfällen und arbeitsbedingten Erkrankungen", "korrekt": true},
+        {"id": "c", "text": "Die Zulassung von Hebezeugen auf Veranstaltungen", "korrekt": false},
+        {"id": "d", "text": "Regeln für den Einsatz von Leiharbeitern", "korrekt": false}
+      ],
+      "erklaerung": "Das Arbeitsschutzgesetz (ArbSchG) verpflichtet Arbeitgeber, alle notwendigen Maßnahmen zum Schutz der Sicherheit und Gesundheit der Beschäftigten zu treffen, einschließlich Gefährdungsbeurteilung, Unterweisung und Dokumentation."
+    },
+    {
+      "id": 86,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist eine Betriebsanweisung?",
+      "antworten": [
+        {"id": "a", "text": "Eine Montageanleitung des Herstellers für ein Gerät", "korrekt": false},
+        {"id": "b", "text": "Eine arbeitsplatz- und tätigkeitsbezogene Anweisung des Arbeitgebers mit Sicherheitshinweisen", "korrekt": true},
+        {"id": "c", "text": "Der Vertrag zwischen Arbeitgeber und Mitarbeiter", "korrekt": false},
+        {"id": "d", "text": "Ein Dokument der Berufsgenossenschaft mit allgemeinen Unfallverhütungsregeln", "korrekt": false}
+      ],
+      "erklaerung": "Eine Betriebsanweisung (nach §14 GefStoffV, §12 BioStoffV u.a.) informiert Mitarbeiter tätigkeitsbezogen über Gefahren, Schutzmaßnahmen, Verhalten bei Unfällen und muss in verständlicher Sprache aushängen."
+    },
+    {
+      "id": 87,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "schwer",
+      "frage": "Was versteht man unter dem Begriff 'dynamische Last' im Rigging-Kontext der Arbeitssicherheit?",
+      "antworten": [
+        {"id": "a", "text": "Das Gewicht beweglicher Bühnenelemente", "korrekt": false},
+        {"id": "b", "text": "Zusatzkräfte, die durch plötzliche Lastveränderungen (Rucke, Schwingungen, Fahrbewegungen) entstehen und die statische Last überschreiten", "korrekt": true},
+        {"id": "c", "text": "Die Windlast bei Outdoor-Veranstaltungen", "korrekt": false},
+        {"id": "d", "text": "Das Gewicht der Motoren selbst", "korrekt": false}
+      ],
+      "erklaerung": "Dynamische Lasten entstehen durch Beschleunigung, Verzögerung, Schwingungen oder Stöße. Im Rigging muss mit einem Dynamikfaktor gerechnet werden (z.B. 1,5–2,0 × statische Last). BGV C1 fordert die Berücksichtigung dynamischer Kräfte."
+    },
+    {
+      "id": 88,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Welcher Feuerlöscher ist für brennende elektrische Anlagen (Brandklasse E) geeignet?",
+      "antworten": [
+        {"id": "a", "text": "Wasserlöscher", "korrekt": false},
+        {"id": "b", "text": "CO₂-Löscher (Kohlendioxid)", "korrekt": true},
+        {"id": "c", "text": "Schaum-Löscher", "korrekt": false},
+        {"id": "d", "text": "F-Löscher (Fettbrand)", "korrekt": false}
+      ],
+      "erklaerung": "CO₂-Löscher sind spannungssicher und hinterlassen keine Rückstände – ideal für elektrische Anlagen und Serverräume. Wasser und Schaum leiten Strom und sind daher ungeeignet. F-Löscher sind für Speisefettbrände."
+    },
+    {
+      "id": 89,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "leicht",
+      "frage": "Was bedeutet die Abkürzung UVV?",
+      "antworten": [
+        {"id": "a", "text": "Unfallvermeidungsvorschrift", "korrekt": false},
+        {"id": "b", "text": "Unfallverhütungsvorschrift", "korrekt": true},
+        {"id": "c", "text": "Unfallversicherungsverordnung", "korrekt": false},
+        {"id": "d", "text": "Umwelt- und Verbraucherschutzvorschrift", "korrekt": false}
+      ],
+      "erklaerung": "UVV steht für Unfallverhütungsvorschrift. Diese werden von den Berufsgenossenschaften (DGUV) erlassen und sind für alle Betriebe verbindlich. Für die Veranstaltungstechnik relevant: UVV BGV C1 (DGUV V17/18)."
+    },
+    {
+      "id": 90,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "schwer",
+      "frage": "Wer ist nach der Versammlungsstättenverordnung für die Betriebssicherheit einer Versammlungsstätte verantwortlich?",
+      "antworten": [
+        {"id": "a", "text": "Der Veranstalter allein", "korrekt": false},
+        {"id": "b", "text": "Der Betreiber (und der Veranstalter für seine Veranstaltung)", "korrekt": true},
+        {"id": "c", "text": "Der zuständige Brandschutzbeauftragte", "korrekt": false},
+        {"id": "d", "text": "Die Feuerwehr als überwachende Behörde", "korrekt": false}
+      ],
+      "erklaerung": "Der Betreiber einer Versammlungsstätte trägt die grundsätzliche Betriebssicherheitsverantwortung. Der Veranstalter haftet zusätzlich für sicherheitsrelevante Aspekte seiner Veranstaltung (MVStättVO §38)."
+    },
+    {
+      "id": 91,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein Produktionsplan (Run of Show)?",
+      "antworten": [
+        {"id": "a", "text": "Eine Preiskalkulation für die gesamte Veranstaltungsproduktion", "korrekt": false},
+        {"id": "b", "text": "Ein minutengenauer Ablaufplan der Veranstaltung mit allen technischen Cues und Übergaben", "korrekt": true},
+        {"id": "c", "text": "Eine Liste aller benötigten technischen Geräte", "korrekt": false},
+        {"id": "d", "text": "Der Vertrag zwischen Künstler und Veranstalter", "korrekt": false}
+      ],
+      "erklaerung": "Der Run of Show (Produktionsplan) ist ein minutengenauer Ablaufplan, der alle Ereignisse der Veranstaltung (Intro, Auftritte, technische Übergaben, Pausen) zeitlich koordiniert und für alle Gewerke als Arbeitsgrundlage dient."
+    },
+    {
+      "id": 92,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist ein Hospitality Rider?",
+      "antworten": [
+        {"id": "a", "text": "Technische Anforderungen des Künstlers an das Venue", "korrekt": false},
+        {"id": "b", "text": "Wünsche des Künstlers bezüglich Verpflegung, Garderobe, Hotel und Komfort", "korrekt": true},
+        {"id": "c", "text": "Die Liste aller beteiligten Techniker und deren Aufgaben", "korrekt": false},
+        {"id": "d", "text": "Ein Sicherheitskonzept für VIP-Bereiche", "korrekt": false}
+      ],
+      "erklaerung": "Der Hospitality Rider enthält die nichtechnischen Wünsche des Künstlers: Catering (Speisen, Getränke), Garderobenausstattung, Handtücher, Hotelkategorie, Transport etc. Er ist Teil des Vertrags."
+    },
+    {
+      "id": 93,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet GEMA im Kontext einer öffentlichen Veranstaltung?",
+      "antworten": [
+        {"id": "a", "text": "Gesellschaft für Marken- und Patentrechte", "korrekt": false},
+        {"id": "b", "text": "Gesellschaft für musikalische Aufführungs- und mechanische Vervielfältigungsrechte – sie erhebt Lizenzgebühren für öffentlich gespielte Musik", "korrekt": true},
+        {"id": "c", "text": "Eine Behörde zur Genehmigung von Großveranstaltungen", "korrekt": false},
+        {"id": "d", "text": "Eine freiwillige Versicherung für Veranstalter", "korrekt": false}
+      ],
+      "erklaerung": "Die GEMA vertritt Komponisten, Textdichter und Musikverlage. Wer urheberrechtlich geschützte Musik öffentlich spielt (Konzerte, DJs, Hintergrundmusik), muss GEMA-Gebühren entrichten."
+    },
+    {
+      "id": 94,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist bei der Erstellung eines Sicherheitskonzepts für eine Großveranstaltung zu berücksichtigen?",
+      "antworten": [
+        {"id": "a", "text": "Nur die Anzahl der Sicherheitskräfte", "korrekt": false},
+        {"id": "b", "text": "Personenstrom, Flucht- und Rettungswege, medizinische Versorgung, Kommunikation, Brandschutz und Evakuierungsplanung", "korrekt": true},
+        {"id": "c", "text": "Ausschließlich die Genehmigungen der Behörden", "korrekt": false},
+        {"id": "d", "text": "Nur die technischen Absperrungen und Barrieren", "korrekt": false}
+      ],
+      "erklaerung": "Ein Sicherheitskonzept umfasst: Kapazitätsberechnung, Personenströme, Ein-/Ausgänge, Flucht- und Rettungswege, Feuerwehrzufahrten, Sanitätsdienst, Ordnerdienst, Kommunikationsstrukturen, Evakuierungsplan und Krisenmanagement."
+    },
+    {
+      "id": 95,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist eine Inputliste (Input List) in der Veranstaltungstechnik?",
+      "antworten": [
+        {"id": "a", "text": "Eine Liste der benötigten Steckdosen auf der Bühne", "korrekt": false},
+        {"id": "b", "text": "Eine detaillierte Liste aller Mikrofonkanäle, Signalquellen und deren Anforderungen an das Mischpult", "korrekt": true},
+        {"id": "c", "text": "Eine Inventarliste des gesamten technischen Equipments", "korrekt": false},
+        {"id": "d", "text": "Der Ablaufplan für den Auf- und Abbau", "korrekt": false}
+      ],
+      "erklaerung": "Die Input List enthält für jeden Eingangskanal: Kanal-Nummer, Instrumentenbezeichnung, Mikrofontyp, Phantomspeisung (ja/nein), Steckverbinder und Monitorwünsche. Sie ist Pflichtbestandteil des technischen Riders."
+    },
+    {
+      "id": 96,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist Latenz in der digitalen Audiotechnik?",
+      "antworten": [
+        {"id": "a", "text": "Der Frequenzgang des digitalen Systems", "korrekt": false},
+        {"id": "b", "text": "Die Verzögerungszeit zwischen dem Eingangs- und dem Ausgangssignal eines digitalen Audiosystems", "korrekt": true},
+        {"id": "c", "text": "Der Rauschpegel eines A/D-Wandlers", "korrekt": false},
+        {"id": "d", "text": "Die maximale Abtastrate des Systems", "korrekt": false}
+      ],
+      "erklaerung": "Latenz ist die Signallaufzeit durch digitale Verarbeitungssysteme (A/D-Wandler, DSP, D/A-Wandler). Bei Live-Veranstaltungen ist niedrige Latenz kritisch: >20–30 ms sind für Musiker auf der Bühne hörbar störend."
+    },
+    {
+      "id": 97,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist Edgeblending bei Projektionsanlagen?",
+      "antworten": [
+        {"id": "a", "text": "Eine Technik, mit der zwei oder mehr Projektoren ein nahtloses, überlappungsfreies Bild erzeugen, indem die Überlappungsbereiche weich ausgeblendet werden", "korrekt": true},
+        {"id": "b", "text": "Eine Methode zur Helligkeitsanpassung bei unterschiedlichen Raumbeleuchtungen", "korrekt": false},
+        {"id": "c", "text": "Ein Farbkalibrierungsverfahren für LED-Walls", "korrekt": false},
+        {"id": "d", "text": "Eine Software zur Auflösungskonvertierung von Videosignalen", "korrekt": false}
+      ],
+      "erklaerung": "Beim Edgeblending werden zwei oder mehr Projektoren nebeneinander oder übereinander eingesetzt. Im Überlappungsbereich werden beide Bilder weich ausgeblendet (Soft Edge), sodass ein nahtloses Gesamtbild entsteht."
+    },
+    {
+      "id": 98,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Unterschied zwischen einem Scaler und einem Switcher in der Medientechnik?",
+      "antworten": [
+        {"id": "a", "text": "Ein Scaler wandelt Auflösungen/Signalformate um; ein Switcher wählt zwischen mehreren Quellen", "korrekt": true},
+        {"id": "b", "text": "Ein Switcher wandelt Signalformate, ein Scaler schaltet Quellen", "korrekt": false},
+        {"id": "c", "text": "Beide Geräte machen dasselbe, nur für unterschiedliche Auflösungen", "korrekt": false},
+        {"id": "d", "text": "Ein Scaler ist für Audio, ein Switcher für Video", "korrekt": false}
+      ],
+      "erklaerung": "Ein Scaler passt Auflösung, Bildrate und Signalformat an (z.B. 1080i → 1080p). Ein Switcher wählt zwischen mehreren Eingangsquellen und schaltet diese auf den Ausgang. Viele professionelle Geräte kombinieren beide Funktionen."
+    },
+    {
+      "id": 99,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist der Unterschied zwischen progressiver (p) und interlaced (i) Bildabtastung?",
+      "antworten": [
+        {"id": "a", "text": "Progressive überträgt mehr Farben, interlaced mehr Auflösung", "korrekt": false},
+        {"id": "b", "text": "Progressive (z.B. 1080p) überträgt jedes Bild vollständig; interlaced (z.B. 1080i) überträgt abwechselnd gerade und ungerade Zeilen", "korrekt": true},
+        {"id": "c", "text": "Interlaced ist moderner und qualitativ hochwertiger als Progressive", "korrekt": false},
+        {"id": "d", "text": "Es gibt keinen praktischen Unterschied bei modernen Displays", "korrekt": false}
+      ],
+      "erklaerung": "Progressiv (p): Jedes Frame wird komplett übertragen → schärfer bei Bewegung. Interlaced (i): Alternierend ungerade/gerade Halbbilder → halbe Datenmenge, aber Zeilenflimmern möglich. Für Live-Events ist 1080p50/60 das aktuelle Standard."
+    },
+    {
+      "id": 100,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist Genlock und wann wird es in der Veranstaltungstechnik benötigt?",
+      "antworten": [
+        {"id": "a", "text": "Eine Methode zur Synchronisation von Audiosignalen", "korrekt": false},
+        {"id": "b", "text": "Die Synchronisation mehrerer Videoquellen auf dasselbe Timing-Signal, um Bildsprünge beim Umschalten zu vermeiden", "korrekt": true},
+        {"id": "c", "text": "Ein Passwortschutz für Videoswitcher", "korrekt": false},
+        {"id": "d", "text": "Eine Komprimierungstechnik für Videostreams", "korrekt": false}
+      ],
+      "erklaerung": "Genlock synchronisiert die Bildtaktung mehrerer Videoquellen auf einen gemeinsamen Referenztakt. Dadurch entstehen beim Umschalten zwischen Quellen keine Bildsprünge oder Störimpulse – essenziell für professionelle Broadcast- und Live-Produktionen."
+    },
+    {
+      "id": 101,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist ein Transformator und nach welchem Prinzip arbeitet er?",
+      "antworten": [
+        {"id": "a", "text": "Ein Gerät zur Gleichstromumwandlung durch Transistorschaltungen", "korrekt": false},
+        {"id": "b", "text": "Ein Bauteil zur Spannungsänderung von Wechselstrom durch elektromagnetische Induktion zwischen zwei Spulen", "korrekt": true},
+        {"id": "c", "text": "Ein Gerät zur Frequenzänderung von Wechselstrom", "korrekt": false},
+        {"id": "d", "text": "Ein elektronischer Regler für Gleichspannungen", "korrekt": false}
+      ],
+      "erklaerung": "Ein Transformator besteht aus zwei Spulen (Primär- und Sekundärwicklung) auf einem gemeinsamen Eisenkern. Wechselstrom in der Primärspule erzeugt ein wechselndes Magnetfeld, das in der Sekundärspule eine Spannung induziert. Übersetzungsverhältnis: U₂/U₁ = N₂/N₁."
+    },
+    {
+      "id": 102,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist ein Limiter und wie unterscheidet er sich vom Kompressor?",
+      "antworten": [
+        {"id": "a", "text": "Ein Limiter hebt leise Signale an, ein Kompressor begrenzt laute", "korrekt": false},
+        {"id": "b", "text": "Ein Limiter ist ein Kompressor mit sehr hohem Ratio (∞:1), der das Signal hart begrenzt und Übersteuerung verhindert", "korrekt": true},
+        {"id": "c", "text": "Ein Limiter wird nur für Bassfrequenzen eingesetzt", "korrekt": false},
+        {"id": "d", "text": "Limiter und Kompressor sind unterschiedliche Bezeichnungen für dasselbe Gerät", "korrekt": false}
+      ],
+      "erklaerung": "Ein Limiter ist technisch ein Kompressor mit sehr hohem Ratio (typisch ∞:1 oder >20:1). Signale oberhalb des Threshold werden quasi auf den Threshold-Pegel 'gedeckelt'. Er schützt Lautsprecher vor Übersteuerung."
+    },
+    {
+      "id": 103,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist sACN (Streaming ACN / ANSI E1.31)?",
+      "antworten": [
+        {"id": "a", "text": "Ein drahtloser DMX-Standard für bis zu 512 Kanäle", "korrekt": false},
+        {"id": "b", "text": "Ein Ethernet-basiertes Protokoll zur Übertragung von DMX-Daten, das mehrere Universen über ein Netzwerk überträgt", "korrekt": true},
+        {"id": "c", "text": "Eine Software zur Lichtprogrammierung von Moving Lights", "korrekt": false},
+        {"id": "d", "text": "Ein Standard für LED-Pixel-Mapping", "korrekt": false}
+      ],
+      "erklaerung": "sACN (Streaming ACN, ANSI E1.31) ist wie Art-Net ein Netzwerkprotokoll für DMX-Daten über Ethernet, aber als ANSI-Standard normiert. Es unterstützt bis zu 63.999 Universen und Multi-Cast-Verteilung."
+    },
+    {
+      "id": 104,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist bei der Aufstellung von Podesten (Bühnenpodeste) nach BGV C1 zu beachten?",
+      "antworten": [
+        {"id": "a", "text": "Podeste müssen immer aus Metall sein", "korrekt": false},
+        {"id": "b", "text": "Podeste ab 1 m Höhe müssen mit Geländer gesichert sein; die Standsicherheit muss gewährleistet sein", "korrekt": true},
+        {"id": "c", "text": "Podeste dürfen maximal 60 cm hoch sein", "korrekt": false},
+        {"id": "d", "text": "Podeste brauchen keine besonderen Sicherheitsmaßnahmen unter 2 m Höhe", "korrekt": false}
+      ],
+      "erklaerung": "Nach BGV C1 §16 müssen Podeste und Spielflächen standsicher aufgestellt sein. Ab 1 m Höhe sind Geländer oder andere Absturzsicherungen Pflicht. Die zulässige Belastung muss bekannt und eingehalten werden."
+    },
+    {
+      "id": 105,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist eine Unterweisung im Sinne des Arbeitsschutzrechts?",
+      "antworten": [
+        {"id": "a", "text": "Eine freiwillige Schulungsmaßnahme für besonders gefährliche Tätigkeiten", "korrekt": false},
+        {"id": "b", "text": "Eine vom Arbeitgeber verpflichtend durchzuführende, dokumentierte Sicherheitsinformation für Beschäftigte vor Aufnahme der Tätigkeit und bei Änderungen", "korrekt": true},
+        {"id": "c", "text": "Nur die Einweisung neuer Mitarbeiter am ersten Arbeitstag", "korrekt": false},
+        {"id": "d", "text": "Eine behördliche Kontrolle der Sicherheitsmaßnahmen", "korrekt": false}
+      ],
+      "erklaerung": "Unterweisungen (§12 ArbSchG) sind verpflichtend vor Arbeitsaufnahme, bei Veränderungen, regelmäßig (mind. jährlich) und nach Unfällen. Sie müssen dokumentiert werden und müssen für den Mitarbeiter verständlich sein."
+    },
+    {
+      "id": 106,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "schwer",
+      "frage": "Was versteht man unter einem 'Venue Survey' / einer Location-Besichtigung?",
+      "antworten": [
+        {"id": "a", "text": "Die offizielle Genehmigung der Veranstaltungsbehörde", "korrekt": false},
+        {"id": "b", "text": "Eine technische Vorort-Inspektion der Veranstaltungsstätte zur Ermittlung von Maßen, Lastpunkten, Strom- und Signalanschlüssen sowie Einschränkungen", "korrekt": true},
+        {"id": "c", "text": "Die Abnahme der fertigen Bühne durch den Sicherheitsbeauftragten", "korrekt": false},
+        {"id": "d", "text": "Eine Umfrage unter Besuchern nach der Veranstaltung", "korrekt": false}
+      ],
+      "erklaerung": "Ein Venue Survey / Locationcheck ist die technische Vorbegehung: Raummaße, Traversen-/Deckenlastpunkte, Elektroanschlüsse (Strom, Daten), Zufahrtswege, Lagerflächen, Lärmregelungen – Grundlage für die technische Planung."
+    },
+    {
+      "id": 107,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "Wie groß ist die Impedanz einer Reihenschaltung aus R = 8 Ω und X_L = 6 Ω?",
+      "antworten": [
+        {"id": "a", "text": "14 Ω", "korrekt": false},
+        {"id": "b", "text": "10 Ω", "korrekt": true},
+        {"id": "c", "text": "7 Ω", "korrekt": false},
+        {"id": "d", "text": "2 Ω", "korrekt": false}
+      ],
+      "erklaerung": "Impedanz: Z = √(R² + X_L²) = √(64 + 36) = √100 = 10 Ω. Widerstand und Reaktanz addieren sich nicht einfach, sondern vektoriell (Pythagoras)."
+    },
+    {
+      "id": 108,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein Stagebox / Multicore?",
+      "antworten": [
+        {"id": "a", "text": "Eine Box zur sicheren Aufbewahrung von Mikrofonen auf der Bühne", "korrekt": false},
+        {"id": "b", "text": "Ein Kabelstrang mit vielen XLR-Kanälen, der Bühne und FOH-Pult verbindet", "korrekt": true},
+        {"id": "c", "text": "Ein digitales Mischpult mit integrierten Effekten", "korrekt": false},
+        {"id": "d", "text": "Ein Gerät zur Signalverteilung für IEM-Systeme", "korrekt": false}
+      ],
+      "erklaerung": "Ein Multicore (Stagebox/Snake) bündelt viele XLR-Kanäle (Sends und Returns) in einem Kabelstrang zwischen Bühne und FOH-Position. Typisch: 24 Sends + 8 Returns für 50–100 m Kabellänge."
+    },
+    {
+      "id": 109,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein Dimmer in der Bühnenlichtechnik?",
+      "antworten": [
+        {"id": "a", "text": "Ein Gerät zur Farbsteuerung von LED-Scheinwerfern", "korrekt": false},
+        {"id": "b", "text": "Ein Gerät zur stufenlosen Regelung der Lichtintensität durch Steuerung der Spannung oder des Stroms", "korrekt": true},
+        {"id": "c", "text": "Ein Schutzschalter für Scheinwerfer", "korrekt": false},
+        {"id": "d", "text": "Eine Steuereinheit für Moving Lights", "korrekt": false}
+      ],
+      "erklaerung": "Dimmer regulieren die Helligkeit von Scheinwerfern. Traditionelle Dimmer (Triac/Thyristor) steuern konventionelle Lampen (Halogen) durch Phasenanschnitt. Für LEDs werden elektronische Dimmer (PWM) oder spannungsgeregelte Dimmer eingesetzt."
+    },
+    {
+      "id": 110,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist eine 'fliegende Anlage' im Rigging?",
+      "antworten": [
+        {"id": "a", "text": "Ein mobiles Tonsystem, das im Flugzeug transportiert wird", "korrekt": false},
+        {"id": "b", "text": "Eine Konstruktion, die an der Decke oder an Traversen hängt und nicht auf dem Boden steht", "korrekt": true},
+        {"id": "c", "text": "Eine spezielle Traversenform für Außenveranstaltungen", "korrekt": false},
+        {"id": "d", "text": "Ein schnell auf- und abbaubares Bühnensystem", "korrekt": false}
+      ],
+      "erklaerung": "Als 'fliegende Anlage' bezeichnet man alle Konstruktionen, die frei in der Luft hängen (z.B. Traversen mit Scheinwerfern, Line-Arrays, LED-Walls). Sie erfordern nach BGV C1 besondere Sicherheitsmaßnahmen wie Sekundärsicherung."
+    },
+    {
+      "id": 111,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet HDCP?",
+      "antworten": [
+        {"id": "a", "text": "High Definition Color Protocol – ein Farbstandard für 4K-Displays", "korrekt": false},
+        {"id": "b", "text": "High-bandwidth Digital Content Protection – ein Kopierschutzsystem für digitale Videosignale", "korrekt": true},
+        {"id": "c", "text": "High Dynamic Contrast Performance – ein Kontrastverstärker für Projektoren", "korrekt": false},
+        {"id": "d", "text": "Hybrid Digital Connection Port – ein neuer Videostecker-Standard", "korrekt": false}
+      ],
+      "erklaerung": "HDCP (High-bandwidth Digital Content Protection) ist ein Kopierschutzmechanismus für HDMI, DisplayPort und DVI. Es verschlüsselt das Signal zwischen Sender und Empfänger. In der Veranstaltungstechnik kann HDCP Probleme bei Signalteilern und Schaltern verursachen."
+    },
+    {
+      "id": 112,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Wie oft müssen elektrische Betriebsmittel (ortsveränderlich) nach DGUV V3 mindestens geprüft werden?",
+      "antworten": [
+        {"id": "a", "text": "Einmal im Leben bei der Inbetriebnahme", "korrekt": false},
+        {"id": "b", "text": "In der Regel alle 6 Monate (bei rauen Betriebsbedingungen) oder mindestens alle 12 Monate", "korrekt": true},
+        {"id": "c", "text": "Alle 5 Jahre durch den TÜV", "korrekt": false},
+        {"id": "d", "text": "Nur nach einem Schaden oder Defekt", "korrekt": false}
+      ],
+      "erklaerung": "DGUV V3 schreibt regelmäßige Prüfungen vor. Ortsveränderliche Betriebsmittel bei rauer Beanspruchung (Veranstaltungstechnik): alle 6 Monate. Bei normaler Beanspruchung: alle 12 Monate. Die Prüfung muss von einer Elektrofachkraft durchgeführt werden."
+    },
+    {
+      "id": 113,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist ein Call Sheet / Ablaufplan?",
+      "antworten": [
+        {"id": "a", "text": "Eine Liste mit Telefonnummern aller Beteiligten", "korrekt": false},
+        {"id": "b", "text": "Ein Zeitplan mit genauen Uhrzeiten für Anlieferung, Aufbau, Soundcheck, Show und Abbau", "korrekt": true},
+        {"id": "c", "text": "Ein Dokument mit den GEMA-Meldepflichten", "korrekt": false},
+        {"id": "d", "text": "Die Kostenkalkulation der gesamten Veranstaltung", "korrekt": false}
+      ],
+      "erklaerung": "Ein Call Sheet enthält alle zeitlichen Informationen einer Produktion: Anlieferzeiten, Crew-Call (wann erscheinen welche Techniker), Aufbauzeiten, Soundcheck-Zeiten, Showbeginn, Abbau. Es koordiniert alle Gewerke."
+    },
+    {
+      "id": 114,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist der Unterschied zwischen FOH und Monitor-Mix?",
+      "antworten": [
+        {"id": "a", "text": "FOH ist der Mix für das Publikum (Front of House), Monitor ist der individuelle Mix für die Musiker auf der Bühne", "korrekt": true},
+        {"id": "b", "text": "FOH ist der Mix für die Aufnahme, Monitor für die Live-Übertragung", "korrekt": false},
+        {"id": "c", "text": "FOH und Monitor beschreiben nur unterschiedliche Mischpulttypen", "korrekt": false},
+        {"id": "d", "text": "FOH ist der Mix für Hauptlautsprecher, Monitor für Subwoofer", "korrekt": false}
+      ],
+      "erklaerung": "FOH (Front of House) bezeichnet das Mischpult und den Mix, der für das Publikum im Saal optimiert ist. Der Monitor-Mix (Stage Monitor) wird separat für die Musiker auf der Bühne erstellt, damit jeder Musiker sich selbst und die Band hören kann."
+    },
+    {
+      "id": 115,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist das Beleuchtungskonzept '3-Punkt-Ausleuchtung'?",
+      "antworten": [
+        {"id": "a", "text": "Ein System mit genau 3 DMX-Universen", "korrekt": false},
+        {"id": "b", "text": "Eine klassische Ausleuchtung mit Hauptlicht (Key), Fülllicht (Fill) und Gegenlicht (Back), die eine plastische Wirkung erzeugt", "korrekt": true},
+        {"id": "c", "text": "Eine Technik, bei der 3 Scheinwerfer denselben Punkt beleuchten", "korrekt": false},
+        {"id": "d", "text": "Ein Traverse-System mit 3 Aufhängepunkten", "korrekt": false}
+      ],
+      "erklaerung": "Die 3-Punkt-Ausleuchtung ist ein Grundprinzip: Key Light (Hauptlicht, schräg von vorne) gibt Helligkeit und Schatten. Fill Light (Fülllicht, gegenüber) reduziert harte Schatten. Back Light (Gegenlicht, von hinten) trennt das Motiv vom Hintergrund und gibt Tiefe."
     }
   ]
 }

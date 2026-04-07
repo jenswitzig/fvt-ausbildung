@@ -39,7 +39,7 @@ const { fragen } = Astro.props;
     </div>
     <h2 class="text-2xl font-bold text-slate-100 mb-3">Quiz starten</h2>
     <p class="text-slate-400 mb-6" id="start-description">
-      Bereit? Es werden <span id="start-count" class="text-amber-400 font-semibold">{fragen.length}</span> Fragen gestellt.
+      Bereit? Es werden <span id="start-count" class="text-amber-400 font-semibold">48 von {fragen.length}</span> zufälligen Fragen gestellt.
     </p>
     <button
       id="start-btn"
@@ -125,6 +125,8 @@ const { fragen } = Astro.props;
 </div>
 
 <script define:vars={{ fragenData: fragen }}>
+  const FRAGEN_PRO_DURCHGANG = 48;
+
   let alleFragen = fragenData;
   let gefilterteFragen = [...alleFragen];
   let aktiverFilter = "all";
@@ -162,7 +164,10 @@ const { fragen } = Astro.props;
         gefilterteFragen = alleFragen.filter(f => f.thema === filter);
       }
 
-      startCount.textContent = gefilterteFragen.length;
+      const anzeige = Math.min(FRAGEN_PRO_DURCHGANG, gefilterteFragen.length);
+      startCount.textContent = gefilterteFragen.length > FRAGEN_PRO_DURCHGANG
+        ? `${anzeige} von ${gefilterteFragen.length}`
+        : anzeige;
     });
   });
 
@@ -177,7 +182,8 @@ const { fragen } = Astro.props;
   }
 
   function startQuiz() {
-    gefilterteFragen = shuffle(gefilterteFragen);
+    const shuffled = shuffle(gefilterteFragen);
+    gefilterteFragen = shuffled.slice(0, Math.min(FRAGEN_PRO_DURCHGANG, shuffled.length));
     aktuelleIndex = 0;
     richtig = 0;
     falscheAntworten = [];
