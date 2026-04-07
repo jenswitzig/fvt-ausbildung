@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+
+const themen = [
+  {
+    titel: "Elektrotechnik (LF01)",
+    farbe: "amber",
+    themen: [
+      "Ohmsches Gesetz: R = U/I, I = U/R, U = R·I",
+      "Leistungsformel: P = U·I = U²/R = I²·R",
+      "Reihenschaltung: R_ges = R₁+R₂+…",
+      "Parallelschaltung: 1/R_ges = 1/R₁+1/R₂+…",
+      "Kirchhoffsche Gesetze (Knoten- und Maschenregel)",
+      "Wechselstrom: Effektivwert, Scheitelwert, Frequenz (50 Hz)",
+      "Drehstrom: 230V/400V, CEE-Stecker, Farbkodierung",
+      "Schutzklassen I, II, III",
+      "IP-Schutzarten (IP20, IP44, IP65)",
+      "VDE-Vorschriften: VDE 0100, DGUV V3",
+      "5 Sicherheitsregeln (Freischalten, Sichern, Prüfen, ...)",
+    ]
+  },
+  {
+    titel: "Lichttechnik (LF02)",
+    farbe: "yellow",
+    themen: [
+      "Lichtstrom (lm), Lichtstärke (cd), Beleuchtungsstärke (lx), Leuchtdichte (cd/m²)",
+      "Abstandsgesetz: E = I/d² (Quadratisch!)",
+      "Farbtemperatur: 2700K warm – 6500K kalt",
+      "Farbwiedergabeindex CRI/Ra",
+      "Halogen, HMI, LED – Eigenschaften und Unterschiede",
+      "DMX512: 512 Kanäle/Universum, RS-485, 120Ω Abschluss",
+      "Art-Net und sACN (IP-basierte DMX-Übertragung)",
+      "Scheinwerfertypen: Profil, Fresnel, PAR, Moving Head",
+      "Gobo, Iris, Framing-Shutter, Prism",
+      "Additive Farbmischung: RGB → Weiß",
+      "Subtraktive Farbmischung: CMY → Schwarz",
+      "Lichtstile: Front-, Seiten-, Gegen-, Spitzlicht",
+    ]
+  },
+  {
+    titel: "Tontechnik (LF03)",
+    farbe: "blue",
+    themen: [
+      "Schallgeschwindigkeit: 343 m/s (20°C)",
+      "Frequenzbereich: 20 Hz – 20 kHz",
+      "Dezibel: L = 20·log(p/p₀), Referenz p₀ = 20 µPa",
+      "Pegeladdition: 2 gleiche Quellen = +3 dB",
+      "Abstandsgesetz Schall: Verdopplung → −6 dB",
+      "Dynamische vs. Kondensatormikrofone",
+      "Phantomspeisung 48V (P48) – was braucht sie, was schadet ihr?",
+      "Richtcharakteristiken: Kugel, Niere, Acht, Superniere",
+      "Mischpult-Signalfluss: Gain → EQ → Aux → Pan → Fader",
+      "Gain-Struktur, Clipping vermeiden",
+      "PA-Aufbau: FOH, Monitor, Delay-Tower",
+      "Digitale Audiotechnik: Sampling, Bittiefe, Latenz",
+      "CD: 44,1 kHz / 16 Bit; Profi: 48 kHz / 24 Bit",
+      "AES/EBU, MADI, Dante – professionelle Audioschnittstellen",
+    ]
+  },
+  {
+    titel: "Bühnentechnik & Rigging (LF04)",
+    farbe: "red",
+    themen: [
+      "Bruchlast, WLL, Sicherheitskoeffizient SF",
+      "SF = 10 für Anschlagmittel über Personen (BGV C1)",
+      "Rundschlingen-Farben nach EN 1492-2",
+      "Anschlagart und Reduktionsfaktoren (50 % bei 90°)",
+      "Stahlketten Güteklasse 8 und 10",
+      "Schäkel: Bolzen sichern!",
+      "Sicherheitsstropp (Sekundärsicherung) – Pflicht nach BGV C1",
+      "BGV C1 / DGUV V17: Veranstaltungs- und Produktionsstätten",
+      "Box-Truss (4-Punkt) vs. Triangle-Truss (3-Punkt)",
+      "Traversenbelastung: Streckenlast, Einzellast, Eigengewicht",
+      "Kettenzüge und Motorzüge: Traglasten, Prüfpflichten",
+      "DGUV Vorschrift 54 (BGV D8): Hebezeuge",
+    ]
+  },
+  {
+    titel: "Veranstaltungsorganisation (LF05)",
+    farbe: "green",
+    themen: [
+      "Planungsphasen: Konzept → Planung → Vorbereitung → Durchführung → Nachbereitung",
+      "Technischer Rider: Bühne, Ton, Licht, Backline, Input-Liste",
+      "Stage Plot",
+      "Versammlungsstättenverordnung (VStättVO) ab 200 Personen",
+      "Rettungswege: Mindestbreite 1,20 m, Länge max. 30 m",
+      "Veranstaltungsleiter: Anwesenheitspflicht, Evakuierungsrecht",
+      "Ordnungsdienst: 1 pro 100 Besucher",
+      "Venue-Analyse: Abmessungen, Lasten, Strom, Zufahrt",
+      "Hängepunktberechnung und statisches Gutachten",
+      "Budgetplanung: Vorkalkulation, Break-even, Liquidität",
+      "Dienstleistermanagement: Advance, Production Meeting, Intercom",
+    ]
+  },
+  {
+    titel: "Arbeitssicherheit (LF06)",
+    farbe: "rose",
+    themen: [
+      "ArbSchG: Gefährdungsbeurteilung Pflicht nach § 5",
+      "STOP-Prinzip: Substitution → Technisch → Organisatorisch → PSA",
+      "DGUV V1: Grundsätze der Prävention",
+      "DGUV V3: Elektrische Anlagen, Prüffristen VA-Technik 12 Monate",
+      "DGUV V17/18 (BGV C1): Bühnen und Studios",
+      "Lärmschutz: 80 dB(A) → Bereitstellen, 85 dB(A) → Pflicht tragen",
+      "Expositionsgrenzwert: 87 dB(A) Tagesdosis",
+      "TRLV Lärm: +3 dB = halbe Expositionszeit",
+      "PSA Kategorie III: Absturz, Atemschutz",
+      "Auffanggurt (EN 361) vs. Haltegurt (EN 358)",
+      "Schutzhelm, Sicherheitsschuhe (S1, S3)",
+      "Erste Hilfe: Notruf 112, Wiederbelebung, stabile Seitenlage",
+      "5 Sicherheitsregeln bei elektrischen Anlagen",
+    ]
+  },
+  {
+    titel: "Medientechnik (LF07)",
+    farbe: "cyan",
+    themen: [
+      "Auflösungen: SD (576), HD (720p), Full HD (1080p), 4K (2160p)",
+      "Frameraten: 24fps (Kino), 25fps (PAL), 50/60fps (Sport)",
+      "Progressive (p) vs. Interlaced (i)",
+      "HDMI: Consumer, Audio+Video, max. 5-10m ohne Verstärker",
+      "SDI (BNC): Profi, bis 200m, Locking-Stecker",
+      "DisplayPort, DVI (veraltet), VGA (analog, veraltet)",
+      "NDI: Video over IP, LAN-Netzwerk",
+      "ANSI-Lumen: Helligkeitsmessung bei Projektoren",
+      "Throw Ratio = Abstand / Bildbreite",
+      "LED-Wall: Pixel-Pitch, Mindestabstand (mm ≈ m-Faustregel)",
+      "LED-Wall: Helligkeit (cd/m²), Refresh-Rate (≥3840 Hz kamerasicher)",
+      "SMPTE-Timecode: HH:MM:SS:FF für Systemsynchronisation",
+    ]
+  },
+  {
+    titel: "Projektmanagement (LF08)",
+    farbe: "violet",
+    themen: [
+      "Projektmerkmale nach DIN 69901: Einmaligkeit, Zeit, Ressourcen",
+      "Magisches Dreieck: Leistung ↔ Zeit ↔ Kosten",
+      "SMART-Ziele: Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert",
+      "Projektphasen: Initiierung → Planung → Durchführung → Abschluss",
+      "Netzplantechnik: FAZ, FEZ, SAZ, SEZ, Gesamtpuffer GP",
+      "Kritischer Pfad: GP = 0, Verzögerung = Projektverzögerung",
+      "Gantt-Chart: Visualisierung des Zeitplans",
+      "PSP (Projektstrukturplan / Work Breakdown Structure)",
+      "Risikomatrix: Wahrscheinlichkeit × Schadensausmaß",
+      "Risikomaßnahmen: Vermeiden, Vermindern, Transferieren, Akzeptieren",
+      "Vier-Seiten-Modell (Schulz von Thun): Sach, Selbst, Beziehung, Appell",
+      "Nachkalkulation: Soll-Ist-Vergleich, Lessons Learned",
+    ]
+  },
+];
+
+const colorMap: Record<string, { badge: string; dot: string; border: string }> = {
+  amber:  { badge: "bg-amber-500/10 text-amber-400", dot: "bg-amber-400", border: "border-amber-500/30" },
+  yellow: { badge: "bg-yellow-500/10 text-yellow-400", dot: "bg-yellow-400", border: "border-yellow-500/30" },
+  blue:   { badge: "bg-blue-500/10 text-blue-400", dot: "bg-blue-400", border: "border-blue-500/30" },
+  red:    { badge: "bg-red-500/10 text-red-400", dot: "bg-red-400", border: "border-red-500/30" },
+  green:  { badge: "bg-green-500/10 text-green-400", dot: "bg-green-400", border: "border-green-500/30" },
+  rose:   { badge: "bg-rose-500/10 text-rose-400", dot: "bg-rose-400", border: "border-rose-500/30" },
+  cyan:   { badge: "bg-cyan-500/10 text-cyan-400", dot: "bg-cyan-400", border: "border-cyan-500/30" },
+  violet: { badge: "bg-violet-500/10 text-violet-400", dot: "bg-violet-400", border: "border-violet-500/30" },
+};
+---
+
+<Layout title="Prüfungsvorbereitung" description="Strukturierte Zusammenfassung aller prüfungsrelevanten Themen für die FVT-Abschlussprüfung.">
+  <Nav slot="nav" />
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <!-- Header -->
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href="/" class="hover:text-slate-300 transition-colors">Startseite</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Prüfungsvorbereitung</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Prüfungsvorbereitung</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Kompakte Zusammenfassung der wichtigsten prüfungsrelevanten Inhalte.
+        Nutze diese Übersicht zur gezielten Wiederholung vor der Prüfung.
+      </p>
+    </div>
+
+    <!-- Tipps -->
+    <div class="mb-10 p-5 bg-amber-500/5 border border-amber-500/20 rounded-xl flex gap-4">
+      <div class="flex-shrink-0 w-8 h-8 bg-amber-500/15 rounded-lg flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-semibold text-amber-300 mb-1.5">Prüfungstipps</h3>
+        <ul class="text-sm text-slate-400 space-y-1">
+          <li>• Formeln immer mit Einheiten aufschreiben und Proberechnung durchführen</li>
+          <li>• BGV/DGUV-Nummern und ihre Bedeutung kennen (C1, V3, V17/18)</li>
+          <li>• Sicherheitskoeffizienten auswendig lernen (SF = 10 über Personen)</li>
+          <li>• DMX-Adressierungsrechnung üben (Startadresse + Kanäle − 1)</li>
+          <li>• Unterschiede zwischen ähnlichen Begriffen klären (Auffang- vs. Haltegurt)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Themen-Karten -->
+    <div class="space-y-6">
+      {themen.map(thema => {
+        const c = colorMap[thema.farbe] ?? colorMap.amber;
+        return (
+          <div class:list={["bg-slate-900 border rounded-xl overflow-hidden", c.border]}>
+            <div class="px-6 py-4 border-b border-slate-800 flex items-center gap-3">
+              <div class:list={["w-2 h-2 rounded-full flex-shrink-0", c.dot]}></div>
+              <h2 class:list={["font-bold text-lg", c.badge.includes('text-') ? c.badge.split(' ').find(cl => cl.startsWith('text-')) : 'text-slate-100']}>
+                {thema.titel}
+              </h2>
+            </div>
+            <div class="p-6">
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                {thema.themen.map(item => (
+                  <li class="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+                    <svg class:list={["w-3.5 h-3.5 flex-shrink-0 mt-1", c.dot.replace('bg-', 'text-')]} fill="currentColor" viewBox="0 0 20 20">
+                      <circle cx="10" cy="10" r="3" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-12 p-8 bg-slate-900 border border-slate-800 rounded-2xl text-center">
+      <h3 class="text-xl font-bold text-slate-100 mb-3">Wissen testen</h3>
+      <p class="text-slate-400 mb-6">Überprüfe dein Wissen mit unserem interaktiven Quiz mit über 48 Prüfungsfragen.</p>
+      <a
+        href="/quiz"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        Quiz starten
+      </a>
+    </div>
+  </div>
+</Layout>

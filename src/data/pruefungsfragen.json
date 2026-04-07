@@ -1,0 +1,676 @@
+{
+  "fragen": [
+    {
+      "id": 1,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "leicht",
+      "frage": "Welchen Widerstand hat ein Bauteil, wenn bei einer Spannung von 230 V ein Strom von 2 A fließt?",
+      "antworten": [
+        {"id": "a", "text": "115 Ω", "korrekt": true},
+        {"id": "b", "text": "460 Ω", "korrekt": false},
+        {"id": "c", "text": "46 Ω", "korrekt": false},
+        {"id": "d", "text": "230 Ω", "korrekt": false}
+      ],
+      "erklaerung": "Nach dem Ohmschen Gesetz gilt: R = U / I = 230 V / 2 A = 115 Ω"
+    },
+    {
+      "id": 2,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "leicht",
+      "frage": "Wie hoch ist die Leiterspannung im deutschen Drehstromnetz?",
+      "antworten": [
+        {"id": "a", "text": "230 V", "korrekt": false},
+        {"id": "b", "text": "400 V", "korrekt": true},
+        {"id": "c", "text": "380 V", "korrekt": false},
+        {"id": "d", "text": "110 V", "korrekt": false}
+      ],
+      "erklaerung": "Die Leiterspannung (zwischen zwei Phasen) im deutschen Drehstromnetz beträgt 400 V. Die Strangspannung (Phase zu Neutralleiter) beträgt 230 V."
+    },
+    {
+      "id": 3,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Ein Scheinwerfer hat eine Leistung von 2.000 W bei 230 V. Wie groß ist der Strom, den er aufnimmt?",
+      "antworten": [
+        {"id": "a", "text": "ca. 4,3 A", "korrekt": false},
+        {"id": "b", "text": "ca. 8,7 A", "korrekt": true},
+        {"id": "c", "text": "ca. 11,5 A", "korrekt": false},
+        {"id": "d", "text": "ca. 2,0 A", "korrekt": false}
+      ],
+      "erklaerung": "I = P / U = 2.000 W / 230 V ≈ 8,7 A"
+    },
+    {
+      "id": 4,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Welche Schutzklasse ist durch das Symbol eines doppelten Quadrats (Quadrat im Quadrat) gekennzeichnet?",
+      "antworten": [
+        {"id": "a", "text": "Schutzklasse I", "korrekt": false},
+        {"id": "b", "text": "Schutzklasse II (schutzisoliert)", "korrekt": true},
+        {"id": "c", "text": "Schutzklasse III", "korrekt": false},
+        {"id": "d", "text": "Schutzklasse IV", "korrekt": false}
+      ],
+      "erklaerung": "Das Symbol mit dem doppelten Quadrat (Quadrat im Quadrat) kennzeichnet Schutzklasse II – schutzisolierte Geräte. Diese benötigen keinen Schutzleiter, da sie doppelt isoliert sind."
+    },
+    {
+      "id": 5,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "In einer Parallelschaltung sind drei Widerstände von je 120 Ω verbunden. Wie groß ist der Gesamtwiderstand?",
+      "antworten": [
+        {"id": "a", "text": "360 Ω", "korrekt": false},
+        {"id": "b", "text": "60 Ω", "korrekt": false},
+        {"id": "c", "text": "40 Ω", "korrekt": true},
+        {"id": "d", "text": "120 Ω", "korrekt": false}
+      ],
+      "erklaerung": "Bei gleichen Widerständen in Parallelschaltung: R_ges = R / n = 120 Ω / 3 = 40 Ω. Allgemein: 1/R_ges = 1/R₁ + 1/R₂ + 1/R₃"
+    },
+    {
+      "id": 6,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Welche Netzfrequenz gilt in Europa?",
+      "antworten": [
+        {"id": "a", "text": "60 Hz", "korrekt": false},
+        {"id": "b", "text": "50 Hz", "korrekt": true},
+        {"id": "c", "text": "100 Hz", "korrekt": false},
+        {"id": "d", "text": "25 Hz", "korrekt": false}
+      ],
+      "erklaerung": "In Europa gilt eine Netzfrequenz von 50 Hz. In den USA und Teilen von Japan sind es 60 Hz."
+    },
+    {
+      "id": 7,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "Was beschreibt das 1. Kirchhoffsche Gesetz (Knotenregel)?",
+      "antworten": [
+        {"id": "a", "text": "Die Summe aller Spannungen in einer Masche ist null", "korrekt": false},
+        {"id": "b", "text": "Die Summe aller zufließenden Ströme in einem Knoten ist gleich der Summe aller abfließenden Ströme", "korrekt": true},
+        {"id": "c", "text": "Der Widerstand ist proportional zur Spannung", "korrekt": false},
+        {"id": "d", "text": "Die Leistung ist das Produkt aus Strom und Widerstand", "korrekt": false}
+      ],
+      "erklaerung": "Das 1. Kirchhoffsche Gesetz (Knotenregel) besagt: Die Summe aller in einen Knoten hineinfließenden Ströme ist gleich der Summe aller herausfließenden Ströme. ΣI_ein = ΣI_aus"
+    },
+    {
+      "id": 8,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "leicht",
+      "frage": "In welcher Einheit wird die Beleuchtungsstärke gemessen?",
+      "antworten": [
+        {"id": "a", "text": "Lumen (lm)", "korrekt": false},
+        {"id": "b", "text": "Candela (cd)", "korrekt": false},
+        {"id": "c", "text": "Lux (lx)", "korrekt": true},
+        {"id": "d", "text": "Kelvin (K)", "korrekt": false}
+      ],
+      "erklaerung": "Die Beleuchtungsstärke wird in Lux (lx) gemessen. 1 lx = 1 lm/m². Sie beschreibt, wie viel Lichtstrom auf eine Fläche trifft."
+    },
+    {
+      "id": 9,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Ein DMX-Universum kann maximal wie viele Kanäle umfassen?",
+      "antworten": [
+        {"id": "a", "text": "256 Kanäle", "korrekt": false},
+        {"id": "b", "text": "1024 Kanäle", "korrekt": false},
+        {"id": "c", "text": "512 Kanäle", "korrekt": true},
+        {"id": "d", "text": "128 Kanäle", "korrekt": false}
+      ],
+      "erklaerung": "Ein DMX512-Universum umfasst genau 512 Kanäle (Slots). Der Name DMX512 bezieht sich auf diese Kanalanzahl."
+    },
+    {
+      "id": 10,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist die additive Grundfarben-Mischung beim Licht?",
+      "antworten": [
+        {"id": "a", "text": "Cyan, Magenta, Yellow (CMY)", "korrekt": false},
+        {"id": "b", "text": "Rot, Gelb, Blau (RYB)", "korrekt": false},
+        {"id": "c", "text": "Rot, Grün, Blau (RGB)", "korrekt": true},
+        {"id": "d", "text": "Rot, Orange, Violett (ROV)", "korrekt": false}
+      ],
+      "erklaerung": "Bei der additiven Farbmischung (Licht) werden die Grundfarben Rot, Grün und Blau (RGB) verwendet. Die Mischung aller drei ergibt Weiß."
+    },
+    {
+      "id": 11,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "leicht",
+      "frage": "Welche Farbtemperatur hat typisches Tageslicht?",
+      "antworten": [
+        {"id": "a", "text": "2700 K", "korrekt": false},
+        {"id": "b", "text": "3200 K", "korrekt": false},
+        {"id": "c", "text": "5600 K", "korrekt": true},
+        {"id": "d", "text": "1800 K", "korrekt": false}
+      ],
+      "erklaerung": "Tageslicht hat eine Farbtemperatur von ca. 5600 K. HMI-Lampen sind deshalb auf 5600 K abgestimmt. Warmweiße Glühlampen haben 2700–3200 K."
+    },
+    {
+      "id": 12,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist ein Gobo in der Lichttechnik?",
+      "antworten": [
+        {"id": "a", "text": "Ein Dimmermodul für LED-Scheinwerfer", "korrekt": false},
+        {"id": "b", "text": "Eine Metallscheibe oder Glasscheibe mit Ausschnitten zur Projektion von Mustern", "korrekt": true},
+        {"id": "c", "text": "Ein Steuerprotokoll für Moving Heads", "korrekt": false},
+        {"id": "d", "text": "Ein spezieller Farbfilter für Warmton-Lichtstimmungen", "korrekt": false}
+      ],
+      "erklaerung": "Ein Gobo ist eine Metallscheibe oder Glasscheibe mit Ausschnitten, die im Strahlengang eines Profilscheinwerfers platziert wird und Muster, Logos oder Strukturen auf die Bühne projiziert."
+    },
+    {
+      "id": 13,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "schwer",
+      "frage": "Ein Moving Head startet auf DMX-Adresse 201 und benötigt 24 Kanäle. Welche ist die letzte belegte DMX-Adresse?",
+      "antworten": [
+        {"id": "a", "text": "224", "korrekt": true},
+        {"id": "b", "text": "225", "korrekt": false},
+        {"id": "c", "text": "223", "korrekt": false},
+        {"id": "d", "text": "200", "korrekt": false}
+      ],
+      "erklaerung": "Letzte Adresse = Startadresse + Kanalanzahl − 1 = 201 + 24 − 1 = 224"
+    },
+    {
+      "id": 14,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "leicht",
+      "frage": "Wie hoch ist die Schallgeschwindigkeit in Luft bei 20 °C?",
+      "antworten": [
+        {"id": "a", "text": "ca. 220 m/s", "korrekt": false},
+        {"id": "b", "text": "ca. 300 m/s", "korrekt": false},
+        {"id": "c", "text": "ca. 343 m/s", "korrekt": true},
+        {"id": "d", "text": "ca. 430 m/s", "korrekt": false}
+      ],
+      "erklaerung": "Die Schallgeschwindigkeit in Luft beträgt bei 20 °C ca. 343 m/s. Dies entspricht ca. 1 m / 3 ms – eine nützliche Faustregel für die Verzögerungsberechnung."
+    },
+    {
+      "id": 15,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Um wie viel dB verändert sich der Schalldruckpegel, wenn man den Abstand zur Schallquelle verdoppelt?",
+      "antworten": [
+        {"id": "a", "text": "−3 dB", "korrekt": false},
+        {"id": "b", "text": "−6 dB", "korrekt": true},
+        {"id": "c", "text": "−10 dB", "korrekt": false},
+        {"id": "d", "text": "−12 dB", "korrekt": false}
+      ],
+      "erklaerung": "Im Freifeld gilt das Abstandsgesetz: Bei Verdopplung des Abstands nimmt der Schalldruckpegel um 6 dB ab (Pegelabnahme = 20 · log(d₂/d₁))."
+    },
+    {
+      "id": 16,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was benötigt ein Kondensatormikrofon, das ein dynamisches Mikrofon nicht braucht?",
+      "antworten": [
+        {"id": "a", "text": "Einen Hochpassfilter", "korrekt": false},
+        {"id": "b", "text": "Phantomspeisung (48 V)", "korrekt": true},
+        {"id": "c", "text": "Ein Transformatorgehäuse", "korrekt": false},
+        {"id": "d", "text": "Einen symmetrischen Eingang", "korrekt": false}
+      ],
+      "erklaerung": "Kondensatormikrofone benötigen Phantomspeisung (P48 = 48 V DC), da ihre Kondensator-Kapsel eine Polarisationsspannung benötigt. Dynamische Mikrofone arbeiten ohne externe Versorgung."
+    },
+    {
+      "id": 17,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "leicht",
+      "frage": "Was beschreibt der Begriff 'FOH' in der Tontechnik?",
+      "antworten": [
+        {"id": "a", "text": "Frequency Output Handling – Frequenzverarbeitung am Ausgang", "korrekt": false},
+        {"id": "b", "text": "Front of House – der Mischplatz für die Haupt-Beschallungsanlage Richtung Publikum", "korrekt": true},
+        {"id": "c", "text": "Full Output High – maximale Lautstärkeeinstellung", "korrekt": false},
+        {"id": "d", "text": "Feedback Operation Handler – Rückkopplungsunterdrücker", "korrekt": false}
+      ],
+      "erklaerung": "FOH steht für 'Front of House' – das ist der Mischplatz im Publikumsbereich, von dem aus der Toningenieur den Klang für das Publikum mischt."
+    },
+    {
+      "id": 18,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist die Abtastrate (Sample Rate) beim CD-Standard?",
+      "antworten": [
+        {"id": "a", "text": "32 kHz", "korrekt": false},
+        {"id": "b", "text": "44,1 kHz", "korrekt": true},
+        {"id": "c", "text": "48 kHz", "korrekt": false},
+        {"id": "d", "text": "96 kHz", "korrekt": false}
+      ],
+      "erklaerung": "Der CD-Standard (Red Book) verwendet eine Abtastrate von 44.100 Hz (44,1 kHz). Im professionellen Audio-/Videobereich (Broadcast) ist 48 kHz üblich."
+    },
+    {
+      "id": 19,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Welche Richtcharakteristik nimmt von vorne und hinten gleich gut auf, Seiten jedoch stark unterdrückt?",
+      "antworten": [
+        {"id": "a", "text": "Kugel (Omnidirektional)", "korrekt": false},
+        {"id": "b", "text": "Niere (Kardioid)", "korrekt": false},
+        {"id": "c", "text": "Acht (Bidirektional)", "korrekt": true},
+        {"id": "d", "text": "Superniere (Hyperkardioid)", "korrekt": false}
+      ],
+      "erklaerung": "Die Acht-Charakteristik (bidirektional) nimmt vorne und hinten gleich gut auf, während die Seiten stark unterdrückt werden. Typisch für Bändchenmikrofone."
+    },
+    {
+      "id": 20,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Welche Lautstärkeempfindung ergibt sich subjektiv bei einer Pegelerhöhung um 10 dB?",
+      "antworten": [
+        {"id": "a", "text": "Kaum merklicher Unterschied", "korrekt": false},
+        {"id": "b", "text": "Doppelt so laut", "korrekt": true},
+        {"id": "c", "text": "Dreimal so laut", "korrekt": false},
+        {"id": "d", "text": "Zehnmal so laut", "korrekt": false}
+      ],
+      "erklaerung": "+10 dB wird subjektiv als doppelt so laut wahrgenommen. +3 dB ist gerade merklich, +6 dB deutlich lauter."
+    },
+    {
+      "id": 21,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Welcher Sicherheitskoeffizient wird in der Veranstaltungstechnik für Anschlagmittel über Personen gefordert?",
+      "antworten": [
+        {"id": "a", "text": "SF = 2", "korrekt": false},
+        {"id": "b", "text": "SF = 4", "korrekt": false},
+        {"id": "c", "text": "SF = 7", "korrekt": false},
+        {"id": "d", "text": "SF = 10", "korrekt": true}
+      ],
+      "erklaerung": "In der Veranstaltungstechnik wird für Anschlagmittel über Personen (BGV C1) ein Sicherheitskoeffizient von SF = 10 gefordert. Das bedeutet: Die Bruchlast muss 10-fach der Betriebslast betragen."
+    },
+    {
+      "id": 22,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "leicht",
+      "frage": "Welche Farbe kennzeichnet eine Rundschlinge mit einer Tragfähigkeit von 2 t (gerade)?",
+      "antworten": [
+        {"id": "a", "text": "Violett", "korrekt": false},
+        {"id": "b", "text": "Grün", "korrekt": true},
+        {"id": "c", "text": "Gelb", "korrekt": false},
+        {"id": "d", "text": "Rot", "korrekt": false}
+      ],
+      "erklaerung": "Nach EN 1492-2 gilt: Violett = 1 t, Grün = 2 t, Gelb = 3 t, Grau = 4 t, Rot = 5 t. Die Farbe Grün kennzeichnet eine 2-Tonnen-Schlinge."
+    },
+    {
+      "id": 23,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist die BGV C1?",
+      "antworten": [
+        {"id": "a", "text": "Eine DIN-Norm für Lautsprechersysteme", "korrekt": false},
+        {"id": "b", "text": "Die Unfallverhütungsvorschrift für Veranstaltungs- und Produktionsstätten", "korrekt": true},
+        {"id": "c", "text": "Die VDE-Vorschrift für Drehstrom-Anschlüsse", "korrekt": false},
+        {"id": "d", "text": "Ein Zertifizierungsstandard für Bühnenbeleuchtung", "korrekt": false}
+      ],
+      "erklaerung": "Die BGV C1 (heute DGUV Vorschrift 17/18) ist die Unfallverhütungsvorschrift für Bühnen und Studios sowie Veranstaltungs- und Produktionsstätten."
+    },
+    {
+      "id": 24,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "schwer",
+      "frage": "Was versteht man unter einer 'Sekundärsicherung' im Rigging?",
+      "antworten": [
+        {"id": "a", "text": "Die zweite elektrische Sicherung im Stromkreis des Kettenzugs", "korrekt": false},
+        {"id": "b", "text": "Ein Sicherheitsstropp, der beim Versagen des primären Anschlagmittels das Herabfallen verhindert", "korrekt": true},
+        {"id": "c", "text": "Die zweite Person, die einen Aufbau überwacht", "korrekt": false},
+        {"id": "d", "text": "Ein redundanter Motorzug als Reserve", "korrekt": false}
+      ],
+      "erklaerung": "Eine Sekundärsicherung (Sicherheitsstropp) ist nach BGV C1 Pflicht für alle fliegend angebrachten Bauteile. Sie fängt die Last auf, wenn das primäre Anschlagmittel (z.B. Kette) versagt."
+    },
+    {
+      "id": 25,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "mittel",
+      "frage": "Wie verändert sich die nutzbare Tragfähigkeit einer Rundschlinge beim Schräganschlag mit 90° zwischen den Strängen?",
+      "antworten": [
+        {"id": "a", "text": "Sie verdoppelt sich", "korrekt": false},
+        {"id": "b", "text": "Sie bleibt gleich", "korrekt": false},
+        {"id": "c", "text": "Sie reduziert sich auf 71 %", "korrekt": false},
+        {"id": "d", "text": "Sie reduziert sich auf 50 % je Strang", "korrekt": true}
+      ],
+      "erklaerung": "Bei einem Winkel von 60°–90° zwischen den Strängen reduziert sich die nutzbare Tragfähigkeit je Strang auf 50%. Deshalb sollten Anschlagwinkel immer so klein wie möglich gehalten werden."
+    },
+    {
+      "id": 26,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "leicht",
+      "frage": "Ab welchem Tages-Expositionspegel ist das Tragen von Gehörschutz verpflichtend?",
+      "antworten": [
+        {"id": "a", "text": "80 dB(A)", "korrekt": false},
+        {"id": "b", "text": "85 dB(A)", "korrekt": true},
+        {"id": "c", "text": "90 dB(A)", "korrekt": false},
+        {"id": "d", "text": "95 dB(A)", "korrekt": false}
+      ],
+      "erklaerung": "Ab einem Tages-Expositionspegel von 85 dB(A) ist das Tragen von Gehörschutz nach Lärm-Vibrations-ArbSchV verpflichtend. Ab 80 dB(A) muss Gehörschutz lediglich bereitgestellt werden."
+    },
+    {
+      "id": 27,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet das STOP-Prinzip im Arbeitsschutz?",
+      "antworten": [
+        {"id": "a", "text": "Sicherheits-, Technik-, Organisations- und Personalmaßnahmen gleichzeitig einsetzen", "korrekt": false},
+        {"id": "b", "text": "Substitution vor Technischen vor Organisatorischen vor Persönlichen Schutzmaßnahmen", "korrekt": true},
+        {"id": "c", "text": "Stopp bei Gefahr, Transfer der Aufgabe, Organisation des Notfalls, Protokollierung", "korrekt": false},
+        {"id": "d", "text": "Sicherheitsprüfung, Test, Organisation, Protokoll", "korrekt": false}
+      ],
+      "erklaerung": "Das STOP-Prinzip beschreibt die Rangfolge der Schutzmaßnahmen: Substitution (Gefährdung vermeiden) → Technisch → Organisatorisch → Persönlich (PSA). PSA ist immer das letzte Mittel."
+    },
+    {
+      "id": 28,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was regelt die DGUV Vorschrift 3?",
+      "antworten": [
+        {"id": "a", "text": "Sicherheit auf Baustellen", "korrekt": false},
+        {"id": "b", "text": "Elektrische Anlagen und Betriebsmittel", "korrekt": true},
+        {"id": "c", "text": "Arbeit mit Flurförderzeugen", "korrekt": false},
+        {"id": "d", "text": "Brandschutzmaßnahmen in Gebäuden", "korrekt": false}
+      ],
+      "erklaerung": "DGUV Vorschrift 3 (früher BGV A3) regelt Sicherheitsanforderungen für elektrische Anlagen und Betriebsmittel, einschließlich der Prüfpflichten für elektrisches Equipment."
+    },
+    {
+      "id": 29,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "leicht",
+      "frage": "Welche PSA-Kategorie gilt für persönliche Schutzausrüstung gegen Absturz?",
+      "antworten": [
+        {"id": "a", "text": "Kategorie I", "korrekt": false},
+        {"id": "b", "text": "Kategorie II", "korrekt": false},
+        {"id": "c", "text": "Kategorie III", "korrekt": true},
+        {"id": "d", "text": "Kategorie IV", "korrekt": false}
+      ],
+      "erklaerung": "PSA gegen Absturz (Auffanggurte, Verbindungsmittel, Falldämpfer) ist Kategorie III, da sie gegen lebensgefährliche Gefährdungen schützt. Der Träger muss speziell unterwiesen sein."
+    },
+    {
+      "id": 30,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "schwer",
+      "frage": "Ein Techniker arbeitet bei 110 dB(A) für 2 Stunden. Entspricht dies einer Überschreitung des Expositionsgrenzwerts von 87 dB(A)?",
+      "antworten": [
+        {"id": "a", "text": "Nein, 2 Stunden sind unkritisch", "korrekt": false},
+        {"id": "b", "text": "Ja, denn 110 dB(A) für 2 h entspricht einem Tagesdosis weit über 87 dB(A)", "korrekt": true},
+        {"id": "c", "text": "Nur wenn keine Pausen eingehalten werden", "korrekt": false},
+        {"id": "d", "text": "Nein, der Grenzwert gilt nur für 8 Stunden ununterbrochen", "korrekt": false}
+      ],
+      "erklaerung": "110 dB(A) für 2 Stunden entspricht einer Tagesdosis von ca. 104 dB(A) – weit über dem Grenzwert von 87 dB(A). Schon 94 dB(A) für 2 Stunden entsprechen dem Limit. Sofortiger Gehörschutz und Maßnahmen sind Pflicht."
+    },
+    {
+      "id": 31,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "leicht",
+      "frage": "Ab welcher Personenanzahl gilt die Versammlungsstättenverordnung?",
+      "antworten": [
+        {"id": "a", "text": "Ab 50 Personen", "korrekt": false},
+        {"id": "b", "text": "Ab 100 Personen", "korrekt": false},
+        {"id": "c", "text": "Ab 200 Personen", "korrekt": true},
+        {"id": "d", "text": "Ab 500 Personen", "korrekt": false}
+      ],
+      "erklaerung": "Die Muster-Versammlungsstättenverordnung (MVStättVO) gilt für Versammlungsstätten, die für mehr als 200 Besucher ausgelegt sind."
+    },
+    {
+      "id": 32,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "mittel",
+      "frage": "Was enthält ein technischer Rider eines Künstlers?",
+      "antworten": [
+        {"id": "a", "text": "Nur die Gage und Vertragsbedingungen", "korrekt": false},
+        {"id": "b", "text": "Technische Anforderungen an Bühne, PA, Licht und Backline", "korrekt": true},
+        {"id": "c", "text": "Nur das Catering und die Hotelwünsche", "korrekt": false},
+        {"id": "d", "text": "Nur die Setlist und Showablauf", "korrekt": false}
+      ],
+      "erklaerung": "Der technische Rider enthält alle technischen Anforderungen: Bühnengröße, PA-Anlage, Monitoring, Mischpult, Lichtanlage, Backline-Equipment und Input-Liste."
+    },
+    {
+      "id": 33,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet 'Advance' in der Veranstaltungsproduktion?",
+      "antworten": [
+        {"id": "a", "text": "Die Vorauszahlung der Künstlergage", "korrekt": false},
+        {"id": "b", "text": "Die Vorproduktion: Koordination per Kommunikation vor der Anreise", "korrekt": true},
+        {"id": "c", "text": "Das Vorsignal im Intercom-System", "korrekt": false},
+        {"id": "d", "text": "Der Zeitpuffer für technische Probleme", "korrekt": false}
+      ],
+      "erklaerung": "Das 'Advance' bezeichnet die Vorproduktionsphase, in der technische Anforderungen, Zeitpläne, Personalbedarf und Besonderheiten per E-Mail/Telefon zwischen Produktion und Veranstaltungsort geklärt werden."
+    },
+    {
+      "id": 34,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "schwer",
+      "frage": "Welche Mindestbreite muss ein Hauptrettungsweg in einer Versammlungsstätte haben?",
+      "antworten": [
+        {"id": "a", "text": "0,80 m", "korrekt": false},
+        {"id": "b", "text": "1,00 m", "korrekt": false},
+        {"id": "c", "text": "1,20 m", "korrekt": true},
+        {"id": "d", "text": "1,50 m", "korrekt": false}
+      ],
+      "erklaerung": "Hauptrettungswege müssen nach MVStättVO eine Mindestbreite von 1,20 m haben. Türen im Verlauf von Rettungswegen müssen sich im Panikfall ohne Schlüssel öffnen lassen."
+    },
+    {
+      "id": 35,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist die Auflösung von Full HD (1080p)?",
+      "antworten": [
+        {"id": "a", "text": "1280 × 720 Pixel", "korrekt": false},
+        {"id": "b", "text": "1920 × 1080 Pixel", "korrekt": true},
+        {"id": "c", "text": "3840 × 2160 Pixel", "korrekt": false},
+        {"id": "d", "text": "2048 × 1080 Pixel", "korrekt": false}
+      ],
+      "erklaerung": "Full HD (1080p) hat eine Auflösung von 1920 × 1080 Pixeln. 4K UHD hat 3840 × 2160 Pixel, das ist die vierfache Pixelanzahl von Full HD."
+    },
+    {
+      "id": 36,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Vorteil des SDI-Anschlusses gegenüber HDMI in professionellen Produktionen?",
+      "antworten": [
+        {"id": "a", "text": "SDI überträgt höhere Auflösungen", "korrekt": false},
+        {"id": "b", "text": "SDI-Kabel können sehr lang sein, haben Locking-Stecker und sind robust für den Live-Betrieb", "korrekt": true},
+        {"id": "c", "text": "SDI überträgt auch Audio, was bei HDMI nicht möglich ist", "korrekt": false},
+        {"id": "d", "text": "SDI ist günstiger als HDMI", "korrekt": false}
+      ],
+      "erklaerung": "SDI (Serial Digital Interface) hat BNC-Stecker die sich verriegeln lassen, erlaubt Kabellängen bis 200 m+ und ist für den rauen Tourbetrieb ausgelegt. HDMI-Stecker sitzen nicht fest und sind anfällig bei Bewegung."
+    },
+    {
+      "id": 37,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was beschreibt die 'Throw Ratio' eines Projektors?",
+      "antworten": [
+        {"id": "a", "text": "Die Helligkeit des Projektors in ANSI-Lumen", "korrekt": false},
+        {"id": "b", "text": "Das Verhältnis von Projektionsabstand zu Bildbreite", "korrekt": true},
+        {"id": "c", "text": "Die Auflösung des Projektors", "korrekt": false},
+        {"id": "d", "text": "Die maximale Betriebstemperatur", "korrekt": false}
+      ],
+      "erklaerung": "Die Throw Ratio (Wurfverhältnis) ist das Verhältnis von Projektionsabstand zu Bildbreite: Throw Ratio = Abstand / Bildbreite. Ein Projektor mit Throw Ratio 2:1 und 4 m Bildbreite benötigt 8 m Abstand."
+    },
+    {
+      "id": 38,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "schwer",
+      "frage": "Welcher Pixel-Pitch eignet sich für eine LED-Wall, die aus 3 Metern Abstand betrachtet wird?",
+      "antworten": [
+        {"id": "a", "text": "PP 10 mm", "korrekt": false},
+        {"id": "b", "text": "PP 3 mm", "korrekt": true},
+        {"id": "c", "text": "PP 16 mm", "korrekt": false},
+        {"id": "d", "text": "PP 20 mm", "korrekt": false}
+      ],
+      "erklaerung": "Als Faustregel gilt: Mindestbetrachtungsabstand (m) ≈ Pixel-Pitch (mm). Bei 3 m Abstand sollte der Pixel-Pitch ≤ 3 mm sein, damit keine einzelnen Pixel sichtbar sind."
+    },
+    {
+      "id": 39,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was bedeutet der Begriff NDI in der Medientechnik?",
+      "antworten": [
+        {"id": "a", "text": "Network Device Interface – ein IP-basiertes Videoübertragungsprotokoll", "korrekt": true},
+        {"id": "b", "text": "Non-Destructive Interface – verlustfreie Videokomprimierung", "korrekt": false},
+        {"id": "c", "text": "Numeric Display Input – Eingabeformat für LED-Controller", "korrekt": false},
+        {"id": "d", "text": "Netzwerk Dimmer Interface – Steuersystem für Netzwerk-Dimmer", "korrekt": false}
+      ],
+      "erklaerung": "NDI (Network Device Interface) von NewTek/Vizrt ist ein IP-basiertes Videoübertragungsprotokoll, das Video-Signale über Standard-LAN-Netzwerke überträgt, ohne spezielles Videokabel."
+    },
+    {
+      "id": 40,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "mittel",
+      "frage": "Welche Farbe hat der Schutzleiter (PE) nach VDE-Norm?",
+      "antworten": [
+        {"id": "a", "text": "Braun", "korrekt": false},
+        {"id": "b", "text": "Blau", "korrekt": false},
+        {"id": "c", "text": "Grau", "korrekt": false},
+        {"id": "d", "text": "Gelb-Grün", "korrekt": true}
+      ],
+      "erklaerung": "Der Schutzleiter (PE = Protective Earth) ist immer Gelb-Grün gestreift. Blau = Neutralleiter (N), Braun = Phase L1, Schwarz = Phase L2, Grau = Phase L3."
+    },
+    {
+      "id": 41,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Zweck eines EQ (Equalizers) im Mischpult?",
+      "antworten": [
+        {"id": "a", "text": "Das Signal komprimieren und Lautstärkespitzen begrenzen", "korrekt": false},
+        {"id": "b", "text": "Den Frequenzgang des Signals formen (anheben oder absenken bestimmter Frequenzbereiche)", "korrekt": true},
+        {"id": "c", "text": "Das Signal von analog auf digital wandeln", "korrekt": false},
+        {"id": "d", "text": "Rückkopplungen automatisch unterdrücken", "korrekt": false}
+      ],
+      "erklaerung": "Ein Equalizer (EQ) dient dazu, den Frequenzgang eines Audiosignals zu bearbeiten – bestimmte Frequenzbereiche können angehoben (Boost) oder abgesenkt (Cut) werden."
+    },
+    {
+      "id": 42,
+      "thema": "Bühnentechnik",
+      "lernfeld": "lf04",
+      "schwierigkeit": "leicht",
+      "frage": "Was ist der Unterschied zwischen einer Box-Truss und einer Triangle-Truss?",
+      "antworten": [
+        {"id": "a", "text": "Box-Truss hat 4 Gurtrohre, Triangle-Truss hat 3 Gurtrohre", "korrekt": true},
+        {"id": "b", "text": "Box-Truss ist aus Stahl, Triangle-Truss aus Aluminium", "korrekt": false},
+        {"id": "c", "text": "Box-Truss ist für Innen, Triangle-Truss für Außen", "korrekt": false},
+        {"id": "d", "text": "Box-Truss und Triangle-Truss haben die gleiche Tragfähigkeit", "korrekt": false}
+      ],
+      "erklaerung": "Eine Box-Truss (Vierpunkt-Traverse) hat vier Gurtrohre und ist dadurch deutlich tragfähiger. Eine Triangle-Truss (Dreieck-Traverse) hat drei Gurtrohre und ist leichter, aber weniger belastbar."
+    },
+    {
+      "id": 43,
+      "thema": "Arbeitssicherheit",
+      "lernfeld": "lf06",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist der Unterschied zwischen einem Auffanggurt und einem Haltegurt?",
+      "antworten": [
+        {"id": "a", "text": "Auffanggurt ist für Outdoor, Haltegurt für Innen", "korrekt": false},
+        {"id": "b", "text": "Auffanggurt fängt einen Sturz auf, Haltegurt verhindert das Erreichen der Absturzkante", "korrekt": true},
+        {"id": "c", "text": "Haltegurt ist für schwere Lasten, Auffanggurt für leichte", "korrekt": false},
+        {"id": "d", "text": "Es gibt keinen Unterschied, beide Begriffe sind synonym", "korrekt": false}
+      ],
+      "erklaerung": "Ein Auffanggurt (EN 361) fängt nach einem Sturz auf und verteilt die Kräfte auf den Körper. Ein Haltegurt (EN 358) verhindert das Erreichen der Absturzkante – er ist kein Sturzauffangsystem."
+    },
+    {
+      "id": 44,
+      "thema": "Lichttechnik",
+      "lernfeld": "lf02",
+      "schwierigkeit": "schwer",
+      "frage": "Was ist beim DMX-Kabel am Ende einer Linie obligatorisch anzubringen?",
+      "antworten": [
+        {"id": "a", "text": "Eine Erdung (PE)", "korrekt": false},
+        {"id": "b", "text": "Ein Abschlusswiderstand von 120 Ω", "korrekt": true},
+        {"id": "c", "text": "Ein Signalverstärker (Booster)", "korrekt": false},
+        {"id": "d", "text": "Ein Terminierungskondensator 100 µF", "korrekt": false}
+      ],
+      "erklaerung": "Am Ende jeder DMX-Linie muss ein Abschlusswiderstand (Terminator) von 120 Ω angebracht werden. Er verhindert Signalreflexionen im RS-485-Bus, die zu Kommunikationsfehlern führen würden."
+    },
+    {
+      "id": 45,
+      "thema": "Veranstaltungsorganisation",
+      "lernfeld": "lf05",
+      "schwierigkeit": "schwer",
+      "frage": "Wie viele Ordnungsdienstmitarbeiter sind nach MVStättVO mindestens pro 100 Besucher einzusetzen?",
+      "antworten": [
+        {"id": "a", "text": "1 Ordner pro 50 Besucher", "korrekt": false},
+        {"id": "b", "text": "1 Ordner pro 100 Besucher", "korrekt": true},
+        {"id": "c", "text": "1 Ordner pro 200 Besucher", "korrekt": false},
+        {"id": "d", "text": "Keine gesetzliche Vorgabe", "korrekt": false}
+      ],
+      "erklaerung": "Die Versammlungsstättenverordnung schreibt mindestens 1 Ordnungsdienstmitarbeiter pro 100 Besucher vor. Bei besonderen Veranstaltungen (Stehkonzerte etc.) kann die Behörde mehr fordern."
+    },
+    {
+      "id": 46,
+      "thema": "Elektrotechnik",
+      "lernfeld": "lf01",
+      "schwierigkeit": "schwer",
+      "frage": "Welche Leistung nimmt ein Drehstrom-Motor mit 16 A, 400 V und einem Leistungsfaktor cos φ = 0,8 auf?",
+      "antworten": [
+        {"id": "a", "text": "ca. 3.200 W", "korrekt": false},
+        {"id": "b", "text": "ca. 5.120 W", "korrekt": false},
+        {"id": "c", "text": "ca. 8.870 W", "korrekt": true},
+        {"id": "d", "text": "ca. 6.400 W", "korrekt": false}
+      ],
+      "erklaerung": "Wirkleistung Drehstrom: P = √3 × U_L × I × cos φ = 1,732 × 400 V × 16 A × 0,8 ≈ 8.870 W"
+    },
+    {
+      "id": 47,
+      "thema": "Tontechnik",
+      "lernfeld": "lf03",
+      "schwierigkeit": "schwer",
+      "frage": "Ein Delay-Tower steht 30 m hinter der Hauptbühne. Um wie viel Millisekunden muss sein Signal verzögert werden?",
+      "antworten": [
+        {"id": "a", "text": "ca. 30 ms", "korrekt": false},
+        {"id": "b", "text": "ca. 87 ms", "korrekt": true},
+        {"id": "c", "text": "ca. 10 ms", "korrekt": false},
+        {"id": "d", "text": "ca. 175 ms", "korrekt": false}
+      ],
+      "erklaerung": "Verzögerung = Abstand / Schallgeschwindigkeit = 30 m / 343 m/s ≈ 0,0875 s = 87,5 ms. Das Delay-Signal muss um diese Zeit verzögert werden, damit es synchron mit dem Hauptsignal erscheint."
+    },
+    {
+      "id": 48,
+      "thema": "Medientechnik",
+      "lernfeld": "lf07",
+      "schwierigkeit": "mittel",
+      "frage": "Was ist SMPTE-Timecode und wofür wird er verwendet?",
+      "antworten": [
+        {"id": "a", "text": "Ein Videokompressionsformat für professionelle Produktion", "korrekt": false},
+        {"id": "b", "text": "Ein Zeitreferenzformat zur Synchronisation von Licht, Ton, Video und anderen Systemen", "korrekt": true},
+        {"id": "c", "text": "Ein Standard für die Übertragung von Video über Glasfaser", "korrekt": false},
+        {"id": "d", "text": "Eine Fernsteuerung für Kamerasysteme", "korrekt": false}
+      ],
+      "erklaerung": "SMPTE-Timecode ist ein Zeitreferenzformat im Format HH:MM:SS:FF (Stunden:Minuten:Sekunden:Frames). Er ermöglicht die Synchronisation aller Systeme (Licht, Ton, Video, Pyro) auf eine gemeinsame Zeitachse."
+    }
+  ]
+}

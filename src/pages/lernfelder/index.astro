@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import LernfeldCard from '../../components/LernfeldCard.astro';
+import { getCollection } from 'astro:content';
+
+const lernfelder = await getCollection('lernfelder');
+const sorted = lernfelder.sort((a, b) => a.data.nummer - b.data.nummer);
+
+const gesamtStunden = sorted.reduce((acc, lf) => acc + lf.data.stunden, 0);
+---
+
+<Layout title="Lernfelder" description="Übersicht aller 8 Lernfelder der FVT-Ausbildung mit Inhalten zu Elektrotechnik, Lichttechnik, Tontechnik und mehr.">
+  <Nav slot="nav" />
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <!-- Header -->
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href="/" class="hover:text-slate-300 transition-colors">Startseite</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Lernfelder</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Lernfelder</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Die FVT-Ausbildung gliedert sich in 8 Lernfelder mit insgesamt <span class="text-amber-400 font-semibold">{gesamtStunden} Unterrichtsstunden</span>.
+        Klicke auf ein Lernfeld für detaillierte Inhalte.
+      </p>
+    </div>
+
+    <!-- Summary table -->
+    <div class="mb-10 overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-slate-800">
+            <th class="text-left py-3 px-4 text-slate-400 font-medium">Kürzel</th>
+            <th class="text-left py-3 px-4 text-slate-400 font-medium">Titel</th>
+            <th class="text-right py-3 px-4 text-slate-400 font-medium">Stunden</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map(lf => (
+            <tr class="border-b border-slate-800/50 hover:bg-slate-900/50 transition-colors">
+              <td class="py-3 px-4">
+                <span class="font-mono text-xs font-semibold text-amber-400 bg-amber-500/10 px-2 py-1 rounded">{lf.data.kuerzel}</span>
+              </td>
+              <td class="py-3 px-4">
+                <a href={`/lernfelder/${lf.slug}`} class="text-slate-300 hover:text-amber-400 transition-colors font-medium">
+                  {lf.data.titel}
+                </a>
+              </td>
+              <td class="py-3 px-4 text-right text-slate-400">{lf.data.stunden}</td>
+            </tr>
+          ))}
+          <tr class="bg-slate-900/50">
+            <td colspan="2" class="py-3 px-4 text-slate-300 font-semibold">Gesamt</td>
+            <td class="py-3 px-4 text-right text-amber-400 font-bold">{gesamtStunden}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      {sorted.map(lf => (
+        <LernfeldCard
+          nummer={lf.data.nummer}
+          kuerzel={lf.data.kuerzel}
+          titel={lf.data.titel}
+          beschreibung={lf.data.beschreibung}
+          stunden={lf.data.stunden}
+          slug={lf.slug}
+          farbe={lf.data.farbe}
+        />
+      ))}
+    </div>
+  </div>
+</Layout>

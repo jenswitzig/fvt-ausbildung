@@ -1,0 +1,376 @@
+---
+import type { Frage } from '../types/quiz';
+
+interface Props {
+  fragen: Frage[];
+}
+
+const { fragen } = Astro.props;
+---
+
+<div id="quiz-app" class="max-w-2xl mx-auto">
+  <!-- Filter -->
+  <div class="mb-8 p-5 bg-slate-900 border border-slate-800 rounded-xl">
+    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Filter</h2>
+    <div class="flex flex-wrap gap-2" id="filter-buttons">
+      <button
+        class="filter-btn active px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-amber-500 text-slate-900"
+        data-filter="all"
+      >
+        Alle ({fragen.length})
+      </button>
+      {[...new Set(fragen.map(f => f.thema))].sort().map(thema => (
+        <button
+          class="filter-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-colors bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-slate-200"
+          data-filter={thema}
+        >
+          {thema} ({fragen.filter(f => f.thema === thema).length})
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Start Screen -->
+  <div id="start-screen" class="text-center py-12 px-6 bg-slate-900 border border-slate-800 rounded-xl">
+    <div class="w-16 h-16 bg-amber-500/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
+      <svg class="w-8 h-8 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-slate-100 mb-3">Quiz starten</h2>
+    <p class="text-slate-400 mb-6" id="start-description">
+      Bereit? Es werden <span id="start-count" class="text-amber-400 font-semibold">{fragen.length}</span> Fragen gestellt.
+    </p>
+    <button
+      id="start-btn"
+      class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
+    >
+      Quiz starten
+    </button>
+  </div>
+
+  <!-- Question Screen -->
+  <div id="question-screen" class="hidden">
+    <!-- Progress -->
+    <div class="mb-6 flex items-center justify-between">
+      <span id="progress-text" class="text-sm text-slate-400 font-medium"></span>
+      <span id="score-text" class="text-sm text-amber-400 font-semibold"></span>
+    </div>
+    <div class="w-full bg-slate-800 rounded-full h-1.5 mb-8">
+      <div id="progress-bar" class="bg-amber-500 h-1.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+
+    <!-- Question Card -->
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-4">
+      <!-- Metadata -->
+      <div class="flex items-center gap-2 mb-5">
+        <span id="q-thema" class="px-2.5 py-1 bg-amber-500/10 text-amber-400 text-xs font-semibold rounded-md font-mono"></span>
+        <span id="q-schwierigkeit" class="px-2.5 py-1 text-xs font-medium rounded-md"></span>
+      </div>
+
+      <!-- Question Text -->
+      <p id="q-text" class="text-lg font-medium text-slate-100 leading-relaxed mb-7"></p>
+
+      <!-- Answer Buttons -->
+      <div id="answers-container" class="grid gap-3">
+      </div>
+
+      <!-- Explanation -->
+      <div id="explanation" class="hidden mt-5 p-4 rounded-lg border">
+        <div class="flex items-start gap-3">
+          <div id="explanation-icon" class="flex-shrink-0 w-5 h-5 mt-0.5"></div>
+          <div>
+            <p id="explanation-verdict" class="font-semibold mb-1"></p>
+            <p id="explanation-text" class="text-sm text-slate-300 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Button -->
+    <div class="text-right">
+      <button
+        id="next-btn"
+        class="hidden px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
+      >
+        Nächste Frage →
+      </button>
+    </div>
+  </div>
+
+  <!-- Result Screen -->
+  <div id="result-screen" class="hidden text-center py-12 px-6 bg-slate-900 border border-slate-800 rounded-xl">
+    <div id="result-icon" class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6"></div>
+    <h2 class="text-3xl font-bold text-slate-100 mb-2">Quiz abgeschlossen!</h2>
+    <p id="result-score" class="text-5xl font-bold text-amber-400 my-6"></p>
+    <p id="result-message" class="text-slate-400 mb-8 text-lg"></p>
+    <div class="flex justify-center gap-3">
+      <button
+        id="restart-btn"
+        class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
+      >
+        Neu starten
+      </button>
+      <button
+        id="show-wrong-btn"
+        class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl transition-colors hidden"
+      >
+        Fehler anzeigen
+      </button>
+    </div>
+
+    <!-- Wrong answers review -->
+    <div id="wrong-answers-list" class="hidden mt-8 text-left space-y-4"></div>
+  </div>
+</div>
+
+<script define:vars={{ fragenData: fragen }}>
+  let alleFragen = fragenData;
+  let gefilterteFragen = [...alleFragen];
+  let aktiverFilter = "all";
+  let aktuelleIndex = 0;
+  let richtig = 0;
+  let falscheAntworten = [];
+  let beantwortet = false;
+
+  const startScreen = document.getElementById('start-screen');
+  const questionScreen = document.getElementById('question-screen');
+  const resultScreen = document.getElementById('result-screen');
+  const startBtn = document.getElementById('start-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const restartBtn = document.getElementById('restart-btn');
+  const showWrongBtn = document.getElementById('show-wrong-btn');
+  const wrongAnswersList = document.getElementById('wrong-answers-list');
+  const startCount = document.getElementById('start-count');
+
+  // Filter
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      aktiverFilter = filter;
+
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active', 'bg-amber-500', 'text-slate-900');
+        b.classList.add('bg-slate-800', 'text-slate-400');
+      });
+      btn.classList.add('active', 'bg-amber-500', 'text-slate-900');
+      btn.classList.remove('bg-slate-800', 'text-slate-400');
+
+      if (filter === 'all') {
+        gefilterteFragen = [...alleFragen];
+      } else {
+        gefilterteFragen = alleFragen.filter(f => f.thema === filter);
+      }
+
+      startCount.textContent = gefilterteFragen.length;
+    });
+  });
+
+  // Shuffle helper
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function startQuiz() {
+    gefilterteFragen = shuffle(gefilterteFragen);
+    aktuelleIndex = 0;
+    richtig = 0;
+    falscheAntworten = [];
+    beantwortet = false;
+
+    startScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    questionScreen.classList.remove('hidden');
+
+    zeigeFrageAn();
+  }
+
+  function zeigeFrageAn() {
+    const frage = gefilterteFragen[aktuelleIndex];
+    beantwortet = false;
+
+    // Progress
+    const progress = ((aktuelleIndex) / gefilterteFragen.length) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+    document.getElementById('progress-text').textContent = `Frage ${aktuelleIndex + 1} von ${gefilterteFragen.length}`;
+    document.getElementById('score-text').textContent = `${richtig} richtig`;
+
+    // Metadata
+    document.getElementById('q-thema').textContent = frage.thema;
+
+    const schwEl = document.getElementById('q-schwierigkeit');
+    const schwMap = {
+      leicht: { text: 'Leicht', cls: 'bg-green-500/10 text-green-400' },
+      mittel: { text: 'Mittel', cls: 'bg-yellow-500/10 text-yellow-400' },
+      schwer: { text: 'Schwer', cls: 'bg-red-500/10 text-red-400' },
+    };
+    const sw = schwMap[frage.schwierigkeit] || schwMap.mittel;
+    schwEl.textContent = sw.text;
+    schwEl.className = `px-2.5 py-1 text-xs font-medium rounded-md ${sw.cls}`;
+
+    // Question
+    document.getElementById('q-text').textContent = frage.frage;
+
+    // Answers
+    const container = document.getElementById('answers-container');
+    container.innerHTML = '';
+    const shuffledAnswers = shuffle(frage.antworten);
+    shuffledAnswers.forEach((antwort) => {
+      const btn = document.createElement('button');
+      btn.className = 'w-full text-left px-4 py-3.5 rounded-xl border border-slate-700 bg-slate-800/50 hover:bg-slate-800 hover:border-slate-600 text-slate-200 text-sm font-medium transition-all duration-150 flex items-center gap-3';
+      btn.innerHTML = `
+        <span class="answer-indicator flex-shrink-0 w-6 h-6 rounded-lg border border-slate-600 flex items-center justify-center text-xs font-bold text-slate-500 bg-slate-900 transition-all"></span>
+        <span>${antwort.text}</span>
+      `;
+      btn.dataset.korrekt = antwort.korrekt;
+      btn.dataset.id = antwort.id;
+      btn.addEventListener('click', () => antwortWaehlen(btn, antwort, frage));
+      container.appendChild(btn);
+    });
+
+    // Hide explanation & next
+    document.getElementById('explanation').classList.add('hidden');
+    nextBtn.classList.add('hidden');
+  }
+
+  function antwortWaehlen(clickedBtn, antwort, frage) {
+    if (beantwortet) return;
+    beantwortet = true;
+
+    const istKorrekt = antwort.korrekt === true;
+    if (istKorrekt) {
+      richtig++;
+    } else {
+      falscheAntworten.push({ frage, gewaehlt: antwort });
+    }
+
+    // Update all buttons
+    document.querySelectorAll('#answers-container button').forEach(btn => {
+      btn.disabled = true;
+      const ind = btn.querySelector('.answer-indicator');
+      if (btn.dataset.korrekt === 'true') {
+        btn.className = btn.className.replace('border-slate-700', 'border-green-500').replace('bg-slate-800/50', 'bg-green-500/10');
+        btn.classList.add('text-green-300');
+        ind.textContent = '✓';
+        ind.className = ind.className + ' bg-green-500 border-green-500 text-slate-900';
+      } else if (btn === clickedBtn && !istKorrekt) {
+        btn.className = btn.className.replace('border-slate-700', 'border-red-500').replace('bg-slate-800/50', 'bg-red-500/10');
+        btn.classList.add('text-red-300');
+        ind.textContent = '✗';
+        ind.className = ind.className + ' bg-red-500 border-red-500 text-slate-900';
+      }
+    });
+
+    // Explanation
+    const expEl = document.getElementById('explanation');
+    const expIcon = document.getElementById('explanation-icon');
+    const expVerdict = document.getElementById('explanation-verdict');
+    const expText = document.getElementById('explanation-text');
+
+    expEl.classList.remove('hidden');
+    if (istKorrekt) {
+      expEl.className = expEl.className.replace('hidden', '').trim();
+      expEl.classList.add('bg-green-500/5', 'border-green-500/20');
+      expEl.classList.remove('bg-red-500/5', 'border-red-500/20');
+      expIcon.innerHTML = '<svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+      expVerdict.className = 'font-semibold text-green-400 mb-1';
+      expVerdict.textContent = 'Richtig!';
+    } else {
+      expEl.classList.add('bg-red-500/5', 'border-red-500/20');
+      expEl.classList.remove('bg-green-500/5', 'border-green-500/20');
+      expIcon.innerHTML = '<svg class="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+      expVerdict.className = 'font-semibold text-red-400 mb-1';
+      expVerdict.textContent = 'Leider falsch.';
+    }
+    expText.textContent = frage.erklaerung;
+
+    // Next button
+    nextBtn.classList.remove('hidden');
+    if (aktuelleIndex === gefilterteFragen.length - 1) {
+      nextBtn.textContent = 'Ergebnis anzeigen →';
+    } else {
+      nextBtn.textContent = 'Nächste Frage →';
+    }
+  }
+
+  nextBtn.addEventListener('click', () => {
+    aktuelleIndex++;
+    if (aktuelleIndex >= gefilterteFragen.length) {
+      zeigeErgebnis();
+    } else {
+      zeigeFrageAn();
+    }
+  });
+
+  function zeigeErgebnis() {
+    questionScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+
+    const total = gefilterteFragen.length;
+    const prozent = Math.round((richtig / total) * 100);
+
+    document.getElementById('progress-bar').style.width = '100%';
+
+    const scoreEl = document.getElementById('result-score');
+    scoreEl.textContent = `${richtig} / ${total} (${prozent} %)`;
+
+    const iconEl = document.getElementById('result-icon');
+    const msgEl = document.getElementById('result-message');
+
+    if (prozent >= 80) {
+      iconEl.className = 'w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-green-500/15';
+      iconEl.innerHTML = '<svg class="w-10 h-10 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+      msgEl.textContent = 'Ausgezeichnet! Du bist gut vorbereitet für die Prüfung.';
+    } else if (prozent >= 60) {
+      iconEl.className = 'w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-amber-500/15';
+      iconEl.innerHTML = '<svg class="w-10 h-10 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>';
+      msgEl.textContent = 'Nicht schlecht! Wiederhole die falsch beantworteten Themen.';
+    } else {
+      iconEl.className = 'w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-red-500/15';
+      iconEl.innerHTML = '<svg class="w-10 h-10 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+      msgEl.textContent = 'Weiter üben! Schau dir die Lernfelder nochmal genau an.';
+    }
+
+    if (falscheAntworten.length > 0) {
+      showWrongBtn.classList.remove('hidden');
+    }
+  }
+
+  startBtn.addEventListener('click', startQuiz);
+
+  restartBtn.addEventListener('click', () => {
+    wrongAnswersList.classList.add('hidden');
+    wrongAnswersList.innerHTML = '';
+    showWrongBtn.classList.add('hidden');
+    showWrongBtn.textContent = 'Fehler anzeigen';
+    startQuiz();
+  });
+
+  showWrongBtn.addEventListener('click', () => {
+    if (wrongAnswersList.classList.contains('hidden')) {
+      wrongAnswersList.classList.remove('hidden');
+      showWrongBtn.textContent = 'Fehler ausblenden';
+      wrongAnswersList.innerHTML = '';
+      falscheAntworten.forEach(({ frage, gewaehlt }) => {
+        const korrekte = frage.antworten.find(a => a.korrekt === true);
+        const div = document.createElement('div');
+        div.className = 'p-4 bg-slate-800 border border-slate-700 rounded-xl';
+        div.innerHTML = `
+          <p class="font-medium text-slate-200 mb-3">${frage.frage}</p>
+          <p class="text-sm text-red-400 mb-1.5">✗ Deine Antwort: ${gewaehlt.text}</p>
+          <p class="text-sm text-green-400 mb-3">✓ Richtig: ${korrekte?.text || ''}</p>
+          <p class="text-xs text-slate-400 bg-slate-900 p-3 rounded-lg">${frage.erklaerung}</p>
+        `;
+        wrongAnswersList.appendChild(div);
+      });
+    } else {
+      wrongAnswersList.classList.add('hidden');
+      showWrongBtn.textContent = 'Fehler anzeigen';
+    }
+  });
+</script>

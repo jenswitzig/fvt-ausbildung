@@ -1,0 +1,32 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import QuizApp from '../../components/QuizApp.astro';
+import fragenData from '../../data/pruefungsfragen.json';
+
+const fragen = fragenData.fragen;
+---
+
+<Layout title="Quiz" description="Interaktives Prüfungsquiz für die FVT-Ausbildung mit 48+ Fragen zu allen Lernfeldern.">
+  <Nav slot="nav" />
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <!-- Header -->
+    <div class="mb-10">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href="/" class="hover:text-slate-300 transition-colors">Startseite</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Quiz</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Prüfungsquiz</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Teste dein Wissen mit <span class="text-amber-400 font-semibold">{fragen.length} Prüfungsfragen</span> aus
+        allen Lernfeldern. Wähle optional einen Filter und starte das Quiz.
+      </p>
+    </div>
+
+    <!-- Quiz Component -->
+    <QuizApp fragen={fragen} />
+  </div>
+</Layout>
