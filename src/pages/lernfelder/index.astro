@@ -8,6 +8,7 @@ const lernfelder = await getCollection('lernfelder');
 const sorted = lernfelder.sort((a, b) => a.data.nummer - b.data.nummer);
 
 const gesamtStunden = sorted.reduce((acc, lf) => acc + lf.data.stunden, 0);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Lernfelder" description="Übersicht aller 8 Lernfelder der FVT-Ausbildung mit Inhalten zu Elektrotechnik, Lichttechnik, Tontechnik und mehr.">
@@ -17,7 +18,7 @@ const gesamtStunden = sorted.reduce((acc, lf) => acc + lf.data.stunden, 0);
     <!-- Header -->
     <div class="mb-12">
       <nav class="text-sm text-slate-500 mb-4">
-        <a href="/" class="hover:text-slate-300 transition-colors">Startseite</a>
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Startseite</a>
         <span class="mx-2">/</span>
         <span class="text-slate-300">Lernfelder</span>
       </nav>
@@ -46,7 +47,7 @@ const gesamtStunden = sorted.reduce((acc, lf) => acc + lf.data.stunden, 0);
                 <span class="font-mono text-xs font-semibold text-amber-400 bg-amber-500/10 px-2 py-1 rounded">{lf.data.kuerzel}</span>
               </td>
               <td class="py-3 px-4">
-                <a href={`/lernfelder/${lf.slug}`} class="text-slate-300 hover:text-amber-400 transition-colors font-medium">
+                <a href={`${base}/lernfelder/${lf.slug}`} class="text-slate-300 hover:text-amber-400 transition-colors font-medium">
                   {lf.data.titel}
                 </a>
               </td>

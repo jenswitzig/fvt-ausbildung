@@ -23,10 +23,11 @@ const colorMap: Record<string, { badge: string; border: string; icon: string }> 
 };
 
 const colors = colorMap[farbe] ?? colorMap.amber;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <a
-  href={`/lernfelder/${slug}`}
+  href={`${base}/lernfelder/${slug}`}
   class:list={[
     "group block bg-slate-900 border rounded-xl p-5 transition-all duration-200 hover:bg-slate-800/80 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20",
     colors.border
