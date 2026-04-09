@@ -8,7 +8,7 @@ const { title, description = "Lernplattform für die Ausbildung zur Fachkraft f�
 ---
 
 <!doctype html>
-<html lang="de" class="dark">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,16 +18,65 @@ const { title, description = "Lernplattform für die Ausbildung zur Fachkraft f�
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style is:global>
+    /* Light mode overrides for dark-first codebase */
+    html.light body { background-color: #f8fafc; color: #0f172a; }
+
+    html.light .bg-slate-950  { background-color: #f8fafc !important; }
+    html.light .bg-slate-900  { background-color: #ffffff !important; }
+    html.light .bg-slate-800  { background-color: #f1f5f9 !important; }
+
+    html.light .bg-slate-900\/50  { background-color: rgba(255,255,255,0.6) !important; }
+    html.light .bg-slate-800\/50  { background-color: rgba(241,245,249,0.6) !important; }
+    html.light .bg-slate-900\/95  { background-color: rgba(255,255,255,0.95) !important; }
+
+    html.light .text-slate-100 { color: #0f172a !important; }
+    html.light .text-slate-200 { color: #1e293b !important; }
+    html.light .text-slate-300 { color: #334155 !important; }
+    html.light .text-slate-400 { color: #475569 !important; }
+    html.light .text-slate-500 { color: #64748b !important; }
+    html.light .text-slate-600 { color: #475569 !important; }
+
+    html.light .border-slate-800 { border-color: #e2e8f0 !important; }
+    html.light .border-slate-700 { border-color: #cbd5e1 !important; }
+    html.light .divide-slate-800 > * + * { border-color: #e2e8f0 !important; }
+
+    html.light .hover\:bg-slate-800:hover { background-color: #f1f5f9 !important; }
+    html.light .hover\:bg-slate-700:hover { background-color: #e2e8f0 !important; }
+    html.light .hover\:text-slate-100:hover { color: #0f172a !important; }
+
+    html.light .prose-invert { --tw-prose-body: #334155; --tw-prose-headings: #0f172a; --tw-prose-links: #d97706; --tw-prose-bold: #1e293b; --tw-prose-code: #d97706; --tw-prose-quotes: #475569; }
+    html.light .prose-slate { color: #334155; }
+    html.light .prose-slate h1, html.light .prose-slate h2, html.light .prose-slate h3 { color: #0f172a; }
+    html.light .prose-slate strong { color: #1e293b; }
+    html.light .prose-slate code { color: #d97706; background-color: rgba(245,158,11,0.1); }
+    html.light .prose-slate td, html.light .prose-slate th { color: #334155; border-color: #e2e8f0; }
+
+    /* Grid background in light */
+    html.light .bg-\[linear-gradient\(to_right\,\#1e293b_1px\,transparent_1px\)\,linear-gradient\(to_bottom\,\#1e293b_1px\,transparent_1px\)\] {
+      background-image: linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px) !important;
+      opacity: 0.4 !important;
+    }
+  </style>
+  <script is:inline>
+    // Apply theme before first paint to prevent flash
+    (function() {
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored || (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.add(theme);
+    })();
+  </script>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased transition-colors duration-200">
   <slot name="nav" />
   <main class="flex-1">
     <slot />
   </main>
-  <footer class="border-t border-slate-800 mt-16 py-8 text-center text-slate-500 text-sm">
+  <footer class="border-t border-slate-200 dark:border-slate-800 mt-16 py-8 text-center text-slate-400 dark:text-slate-500 text-sm">
     <div class="max-w-6xl mx-auto px-4">
       <p>FVT Ausbildung &mdash; Lernplattform für Fachkraft für Veranstaltungstechnik</p>
-      <p class="mt-1 text-slate-600">Alle Inhalte dienen der Prüfungsvorbereitung. Für rechtlich verbindliche Informationen stets die aktuellen Normen und Vorschriften konsultieren.</p>
+      <p class="mt-1 text-slate-300 dark:text-slate-600">Alle Inhalte dienen der Prüfungsvorbereitung. Für rechtlich verbindliche Informationen stets die aktuellen Normen und Vorschriften konsultieren.</p>
     </div>
   </footer>
 </body>
