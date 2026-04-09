@@ -1,0 +1,222 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const vergleich = [
+  {
+    kriterium: "Qualifikationstyp",
+    fvt: "Berufsausbildung (dual)",
+    fachwirt: "Aufstiegsfortbildung",
+    meister: "Aufstiegsfortbildung",
+  },
+  {
+    kriterium: "Voraussetzungen",
+    fvt: "Hauptschulabschluss, Ausbildungsvertrag",
+    fachwirt: "FVT-Abschluss oder 3 J. Berufserfahrung",
+    meister: "FVT-Abschluss + 2 J. Berufserfahrung",
+  },
+  {
+    kriterium: "Dauer",
+    fvt: "3 Jahre",
+    fachwirt: "Ca. 1–2 Jahre berufsbegleitend",
+    meister: "Ca. 1–2 Jahre berufsbegleitend",
+  },
+  {
+    kriterium: "Abschluss",
+    fvt: "Fachkraft für Veranstaltungstechnik (IHK)",
+    fachwirt: "Gepr. Veranstaltungsfachwirt IHK",
+    meister: "Gepr. Meister für Veranstaltungstechnik IHK",
+  },
+  {
+    kriterium: "Schwerpunkt",
+    fvt: "Technische Umsetzung, alle Gewerke",
+    fachwirt: "Kaufmännisch, organisatorisch, konzeptionell",
+    meister: "Technisch, führend, ausbildend",
+  },
+  {
+    kriterium: "Prüfungsform",
+    fvt: "Schriftlich + Praktische Prüfung",
+    fachwirt: "Schriftlich (WQ + HQ) + mündliche Prüfung",
+    meister: "3 Teile: schriftlich + praktisch + AEVO",
+  },
+  {
+    kriterium: "EQR-Niveau",
+    fvt: "Niveau 4",
+    fachwirt: "Niveau 6 (Bachelor-äquivalent)",
+    meister: "Niveau 6 (Bachelor-äquivalent)",
+  },
+  {
+    kriterium: "Ausbildungsberechtigung",
+    fvt: "Nein",
+    fachwirt: "Nein",
+    meister: "Ja (AEVO inklusive)",
+  },
+  {
+    kriterium: "Hochschulzugang",
+    fvt: "Nein (außer mit Zusatzqualifikation)",
+    fachwirt: "Ja (nach Meister-BAföG-Reform)",
+    meister: "Ja (DQR 6 = Hochschulzugang)",
+  },
+  {
+    kriterium: "Berechtigungen",
+    fvt: "Fachkraft, Teamleitung möglich",
+    fachwirt: "Projektleitung, Abteilungsleitung, Selbstständigkeit",
+    meister: "Meisterbetrieb, Ausbildungsleitung, Führungsverantwortung",
+  },
+  {
+    kriterium: "Typische Berufsbilder",
+    fvt: "Techniker, Beleuchter, Tonmeister, Rigger",
+    fachwirt: "Eventmanager, Projektleiter, Agenturleiter",
+    meister: "Technischer Leiter, Betriebsinhaber, Ausbilder",
+  },
+  {
+    kriterium: "Förderung",
+    fvt: "Berufsausbildungsbeihilfe (BAB), evtl. BAföS",
+    fachwirt: "Aufstiegs-BAföG (bis 15.000 €, 50 % Zuschuss)",
+    meister: "Aufstiegs-BAföG (bis 15.000 €, 50 % Zuschuss)",
+  },
+];
+---
+
+<Layout title="Qualifikationsvergleich" description="Vergleich von FVT-Ausbildung, Veranstaltungsfachwirt und Meister für Veranstaltungstechnik.">
+  <Nav slot="nav" />
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Vergleich</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Qualifikationsvergleich</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        FVT-Ausbildung, Veranstaltungsfachwirt und Meister für Veranstaltungstechnik im direkten Vergleich.
+      </p>
+    </div>
+
+    <!-- Track Cards -->
+    <div class="grid sm:grid-cols-3 gap-5 mb-12">
+      <a href={`${base}/fvt`} class="group p-6 bg-slate-900 border border-amber-500/20 hover:border-amber-500/50 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-amber-500/15 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-amber-400 font-bold text-sm">FVT</span>
+        </div>
+        <h3 class="font-bold text-slate-100 mb-1 group-hover:text-amber-400 transition-colors">Fachkraft für Veranstaltungstechnik</h3>
+        <p class="text-sm text-slate-500">3-jährige IHK-Ausbildung · Einstiegsqualifikation</p>
+      </a>
+      <a href={`${base}/fachwirt`} class="group p-6 bg-slate-900 border border-blue-500/20 hover:border-blue-500/50 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-blue-500/15 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-blue-400 font-bold text-xs">FW</span>
+        </div>
+        <h3 class="font-bold text-slate-100 mb-1 group-hover:text-blue-400 transition-colors">Geprüfter Veranstaltungsfachwirt IHK</h3>
+        <p class="text-sm text-slate-500">Aufstiegsfortbildung · Kaufmännisch-organisatorisch</p>
+      </a>
+      <a href={`${base}/meister`} class="group p-6 bg-slate-900 border border-emerald-500/20 hover:border-emerald-500/50 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center mb-4">
+          <span class="text-emerald-400 font-bold text-xs">MEI</span>
+        </div>
+        <h3 class="font-bold text-slate-100 mb-1 group-hover:text-emerald-400 transition-colors">Geprüfter Meister für Veranstaltungstechnik IHK</h3>
+        <p class="text-sm text-slate-500">Aufstiegsfortbildung · Technisch-führend</p>
+      </a>
+    </div>
+
+    <!-- Comparison Matrix -->
+    <div class="overflow-x-auto rounded-xl border border-slate-800">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-slate-800 bg-slate-900">
+            <th class="text-left py-4 px-5 text-slate-400 font-semibold w-1/4">Kriterium</th>
+            <th class="text-left py-4 px-5 font-semibold w-1/4">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400 flex-shrink-0"></span>
+                <span class="text-amber-400">FVT</span>
+              </div>
+            </th>
+            <th class="text-left py-4 px-5 font-semibold w-1/4">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <span class="text-blue-400">Fachwirt</span>
+              </div>
+            </th>
+            <th class="text-left py-4 px-5 font-semibold w-1/4">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
+                <span class="text-emerald-400">Meister</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {vergleich.map((row, i) => (
+            <tr class:list={["border-b border-slate-800/50 hover:bg-slate-900/30 transition-colors", i % 2 === 0 ? "bg-slate-950/50" : "bg-slate-900/20"]}>
+              <td class="py-4 px-5 text-slate-400 font-medium text-xs uppercase tracking-wide">{row.kriterium}</td>
+              <td class="py-4 px-5 text-slate-300 leading-relaxed">{row.fvt}</td>
+              <td class="py-4 px-5 text-slate-300 leading-relaxed">{row.fachwirt}</td>
+              <td class="py-4 px-5 text-slate-300 leading-relaxed">{row.meister}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Career Path -->
+    <div class="mt-12">
+      <h2 class="text-2xl font-bold text-slate-100 mb-6">Karrierepfad</h2>
+      <div class="flex flex-col sm:flex-row items-center gap-4">
+        <div class="flex-1 p-5 bg-slate-900 border border-amber-500/20 rounded-xl text-center">
+          <div class="w-12 h-12 bg-amber-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-amber-400 font-bold text-sm">FVT</span>
+          </div>
+          <p class="font-semibold text-slate-100 text-sm">Fachkraft für Veranstaltungstechnik</p>
+          <p class="text-xs text-slate-500 mt-1">Grundqualifikation · 3 Jahre</p>
+        </div>
+        <div class="text-slate-600 text-2xl sm:rotate-0">→</div>
+        <div class="flex-1 p-5 bg-slate-900 border border-blue-500/20 rounded-xl text-center">
+          <div class="w-12 h-12 bg-blue-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-blue-400 font-bold text-xs">FW</span>
+          </div>
+          <p class="font-semibold text-slate-100 text-sm">Veranstaltungsfachwirt IHK</p>
+          <p class="text-xs text-slate-500 mt-1">Kaufmännische Führung · DQR 6</p>
+        </div>
+        <div class="text-slate-600 text-2xl">→</div>
+        <div class="flex-1 p-5 bg-slate-900 border border-emerald-500/20 rounded-xl text-center">
+          <div class="w-12 h-12 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-3">
+            <span class="text-emerald-400 font-bold text-xs">MEI</span>
+          </div>
+          <p class="font-semibold text-slate-100 text-sm">Meister für Veranstaltungstechnik IHK</p>
+          <p class="text-xs text-slate-500 mt-1">Technische Führung + AEVO · DQR 6</p>
+        </div>
+      </div>
+      <p class="mt-6 text-sm text-slate-500 text-center">
+        Fachwirt und Meister können parallel oder in beliebiger Reihenfolge absolviert werden. Beide Qualifikationen sind auf DQR-Niveau 6 (Bachelor-äquivalent).
+      </p>
+    </div>
+
+    <!-- Funding Info -->
+    <div class="mt-12 p-6 bg-amber-500/5 border border-amber-500/20 rounded-xl">
+      <h3 class="font-bold text-amber-300 mb-3">Förderung: Aufstiegs-BAföG</h3>
+      <p class="text-sm text-slate-400 mb-4">
+        Fachwirt und Meister können über das Aufstiegs-BAföG (früher AFBG) gefördert werden:
+      </p>
+      <ul class="text-sm text-slate-400 space-y-1.5">
+        <li class="flex items-start gap-2">
+          <span class="text-amber-400 mt-0.5">•</span>
+          Bis zu 15.000 € Maßnahmenbeitrag (Lehrgangs- und Prüfungsgebühren)
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-amber-400 mt-0.5">•</span>
+          50 % als Zuschuss (nicht rückzahlbar), 50 % als zinsgünstiges Darlehen
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-amber-400 mt-0.5">•</span>
+          Unterhaltsbeitrag für Vollzeit-Maßnahmen möglich
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-amber-400 mt-0.5">•</span>
+          Bei bestandener Prüfung: 50 % des Restdarlehens erlassen
+        </li>
+      </ul>
+    </div>
+  </div>
+</Layout>

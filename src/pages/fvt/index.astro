@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+const lernfelder = await getCollection('lernfelder');
+const sorted = lernfelder.sort((a, b) => a.data.nummer - b.data.nummer);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const stats = [
+  { label: "Lernfelder", value: "8" },
+  { label: "Prüfungsfragen", value: "115+" },
+  { label: "Unterrichtsstunden", value: "720" },
+  { label: "Ausbildungsjahre", value: "3" },
+];
+---
+
+<Layout title="FVT – Fachkraft für Veranstaltungstechnik">
+  <Nav slot="nav" />
+
+  <!-- Hero -->
+  <section class="relative bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-20 text-center">
+      <a href={`${base}/`} class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-300 mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Alle Qualifikationen
+      </a>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold tracking-wide mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+        3-jährige Ausbildung · IHK-Abschluss
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        Fachkraft für
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+          Veranstaltungstechnik
+        </span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Deine Lernplattform für die FVT-Ausbildung. Alle 8 Lernfelder, interaktive Quizfragen
+        und Prüfungsvorbereitung – kompakt und verständlich.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={`${base}/fvt/lernfelder`} class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors">
+          Lernfelder erkunden
+        </a>
+        <a href={`${base}/fvt/quiz`} class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl transition-colors border border-slate-700">
+          Quiz starten
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-slate-800 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-3xl font-bold text-amber-400 mb-1">{stat.value}</div>
+            <div class="text-sm text-slate-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="text-2xl font-bold text-slate-100 mb-8">Bereiche</h2>
+    <div class="grid sm:grid-cols-3 gap-5">
+      <a href={`${base}/fvt/lernfelder`} class="group p-6 bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-amber-400 transition-colors">Lernfelder</h3>
+        <p class="text-sm text-slate-400">8 vollständige Lernfelder mit Inhalten zu Elektrotechnik, Lichttechnik, Ton, Bühnentechnik und mehr.</p>
+      </a>
+      <a href={`${base}/fvt/pruefung`} class="group p-6 bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-amber-400 transition-colors">Prüfungsvorbereitung</h3>
+        <p class="text-sm text-slate-400">Kompakte Zusammenfassung aller prüfungsrelevanten Themen – ideal für die gezielte Wiederholung.</p>
+      </a>
+      <a href={`${base}/fvt/quiz`} class="group p-6 bg-slate-900 border border-slate-800 hover:border-amber-500/40 rounded-xl transition-all hover:-translate-y-0.5">
+        <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-amber-400 transition-colors">Quiz</h3>
+        <p class="text-sm text-slate-400">115+ interaktive Prüfungsfragen mit sofortigem Feedback – nach Themen filterbar.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Lernfelder Preview -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-100 mb-1">Lernfelder</h2>
+        <p class="text-slate-400 text-sm">Alle 8 Lernfelder der FVT-Ausbildung</p>
+      </div>
+      <a href={`${base}/fvt/lernfelder`} class="text-sm text-amber-400 hover:text-amber-300 font-medium flex items-center gap-1">
+        Alle anzeigen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {sorted.map(lf => {
+        const colorMap = {
+          amber: "bg-amber-500/15 text-amber-400 border-amber-500/20 hover:border-amber-500/50",
+          yellow: "bg-yellow-500/15 text-yellow-400 border-yellow-500/20 hover:border-yellow-500/50",
+          blue: "bg-blue-500/15 text-blue-400 border-blue-500/20 hover:border-blue-500/50",
+          red: "bg-red-500/15 text-red-400 border-red-500/20 hover:border-red-500/50",
+          green: "bg-green-500/15 text-green-400 border-green-500/20 hover:border-green-500/50",
+          rose: "bg-rose-500/15 text-rose-400 border-rose-500/20 hover:border-rose-500/50",
+          cyan: "bg-cyan-500/15 text-cyan-400 border-cyan-500/20 hover:border-cyan-500/50",
+          violet: "bg-violet-500/15 text-violet-400 border-violet-500/20 hover:border-violet-500/50",
+        };
+        const badgeColor = colorMap[lf.data.farbe ?? 'amber'] ?? colorMap.amber;
+        return (
+          <a
+            href={`${base}/fvt/lernfelder/${lf.slug}`}
+            class:list={["group block bg-slate-900 border rounded-xl p-5 transition-all duration-200 hover:bg-slate-800/80 hover:-translate-y-0.5", badgeColor.split(' ').filter(c => c.startsWith('border')).join(' ')]}
+          >
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <span class:list={["inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold", badgeColor.split(' ').filter(c => !c.startsWith('border')).join(' ')]}>
+                {lf.data.kuerzel}
+              </span>
+              <span class="text-xs text-slate-500">{lf.data.stunden} Std.</span>
+            </div>
+            <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-white leading-snug">{lf.data.titel}</h3>
+            <p class="text-sm text-slate-400 leading-relaxed line-clamp-3">{lf.data.beschreibung}</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Layout>

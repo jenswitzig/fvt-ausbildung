@@ -1,0 +1,90 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+const sachgebiete = await getCollection('fachwirt');
+const sorted = sachgebiete.sort((a, b) => a.data.nummer - b.data.nummer);
+const gesamtStunden = sorted.reduce((acc, sg) => acc + sg.data.stunden, 0);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Fachwirt Sachgebiete" description="Übersicht aller Sachgebiete des Geprüften Veranstaltungsfachwirts IHK.">
+  <Nav slot="nav" />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+        <span class="mx-2">/</span>
+        <a href={`${base}/fachwirt`} class="hover:text-slate-300 transition-colors">Fachwirt</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Sachgebiete</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Sachgebiete</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Der Veranstaltungsfachwirt IHK umfasst 8 Sachgebiete in zwei Prüfungsbereichen mit insgesamt
+        <span class="text-blue-400 font-semibold">{gesamtStunden} Unterrichtsstunden</span>.
+      </p>
+    </div>
+
+    <div class="mb-10 overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b border-slate-800">
+            <th class="text-left py-3 px-4 text-slate-400 font-medium">Kürzel</th>
+            <th class="text-left py-3 px-4 text-slate-400 font-medium">Titel</th>
+            <th class="text-right py-3 px-4 text-slate-400 font-medium">Stunden</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sorted.map(sg => (
+            <tr class="border-b border-slate-800/50 hover:bg-slate-900/50 transition-colors">
+              <td class="py-3 px-4">
+                <span class="font-mono text-xs font-semibold text-blue-400 bg-blue-500/10 px-2 py-1 rounded">{sg.data.kuerzel}</span>
+              </td>
+              <td class="py-3 px-4">
+                <a href={`${base}/fachwirt/sachgebiete/${sg.slug}`} class="text-slate-300 hover:text-blue-400 transition-colors font-medium">
+                  {sg.data.titel}
+                </a>
+              </td>
+              <td class="py-3 px-4 text-right text-slate-400">{sg.data.stunden}</td>
+            </tr>
+          ))}
+          <tr class="bg-slate-900/50">
+            <td colspan="2" class="py-3 px-4 text-slate-300 font-semibold">Gesamt</td>
+            <td class="py-3 px-4 text-right text-blue-400 font-bold">{gesamtStunden}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      {sorted.map(sg => (
+        <a
+          href={`${base}/fachwirt/sachgebiete/${sg.slug}`}
+          class="group block bg-slate-900 border border-blue-500/20 hover:border-blue-500/50 rounded-xl p-5 transition-all duration-200 hover:bg-slate-800/80 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20"
+        >
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-blue-500/15 text-blue-400">
+              {sg.data.kuerzel}
+            </span>
+            <span class="text-xs text-slate-500 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {sg.data.stunden} Std.
+            </span>
+          </div>
+          <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-white transition-colors leading-snug">{sg.data.titel}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed line-clamp-3">{sg.data.beschreibung}</p>
+          <div class="mt-4 flex items-center gap-1 text-xs font-medium text-blue-400 transition-colors">
+            <span>Inhalte öffnen</span>
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

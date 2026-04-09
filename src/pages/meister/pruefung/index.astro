@@ -1,0 +1,194 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+
+const themen = [
+  {
+    titel: "Rechtsbewusstes Handeln (T1.1)",
+    farbe: "emerald",
+    themen: [
+      "Direktionsrecht (§ 106 GewO): Inhalt, Ort, Zeit – im Rahmen des Arbeitsvertrags",
+      "ArbZG: max. 8h/Tag, Verlängerung auf 10h, 11h Mindestruhezeit",
+      "Betriebsrat: ab 5 Arbeitnehmern, Anhörungspflicht vor Kündigung (§ 102 BetrVG)",
+      "STOP-Prinzip: Substitution → Technisch → Organisatorisch → PSA",
+      "Gefährdungsbeurteilung: gesetzliche Pflicht nach § 5 ArbSchG",
+      "DGUV V3: Elektrische Prüffristen – Veranstaltungstechnik 12 Monate",
+      "BGV C1 / DGUV V17: SF = 10 bei Anschlagmitteln über Personen",
+      "§ 823 BGB: Schadensersatzpflicht bei Verletzung fremder Rechtsgüter",
+      "Sozialversicherung: 5 Säulen (KV, PV, RV, AV, UV)",
+    ]
+  },
+  {
+    titel: "Betriebswirtschaft (T1.2)",
+    farbe: "emerald",
+    themen: [
+      "Fixkosten vs. variable Kosten – Bedeutung für die Kalkulation",
+      "Vollkostenrechnung Stundensatz: Jahreskosten / produktive Stunden",
+      "Break-Even = Fixkosten / (Preis − var. Stückkosten)",
+      "Amortisationszeit = Kapitaleinsatz / jährlicher Rückfluss",
+      "Leasing vs. Kauf: Liquidität, Bilanz, Steuern, Flexibilität",
+      "Investitionsrechnung: Kostenvergleich, Rentabilität, Amortisation",
+      "Liquiditätsgrade 1–3: Richtwerte 20–50 %, 100–120 %, 150 %",
+      "Instandhaltungsstrategien: korrektiv, präventiv, prädiktiv",
+      "DGUV V3 Prüfpflichten: Dokumentation als Haftungsschutz",
+    ]
+  },
+  {
+    titel: "Information, Kommunikation, Planung (T1.3)",
+    farbe: "emerald",
+    themen: [
+      "Vectorworks Spotlight: Branchenstandard für Bühnenplanung",
+      "CAD-Grundlagen: Maßstäbe (1:100, 1:50, 1:20), Layersystem",
+      "Gantt-Chart: Visualisierung, kritischer Pfad, Pufferzeiten",
+      "Betriebsanweisung: Inhalt nach § 14 GefStoffV",
+      "Unterweisungsprotokoll: Unterschrift = Haftungsschutz",
+      "Technische Dokumentation: Prüfprotokolle, Patchpläne, Rigging-Pläne",
+      "Präsentationstechnik: 6-6-Regel, Zielgruppenorientierung",
+      "PDCA für Prozessverbesserung",
+    ]
+  },
+  {
+    titel: "Zusammenarbeit im Betrieb (T1.4)",
+    farbe: "emerald",
+    themen: [
+      "Vier-Seiten-Modell (Schulz von Thun): Sach, Selbst, Beziehung, Appell",
+      "Aktives Zuhören: Paraphrasieren, Nachfragen, nicht unterbrechen",
+      "Tuckman-Phasen: Forming, Storming, Norming, Performing, Adjourning",
+      "Konfliktstile (Thomas-Kilmann): 5 Stile",
+      "Glasl-Eskalation: 9 Stufen, Win-win bis lose-lose",
+      "SBI-Modell für Kritikgespräche: Situation, Behavior, Impact",
+      "GROW-Modell für Entwicklungsgespräche",
+      "Mobbing: Dokumentation und Fürsorgepflicht (§ 241 BGB)",
+    ]
+  },
+  {
+    titel: "Technische Planung (T2.1)",
+    farbe: "emerald",
+    themen: [
+      "DMX-Universum: 512 Kanäle, Art-Net/sACN für IP-Verteilung",
+      "Moving Lights: Kanalberechnung, Kalibrierung, Positionsplanung",
+      "PA-Typen: Line Array, Point Source, Distributed System",
+      "Delay-Tower: Verzögerung = Distanz (m) / 0,343 = Delay (ms)",
+      "Lärmschutz: 107 dB(C) Expositionsgrenzwert Besucher",
+      "LED-Wall: Pixel-Pitch ≈ Mindestabstand in Metern",
+      "Throw Ratio = Abstand / Bildbreite",
+      "SDI bis 100m, HDMI max. 10m, NDI über Netzwerk",
+      "Sicherheitskonzept: Pflichtinhalt (Gefährdungsanalyse, Evakuierung, Ordner, SAN)",
+      "VStättVO: Ordner 1:100, Rettungsweg 1,20 m, max. 30 m",
+    ]
+  },
+  {
+    titel: "Technische Umsetzung (T2.2)",
+    farbe: "emerald",
+    themen: [
+      "Aufbaureihenfolge: Struktur → Rigging → Strom → Licht → Ton → Video",
+      "Ground-Loop-Probleme: Potenzialausgleich, DI-Box als Lösung",
+      "PRCD: Mobiler FI-Schutzschalter für ortsveränderliche Anlagen",
+      "Fehlersuche Top-Down: Symptom → Eingrenzung → Hypothese → Test → Beheben",
+      "Pre-Show-Check: Checkliste, Vier-Augen-Prinzip bei kritischen Punkten",
+      "Abnahmeprotokoll: Grundlage für Gewährleistungsbeginn (§ 640 BGB)",
+      "Gewährleistung Werkvertrag: 2 Jahre (beweglich), 5 Jahre (Bauwerke)",
+      "Mängelrüge: schriftlich mit Fristsetzung, Nacherfüllung hat Vorrang",
+    ]
+  },
+  {
+    titel: "Führung und Personal (T2.3)",
+    farbe: "emerald",
+    themen: [
+      "Meisterstatus: Sandwich-Position zwischen Management und Mitarbeitern",
+      "Delegation: Was, bis wann, Qualität, Kontrolle",
+      "Vier-Stufen-Methode: Vorbereiten → Vorführen → Nachmachen → Üben",
+      "Beurteilungsfehler: Halo-Effekt, Horn-Effekt, Aktualitätseffekt",
+      "IDP: Individuelle Entwicklungspläne – Stärken, Ziele, Maßnahmen",
+      "ArbZG: max. 8h/Tag, Nachtarbeit: Ausgleich, gesundheitlicher Schutz",
+      "Schichtplanung: Qualifikationsverteilung, ArbZG, Fairness",
+      "Motivation: intrinsisch vs. extrinsisch (Herzberg, Maslow)",
+    ]
+  },
+  {
+    titel: "Ausbildereignung AEVO (T3)",
+    farbe: "emerald",
+    themen: [
+      "BBiG: Duales System – Betrieb + Berufsschule",
+      "Ausbildungsvertrag: Probezeit 1–4 Monate, Mindestausbildungsvergütung",
+      "Kündigung Ausbildung: Probezeit = jederzeit; danach nur wichtiger Grund",
+      "Vier-Stufen-Methode für Ausbildung",
+      "Lernzielorientiertes Ausbilden: Ziel → Inhalt → Methode → Überprüfung",
+      "Berichtsheft: Zulassungsvoraussetzung zur Abschlussprüfung",
+      "IHK-Prüfungsausschuss: paritätisch (AG, AN, Berufsschullehrer)",
+      "JArbSchG: unter 18 J. max. 8h/Tag, keine Nachtarbeit nach 20 Uhr (Ausnahmen)",
+      "Prüfungswiederholung: 2× innerhalb von 2 Jahren (§ 37 BBiG)",
+    ]
+  },
+];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Meister Prüfungsvorbereitung" description="Prüfungsvorbereitung für den Geprüften Meister für Veranstaltungstechnik IHK.">
+  <Nav slot="nav" />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+        <span class="mx-2">/</span>
+        <a href={`${base}/meister`} class="hover:text-slate-300 transition-colors">Meister</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Prüfungsvorbereitung</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Prüfungsvorbereitung Meister</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Kompakte Zusammenfassung für den Geprüften Meister für Veranstaltungstechnik IHK.
+      </p>
+    </div>
+
+    <div class="mb-10 p-5 bg-emerald-500/5 border border-emerald-500/20 rounded-xl flex gap-4">
+      <div class="flex-shrink-0 w-8 h-8 bg-emerald-500/15 rounded-lg flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-semibold text-emerald-300 mb-1.5">Meister Prüfungstipps</h3>
+        <ul class="text-sm text-slate-400 space-y-1">
+          <li>• Teil 1 (Grundlagen): schriftliche Klausuren, breites Allgemeinwissen</li>
+          <li>• Teil 2 (Handlungsspezifisch): Kombination technisches und Führungswissen</li>
+          <li>• Teil 3 (AEVO): schriftliche + praktische Prüfung (Unterweisungsprobe)</li>
+          <li>• Rechtsnormen kennen aber nicht auswendig – Prinzipien verstehen</li>
+          <li>• Praxisbeispiele aus eigenem Berufsalltag einbringen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      {themen.map(thema => (
+        <div class="bg-slate-900 border border-emerald-500/30 rounded-xl overflow-hidden">
+          <div class="px-6 py-4 border-b border-slate-800 flex items-center gap-3">
+            <div class="w-2 h-2 rounded-full flex-shrink-0 bg-emerald-400"></div>
+            <h2 class="font-bold text-lg text-emerald-400">{thema.titel}</h2>
+          </div>
+          <div class="p-6">
+            <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+              {thema.themen.map(item => (
+                <li class="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+                  <svg class="w-3.5 h-3.5 flex-shrink-0 mt-1 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                    <circle cx="10" cy="10" r="3" />
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 p-8 bg-slate-900 border border-slate-800 rounded-2xl text-center">
+      <h3 class="text-xl font-bold text-slate-100 mb-3">Wissen testen</h3>
+      <p class="text-slate-400 mb-6">Überprüfe dein Wissen mit interaktiven Prüfungsfragen für den Meister.</p>
+      <a href={`${base}/meister/quiz`} class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-colors">
+        Quiz starten
+      </a>
+    </div>
+  </div>
+</Layout>

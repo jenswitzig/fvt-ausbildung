@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+const sachgebiete = await getCollection('meister');
+const sorted = sachgebiete.sort((a, b) => a.data.nummer - b.data.nummer);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const stats = [
+  { label: "Qualifikationseinheiten", value: "8" },
+  { label: "Prüfungsfragen", value: "40+" },
+  { label: "Prüfungsteile", value: "3" },
+  { label: "Inkl. AEVO", value: "Ja" },
+];
+
+// Group by teil
+const teile = [...new Set(sorted.map(sg => sg.data.teil ?? 'Weitere'))];
+---
+
+<Layout title="Geprüfter Meister für Veranstaltungstechnik IHK">
+  <Nav slot="nav" />
+
+  <!-- Hero -->
+  <section class="relative bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-20 text-center">
+      <a href={`${base}/`} class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-300 mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Alle Qualifikationen
+      </a>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs font-semibold tracking-wide mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Aufstiegsfortbildung · Technisch-führend
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        Geprüfter Meister für
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+          Veranstaltungstechnik IHK
+        </span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Die höchste technische Qualifikation in der Veranstaltungsbranche. Mit AEVO-Nachweis und
+        Berechtigung zur Ausbildung eigener Fachkräfte.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={`${base}/meister/sachgebiete`} class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl transition-colors">
+          Sachgebiete erkunden
+        </a>
+        <a href={`${base}/meister/quiz`} class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl transition-colors border border-slate-700">
+          Quiz starten
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-slate-800 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-3xl font-bold text-emerald-400 mb-1">{stat.value}</div>
+            <div class="text-sm text-slate-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prüfungsstruktur -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="text-2xl font-bold text-slate-100 mb-8">Prüfungsstruktur</h2>
+    <div class="grid sm:grid-cols-3 gap-6">
+      <div class="p-6 bg-slate-900 border border-emerald-500/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center">
+            <span class="text-emerald-400 font-bold text-sm">T1</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100">Teil 1</h3>
+            <p class="text-xs text-slate-500">Grundlegende Qualifikationen</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T1.1 – Rechtsbewusstes Handeln</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T1.2 – Betriebswirtschaft</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T1.3 – Information & Kommunikation</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T1.4 – Zusammenarbeit im Betrieb</li>
+        </ul>
+      </div>
+      <div class="p-6 bg-slate-900 border border-emerald-500/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center">
+            <span class="text-emerald-400 font-bold text-sm">T2</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100">Teil 2</h3>
+            <p class="text-xs text-slate-500">Handlungsspezifische Qualifikationen</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T2.1 – Technische Planung</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T2.2 – Technische Umsetzung</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>T2.3 – Führung und Personal</li>
+        </ul>
+      </div>
+      <div class="p-6 bg-slate-900 border border-emerald-500/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-emerald-500/15 rounded-xl flex items-center justify-center">
+            <span class="text-emerald-400 font-bold text-sm">T3</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100">Teil 3</h3>
+            <p class="text-xs text-slate-500">Ausbildereignung (AEVO)</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>AEVO – Ausbildereignungsverordnung</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>Ausbildungsplanung und -durchführung</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>Berechtigung zur Ausbildung von FVT-Azubis</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sachgebiete Preview -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-100 mb-1">Qualifikationseinheiten</h2>
+        <p class="text-slate-400 text-sm">Alle Einheiten des Meisterlehrgangs</p>
+      </div>
+      <a href={`${base}/meister/sachgebiete`} class="text-sm text-emerald-400 hover:text-emerald-300 font-medium flex items-center gap-1">
+        Alle anzeigen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {sorted.map(sg => (
+        <a
+          href={`${base}/meister/sachgebiete/${sg.slug}`}
+          class="group block bg-slate-900 border border-emerald-500/20 hover:border-emerald-500/50 rounded-xl p-5 transition-all hover:-translate-y-0.5"
+        >
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-400">
+              {sg.data.kuerzel}
+            </span>
+            <span class="text-xs text-slate-500">{sg.data.stunden} Std.</span>
+          </div>
+          <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-white leading-snug">{sg.data.titel}</h3>
+          {sg.data.teil && <p class="text-xs text-emerald-500 mb-1">{sg.data.teil}</p>}
+          <p class="text-sm text-slate-400 leading-relaxed line-clamp-2">{sg.data.beschreibung}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

@@ -1,44 +1,145 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-
-const navLinks = [
-  { href: `${base}/`, label: "Startseite" },
-  { href: `${base}/lernfelder`, label: "Lernfelder" },
-  { href: `${base}/pruefung`, label: "Prüfungsvorbereitung" },
-  { href: `${base}/quiz`, label: "Quiz" },
-];
-
 const pathname = Astro.url.pathname;
+
+// Determine current track
+const isFvt = pathname.includes('/fvt');
+const isFachwirt = pathname.includes('/fachwirt');
+const isMeister = pathname.includes('/meister');
+
+type NavLink = { href: string; label: string };
+
+let trackLinks: NavLink[] = [];
+let trackColor = "amber";
+let trackLabel = "";
+let trackKuerzel = "";
+
+if (isFvt) {
+  trackLabel = "FVT";
+  trackKuerzel = "FVT";
+  trackColor = "amber";
+  trackLinks = [
+    { href: `${base}/fvt`, label: "Übersicht" },
+    { href: `${base}/fvt/lernfelder`, label: "Lernfelder" },
+    { href: `${base}/fvt/pruefung`, label: "Prüfung" },
+    { href: `${base}/fvt/quiz`, label: "Quiz" },
+  ];
+} else if (isFachwirt) {
+  trackLabel = "Fachwirt";
+  trackKuerzel = "FW";
+  trackColor = "blue";
+  trackLinks = [
+    { href: `${base}/fachwirt`, label: "Übersicht" },
+    { href: `${base}/fachwirt/sachgebiete`, label: "Sachgebiete" },
+    { href: `${base}/fachwirt/pruefung`, label: "Prüfung" },
+    { href: `${base}/fachwirt/quiz`, label: "Quiz" },
+  ];
+} else if (isMeister) {
+  trackLabel = "Meister";
+  trackKuerzel = "MEI";
+  trackColor = "emerald";
+  trackLinks = [
+    { href: `${base}/meister`, label: "Übersicht" },
+    { href: `${base}/meister/sachgebiete`, label: "Sachgebiete" },
+    { href: `${base}/meister/pruefung`, label: "Prüfung" },
+    { href: `${base}/meister/quiz`, label: "Quiz" },
+  ];
+}
+
+const isInTrack = isFvt || isFachwirt || isMeister;
+
+const colorMap: Record<string, { bg: string; text: string; activeBg: string; activeText: string }> = {
+  amber: { bg: "bg-amber-500", text: "text-slate-900", activeBg: "bg-amber-500/10", activeText: "text-amber-400" },
+  blue: { bg: "bg-blue-500", text: "text-white", activeBg: "bg-blue-500/10", activeText: "text-blue-400" },
+  emerald: { bg: "bg-emerald-500", text: "text-white", activeBg: "bg-emerald-500/10", activeText: "text-emerald-400" },
+};
+
+const colors = colorMap[trackColor] ?? colorMap.amber;
 ---
 
 <nav class="bg-slate-900/95 backdrop-blur-sm border-b border-slate-800 sticky top-0 z-50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
-      <a href={`${base}/`} class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center font-bold text-slate-900 text-sm tracking-tight group-hover:bg-amber-400 transition-colors">
-          FVT
-        </div>
-        <span class="font-semibold text-slate-100 hidden sm:block">
-          Veranstaltungstechnik
-        </span>
-      </a>
+      <div class="flex items-center gap-3">
+        <a href={`${base}/`} class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded-lg bg-slate-700 flex items-center justify-center font-bold text-slate-300 text-xs tracking-tight group-hover:bg-slate-600 transition-colors">
+            VA
+          </div>
+          <span class="font-semibold text-slate-400 hidden sm:block text-sm hover:text-slate-200 transition-colors">
+            Veranstaltungstechnik
+          </span>
+        </a>
+
+        {isInTrack && (
+          <div class="flex items-center gap-2">
+            <span class="text-slate-700">/</span>
+            <a
+              href={isFvt ? `${base}/fvt` : isFachwirt ? `${base}/fachwirt` : `${base}/meister`}
+              class:list={["flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold transition-colors", colors.bg, colors.text]}
+            >
+              {trackKuerzel}
+            </a>
+          </div>
+        )}
+      </div>
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-1">
-        {navLinks.map(link => (
-          <a
-            href={link.href}
-            class:list={[
-              "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-              (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
-                ? "bg-amber-500/10 text-amber-400"
-                : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
-            ]}
-          >
-            {link.label}
-          </a>
-        ))}
+        {isInTrack ? (
+          trackLinks.map(link => (
+            <a
+              href={link.href}
+              class:list={[
+                "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                (pathname === link.href || (link.label !== "Übersicht" && pathname.startsWith(link.href)))
+                  ? [colors.activeBg, colors.activeText]
+                  : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+              ]}
+            >
+              {link.label}
+            </a>
+          ))
+        ) : (
+          <>
+            <a
+              href={`${base}/fvt`}
+              class:list={[
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                pathname.includes('/fvt') ? "bg-amber-500/10 text-amber-400" : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+              ]}
+            >
+              FVT
+            </a>
+            <a
+              href={`${base}/fachwirt`}
+              class:list={[
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                pathname.includes('/fachwirt') ? "bg-blue-500/10 text-blue-400" : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+              ]}
+            >
+              Fachwirt
+            </a>
+            <a
+              href={`${base}/meister`}
+              class:list={[
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                pathname.includes('/meister') ? "bg-emerald-500/10 text-emerald-400" : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+              ]}
+            >
+              Meister
+            </a>
+            <a
+              href={`${base}/vergleich`}
+              class:list={[
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                pathname.includes('/vergleich') ? "bg-slate-700 text-slate-200" : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+              ]}
+            >
+              Vergleich
+            </a>
+          </>
+        )}
       </div>
 
       <!-- Mobile menu button -->
@@ -55,19 +156,36 @@ const pathname = Astro.url.pathname;
 
     <!-- Mobile Nav -->
     <div id="mobile-menu" class="md:hidden hidden pb-4 border-t border-slate-800 mt-0 pt-3">
-      {navLinks.map(link => (
-        <a
-          href={link.href}
-          class:list={[
-            "block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors mb-1",
-            (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
-              ? "bg-amber-500/10 text-amber-400"
-              : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
+      {isInTrack ? (
+        trackLinks.map(link => (
+          <a
+            href={link.href}
+            class:list={[
+              "block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors mb-1",
+              (pathname === link.href || (link.label !== "Übersicht" && pathname.startsWith(link.href)))
+                ? [colors.activeBg, colors.activeText]
+                : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      ) : (
+        <>
+          <a href={`${base}/fvt`} class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors mb-1">FVT</a>
+          <a href={`${base}/fachwirt`} class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors mb-1">Fachwirt</a>
+          <a href={`${base}/meister`} class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors mb-1">Meister</a>
+          <a href={`${base}/vergleich`} class="block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors mb-1">Vergleich</a>
+        </>
+      )}
+
+      {isInTrack && (
+        <div class="mt-3 pt-3 border-t border-slate-800">
+          <a href={`${base}/`} class="block px-3 py-2 text-xs text-slate-500 hover:text-slate-400 transition-colors">
+            ← Alle Qualifikationen
+          </a>
+        </div>
+      )}
     </div>
   </div>
 </nav>

@@ -1,0 +1,31 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import QuizApp from '../../../components/QuizApp.astro';
+import fragenData from '../../../data/pruefungsfragen.json';
+
+const alleFragen = fragenData.fragen;
+const fragen = alleFragen.filter((f: any) => f.track === 'fachwirt');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Fachwirt Quiz" description="Interaktives Quiz für den Geprüften Veranstaltungsfachwirt IHK.">
+  <Nav slot="nav" />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-10">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+        <span class="mx-2">/</span>
+        <a href={`${base}/fachwirt`} class="hover:text-slate-300 transition-colors">Fachwirt</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Quiz</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Fachwirt Prüfungsquiz</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Teste dein Wissen mit <span class="text-blue-400 font-semibold">{fragen.length} Prüfungsfragen</span> für den
+        Geprüften Veranstaltungsfachwirt IHK.
+      </p>
+    </div>
+    <QuizApp fragen={fragen} />
+  </div>
+</Layout>

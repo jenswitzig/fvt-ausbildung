@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+const sachgebiete = await getCollection('fachwirt');
+const sorted = sachgebiete.sort((a, b) => a.data.nummer - b.data.nummer);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const stats = [
+  { label: "Sachgebiete", value: "8" },
+  { label: "Prüfungsfragen", value: "40+" },
+  { label: "Unterrichtsstunden", value: "520" },
+  { label: "Prüfungsteile", value: "2" },
+];
+---
+
+<Layout title="Geprüfter Veranstaltungsfachwirt IHK">
+  <Nav slot="nav" />
+
+  <!-- Hero -->
+  <section class="relative bg-slate-950 overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-20 text-center">
+      <a href={`${base}/`} class="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-slate-300 mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Alle Qualifikationen
+      </a>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs font-semibold tracking-wide mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+        Aufstiegsfortbildung · Kaufmännisch-organisatorisch
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-tight mb-6">
+        Geprüfter
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+          Veranstaltungsfachwirt IHK
+        </span>
+      </h1>
+
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Die Aufstiegsfortbildung für kaufmännische und organisatorische Führungsaufgaben in der
+        Veranstaltungsbranche. Ideal nach der FVT-Ausbildung oder mit Berufserfahrung.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href={`${base}/fachwirt/sachgebiete`} class="px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-xl transition-colors">
+          Sachgebiete erkunden
+        </a>
+        <a href={`${base}/fachwirt/quiz`} class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl transition-colors border border-slate-700">
+          Quiz starten
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="border-y border-slate-800 bg-slate-900/50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+        {stats.map(stat => (
+          <div class="text-center">
+            <div class="text-3xl font-bold text-blue-400 mb-1">{stat.value}</div>
+            <div class="text-sm text-slate-400">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Prüfungsstruktur -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <h2 class="text-2xl font-bold text-slate-100 mb-8">Prüfungsstruktur</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="p-6 bg-slate-900 border border-blue-500/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-blue-500/15 rounded-xl flex items-center justify-center">
+            <span class="text-blue-400 font-bold text-sm">WQ</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100">Wirtschaftsbezogene Qualifikationen</h3>
+            <p class="text-xs text-slate-500">4 schriftliche Prüfungsteile</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            WQ1 – Volks- und Betriebswirtschaft
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            WQ2 – Rechnungswesen
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            WQ3 – Recht und Steuern
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            WQ4 – Unternehmensführung
+          </li>
+        </ul>
+      </div>
+      <div class="p-6 bg-slate-900 border border-blue-500/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-blue-500/15 rounded-xl flex items-center justify-center">
+            <span class="text-blue-400 font-bold text-sm">HQ</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-100">Handlungsspezifische Qualifikationen</h3>
+            <p class="text-xs text-slate-500">4 schriftliche + mündliche Prüfungsteile</p>
+          </div>
+        </div>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            HQ1 – Veranstaltungskonzeption
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            HQ2 – Veranstaltungsrealisierung
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            HQ3 – Personal und Führung
+          </li>
+          <li class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            HQ4 – Marketing und Vertrieb
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sachgebiete Preview -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-100 mb-1">Sachgebiete</h2>
+        <p class="text-slate-400 text-sm">Alle 8 Sachgebiete des Veranstaltungsfachwirts</p>
+      </div>
+      <a href={`${base}/fachwirt/sachgebiete`} class="text-sm text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1">
+        Alle anzeigen
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {sorted.map(sg => (
+        <a
+          href={`${base}/fachwirt/sachgebiete/${sg.slug}`}
+          class="group block bg-slate-900 border border-blue-500/20 hover:border-blue-500/50 rounded-xl p-5 transition-all hover:-translate-y-0.5"
+        >
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-semibold bg-blue-500/15 text-blue-400">
+              {sg.data.kuerzel}
+            </span>
+            <span class="text-xs text-slate-500">{sg.data.stunden} Std.</span>
+          </div>
+          <h3 class="font-semibold text-slate-100 mb-2 group-hover:text-white leading-snug">{sg.data.titel}</h3>
+          <p class="text-sm text-slate-400 leading-relaxed line-clamp-3">{sg.data.beschreibung}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

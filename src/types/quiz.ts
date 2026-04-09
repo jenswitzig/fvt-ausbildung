@@ -12,4 +12,5 @@ export interface Frage {
   frage: string;
   antworten: Antwort[];
   erklaerung: string;
+  track?: string;
 }

@@ -1,0 +1,113 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const sachgebiete = await getCollection('fachwirt');
+  return sachgebiete.map(sg => ({
+    params: { slug: sg.slug },
+    props: { sg },
+  }));
+}
+
+const { sg } = Astro.props;
+const { Content } = await sg.render();
+
+const allSachgebiete = await getCollection('fachwirt');
+const sorted = allSachgebiete.sort((a, b) => a.data.nummer - b.data.nummer);
+const currentIndex = sorted.findIndex(s => s.slug === sg.slug);
+const prev = sorted[currentIndex - 1];
+const next = sorted[currentIndex + 1];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title={sg.data.titel} description={sg.data.beschreibung}>
+  <Nav slot="nav" />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <nav class="text-sm text-slate-500 mb-6">
+      <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+      <span class="mx-2">/</span>
+      <a href={`${base}/fachwirt`} class="hover:text-slate-300 transition-colors">Fachwirt</a>
+      <span class="mx-2">/</span>
+      <a href={`${base}/fachwirt/sachgebiete`} class="hover:text-slate-300 transition-colors">Sachgebiete</a>
+      <span class="mx-2">/</span>
+      <span class="text-slate-300">{sg.data.kuerzel}</span>
+    </nav>
+
+    <div class="p-6 sm:p-8 bg-slate-900 border border-slate-800 rounded-2xl mb-10">
+      <div class="flex flex-wrap items-start gap-4 mb-5">
+        <span class="font-mono text-sm font-bold px-3 py-1.5 rounded-lg border bg-blue-500/15 text-blue-400 border-blue-500/20">
+          {sg.data.kuerzel}
+        </span>
+        <span class="text-xs text-slate-500 flex items-center gap-1.5 mt-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {sg.data.stunden} Unterrichtsstunden
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">{sg.data.titel}</h1>
+      <p class="text-slate-400 leading-relaxed">{sg.data.beschreibung}</p>
+      <div class="mt-6 pt-6 border-t border-slate-800">
+        <h2 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Lernziele</h2>
+        <ul class="space-y-2">
+          {sg.data.lernziele.map((ziel: string) => (
+            <li class="flex items-start gap-2.5 text-sm text-slate-300">
+              <svg class="w-4 h-4 flex-shrink-0 mt-0.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+              </svg>
+              {ziel}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-slate max-w-none
+      prose-headings:font-bold prose-headings:text-slate-100
+      prose-h2:text-xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-2 prose-h2:border-b prose-h2:border-slate-800
+      prose-h3:text-base prose-h3:text-slate-200 prose-h3:mt-6 prose-h3:mb-3
+      prose-p:text-slate-400 prose-p:leading-relaxed prose-p:text-[15px]
+      prose-strong:text-slate-200 prose-strong:font-semibold
+      prose-code:text-blue-400 prose-code:bg-blue-500/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
+      prose-pre:bg-slate-900 prose-pre:border prose-pre:border-slate-800 prose-pre:rounded-xl
+      prose-ul:text-slate-400 prose-li:text-[15px]
+      prose-ol:text-slate-400
+      prose-table:text-sm
+      prose-th:text-slate-300 prose-th:border-b prose-th:border-slate-700 prose-th:py-2.5 prose-th:px-3 prose-th:text-left prose-th:font-semibold
+      prose-td:text-slate-400 prose-td:border-b prose-td:border-slate-800 prose-td:py-2.5 prose-td:px-3
+      prose-blockquote:border-l-blue-500 prose-blockquote:text-slate-400
+      prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
+    ">
+      <Content />
+    </div>
+
+    <div class="flex justify-between gap-4 mt-16 pt-8 border-t border-slate-800">
+      {prev ? (
+        <a href={`${base}/fachwirt/sachgebiete/${prev.slug}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs">
+          <svg class="w-4 h-4 text-slate-500 group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          <div class="min-w-0">
+            <div class="text-xs text-slate-500 mb-0.5">Zurück</div>
+            <div class="text-sm font-medium text-slate-300 group-hover:text-slate-100 truncate">{prev.data.titel}</div>
+          </div>
+        </a>
+      ) : <div class="flex-1 max-w-xs"></div>}
+
+      {next ? (
+        <a href={`${base}/fachwirt/sachgebiete/${next.slug}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs text-right ml-auto">
+          <div class="min-w-0 flex-1">
+            <div class="text-xs text-slate-500 mb-0.5">Weiter</div>
+            <div class="text-sm font-medium text-slate-300 group-hover:text-slate-100 truncate">{next.data.titel}</div>
+          </div>
+          <svg class="w-4 h-4 text-slate-500 group-hover:text-blue-400 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      ) : <div class="flex-1 max-w-xs"></div>}
+    </div>
+  </div>
+</Layout>

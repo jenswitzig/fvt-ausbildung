@@ -1,160 +1,210 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
-import LernfeldCard from '../components/LernfeldCard.astro';
-import { getCollection } from 'astro:content';
 
-const lernfelder = await getCollection('lernfelder');
-const sorted = lernfelder.sort((a, b) => a.data.nummer - b.data.nummer);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const stats = [
-  { label: "Lernfelder", value: "8" },
-  { label: "Prüfungsfragen", value: "48+" },
-  { label: "Unterrichtsstunden", value: "720" },
-  { label: "Ausbildungsjahre", value: "3" },
-];
-
-const features = [
+const tracks = [
   {
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />`,
-    titel: "Lernfelder",
-    text: "8 vollständige Lernfelder mit praxisnahen Inhalten zu Elektrotechnik, Licht, Ton, Bühnentechnik und mehr."
+    id: "fvt",
+    kuerzel: "FVT",
+    titel: "Fachkraft für Veranstaltungstechnik",
+    untertitel: "3-jährige Ausbildung · IHK-Abschluss",
+    beschreibung: "Die Grundausbildung für alle Bereiche der Veranstaltungstechnik: Elektrotechnik, Licht, Ton, Bühne, Medien und mehr.",
+    farbe: "amber",
+    href: `${base}/fvt`,
+    stats: [
+      { label: "Lernfelder", value: "8" },
+      { label: "Stunden", value: "720" },
+      { label: "Jahre", value: "3" },
+    ],
+    links: [
+      { label: "Lernfelder", href: `${base}/fvt/lernfelder` },
+      { label: "Prüfung", href: `${base}/fvt/pruefung` },
+      { label: "Quiz", href: `${base}/fvt/quiz` },
+    ],
+    gradient: "from-amber-400 to-orange-500",
+    bg: "bg-amber-500/5",
+    border: "border-amber-500/20 hover:border-amber-500/50",
+    badge: "bg-amber-500/15 text-amber-400",
+    btnClass: "bg-amber-500 hover:bg-amber-400 text-slate-900",
+    linkClass: "text-amber-400 hover:text-amber-300",
+    glow: "bg-amber-500/5",
+    dotColor: "bg-amber-400",
   },
   {
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />`,
-    titel: "Prüfungsvorbereitung",
-    text: "Strukturierte Übersicht aller relevanten Themen für Zwischen- und Abschlussprüfung."
+    id: "fachwirt",
+    kuerzel: "FW",
+    titel: "Geprüfter Veranstaltungsfachwirt IHK",
+    untertitel: "Aufstiegsfortbildung · Kaufmännisch-organisatorisch",
+    beschreibung: "Die kaufmännische Führungsqualifikation: Betriebswirtschaft, Recht, Veranstaltungskonzeption, Marketing und Personalführung.",
+    farbe: "blue",
+    href: `${base}/fachwirt`,
+    stats: [
+      { label: "Sachgebiete", value: "8" },
+      { label: "Stunden", value: "520" },
+      { label: "DQR-Niveau", value: "6" },
+    ],
+    links: [
+      { label: "Sachgebiete", href: `${base}/fachwirt/sachgebiete` },
+      { label: "Prüfung", href: `${base}/fachwirt/pruefung` },
+      { label: "Quiz", href: `${base}/fachwirt/quiz` },
+    ],
+    gradient: "from-blue-400 to-blue-600",
+    bg: "bg-blue-500/5",
+    border: "border-blue-500/20 hover:border-blue-500/50",
+    badge: "bg-blue-500/15 text-blue-400",
+    btnClass: "bg-blue-500 hover:bg-blue-400 text-white",
+    linkClass: "text-blue-400 hover:text-blue-300",
+    glow: "bg-blue-500/5",
+    dotColor: "bg-blue-400",
   },
   {
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />`,
-    titel: "Interaktives Quiz",
-    text: "48+ Fragen mit sofortigem Feedback. Filtere nach Lernfeld und tracke deinen Fortschritt."
+    id: "meister",
+    kuerzel: "MEI",
+    titel: "Geprüfter Meister für Veranstaltungstechnik IHK",
+    untertitel: "Aufstiegsfortbildung · Technisch-führend",
+    beschreibung: "Die höchste technische Qualifikation: Technische Systemplanung, Führung, Qualitätsmanagement und Ausbildereignung (AEVO).",
+    farbe: "emerald",
+    href: `${base}/meister`,
+    stats: [
+      { label: "Einheiten", value: "8" },
+      { label: "Prüfungsteile", value: "3" },
+      { label: "Inkl. AEVO", value: "Ja" },
+    ],
+    links: [
+      { label: "Sachgebiete", href: `${base}/meister/sachgebiete` },
+      { label: "Prüfung", href: `${base}/meister/pruefung` },
+      { label: "Quiz", href: `${base}/meister/quiz` },
+    ],
+    gradient: "from-emerald-400 to-emerald-600",
+    bg: "bg-emerald-500/5",
+    border: "border-emerald-500/20 hover:border-emerald-500/50",
+    badge: "bg-emerald-500/15 text-emerald-400",
+    btnClass: "bg-emerald-500 hover:bg-emerald-400 text-white",
+    linkClass: "text-emerald-400 hover:text-emerald-300",
+    glow: "bg-emerald-500/5",
+    dotColor: "bg-emerald-400",
   },
 ];
 ---
 
-<Layout title="Startseite">
+<Layout title="Lernplattform Veranstaltungstechnik" description="Lernplattform für FVT-Ausbildung, Veranstaltungsfachwirt und Meister für Veranstaltungstechnik.">
   <Nav slot="nav" />
 
   <!-- Hero -->
   <section class="relative bg-slate-950 overflow-hidden">
-    <!-- Background grid -->
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
-    <!-- Glow -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60rem] h-[30rem] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Multi-color glows -->
+    <div class="absolute top-0 left-1/4 w-[30rem] h-[20rem] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 w-[30rem] h-[20rem] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-0 right-1/4 w-[30rem] h-[20rem] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-20 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold tracking-wide mb-8">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-        Ausbildung · Veranstaltungstechnik
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-20 pb-16 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-800 border border-slate-700 rounded-full text-slate-400 text-xs font-semibold tracking-wide mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse"></span>
+        Deutsche Veranstaltungstechnik · IHK-Qualifikationen
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-100 leading-tight mb-6">
-        Fachkraft für
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+        Lernplattform
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-blue-400 to-emerald-400">
           Veranstaltungstechnik
         </span>
       </h1>
 
-      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Deine Lernplattform für die FVT-Ausbildung. Alle Lernfelder, interaktive Quizfragen
-        und Prüfungsvorbereitung – kompakt und verständlich.
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+        Deine Lernplattform für alle IHK-Qualifikationen in der Veranstaltungsbranche –
+        von der Ausbildung bis zum Meistertitel.
       </p>
 
-      <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href={`${base}/lernfelder`}
-          class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
-        >
-          Lernfelder erkunden
-        </a>
-        <a
-          href={`${base}/quiz`}
-          class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl transition-colors border border-slate-700"
-        >
-          Quiz starten
+      <div class="flex flex-wrap justify-center gap-3 mb-4">
+        <a href={`${base}/vergleich`} class="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium rounded-xl transition-colors border border-slate-700 text-sm">
+          Qualifikationen vergleichen →
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Stats -->
-  <section class="border-y border-slate-800 bg-slate-900/50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
-        {stats.map(stat => (
-          <div class="text-center">
-            <div class="text-3xl font-bold text-amber-400 mb-1">{stat.value}</div>
-            <div class="text-sm text-slate-400">{stat.label}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+  <!-- Track Cards -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
     <div class="text-center mb-12">
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">Was dich erwartet</h2>
-      <p class="text-slate-400 max-w-xl mx-auto">Alles, was du für eine erfolgreiche FVT-Ausbildung brauchst.</p>
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-3">Wähle deine Qualifikation</h2>
+      <p class="text-slate-400 max-w-xl mx-auto">Drei Wege in und durch die Veranstaltungstechnik – wähle deinen Einstiegspunkt.</p>
     </div>
-    <div class="grid sm:grid-cols-3 gap-6">
-      {features.map(f => (
-        <div class="p-6 bg-slate-900 border border-slate-800 rounded-xl">
-          <div class="w-10 h-10 bg-amber-500/10 rounded-xl flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" set:html={f.icon} />
+
+    <div class="grid lg:grid-cols-3 gap-6">
+      {tracks.map(track => (
+        <div class:list={["group flex flex-col bg-slate-900 border rounded-2xl overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30", track.border]}>
+          <!-- Header -->
+          <div class:list={["p-6 border-b border-slate-800", track.bg]}>
+            <div class="flex items-start justify-between mb-4">
+              <span class:list={["inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-mono font-bold", track.badge]}>
+                {track.kuerzel}
+              </span>
+              <div class:list={["flex items-center gap-1.5 text-xs text-slate-500"]}>
+                <span class:list={["w-1.5 h-1.5 rounded-full", track.dotColor]}></span>
+                {track.untertitel.split('·')[0].trim()}
+              </div>
+            </div>
+            <h2 class="text-lg font-bold text-slate-100 mb-2 leading-snug">{track.titel}</h2>
+            <p class="text-sm text-slate-400 leading-relaxed">{track.beschreibung}</p>
           </div>
-          <h3 class="font-semibold text-slate-100 mb-2">{f.titel}</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">{f.text}</p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 divide-x divide-slate-800 border-b border-slate-800">
+            {track.stats.map(stat => (
+              <div class="py-3 px-4 text-center">
+                <div class:list={["text-lg font-bold", track.badge.split(' ').find(c => c.startsWith('text-'))]}>{stat.value}</div>
+                <div class="text-xs text-slate-500 mt-0.5">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Links -->
+          <div class="p-4 flex flex-col gap-2 flex-1">
+            {track.links.map(link => (
+              <a
+                href={link.href}
+                class="flex items-center justify-between px-4 py-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition-colors text-sm text-slate-300 hover:text-slate-100 group/link"
+              >
+                <span>{link.label}</span>
+                <svg class:list={["w-4 h-4 group-hover/link:translate-x-0.5 transition-transform", track.badge.split(' ').find(c => c.startsWith('text-'))]} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div class="px-4 pb-4">
+            <a
+              href={track.href}
+              class:list={["block w-full text-center px-4 py-3 font-semibold rounded-xl transition-colors text-sm", track.btnClass]}
+            >
+              {track.kuerzel} erkunden
+            </a>
+          </div>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- Lernfelder Preview -->
+  <!-- Vergleich CTA -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
-    <div class="flex items-center justify-between mb-8">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-1">Lernfelder</h2>
-        <p class="text-slate-400 text-sm">Alle 8 Lernfelder der FVT-Ausbildung</p>
-      </div>
-      <a href={`${base}/lernfelder`} class="text-sm text-amber-400 hover:text-amber-300 font-medium flex items-center gap-1">
-        Alle anzeigen
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {sorted.map(lf => (
-        <LernfeldCard
-          nummer={lf.data.nummer}
-          kuerzel={lf.data.kuerzel}
-          titel={lf.data.titel}
-          beschreibung={lf.data.beschreibung}
-          stunden={lf.data.stunden}
-          slug={lf.slug}
-          farbe={lf.data.farbe}
-        />
-      ))}
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="bg-slate-900 border-t border-slate-800 py-20">
-    <div class="max-w-2xl mx-auto px-4 text-center">
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mb-4">Bereit für die Prüfung?</h2>
-      <p class="text-slate-400 mb-8">Teste dein Wissen mit über 48 praxisnahen Prüfungsfragen aus allen Lernfeldern.</p>
+    <div class="p-8 sm:p-10 bg-slate-900 border border-slate-800 rounded-2xl text-center">
+      <h2 class="text-2xl font-bold text-slate-100 mb-3">Nicht sicher, welche Qualifikation passt?</h2>
+      <p class="text-slate-400 mb-6 max-w-xl mx-auto">
+        Im Vergleich findest du alle wichtigen Unterschiede zu Voraussetzungen, Dauer, Schwerpunkten und Berechtigungen.
+      </p>
       <a
-        href={`${base}/quiz`}
-        class="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-xl transition-colors"
+        href={`${base}/vergleich`}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold rounded-xl transition-colors"
       >
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
         </svg>
-        Quiz jetzt starten
+        Qualifikationen vergleichen
       </a>
     </div>
   </section>

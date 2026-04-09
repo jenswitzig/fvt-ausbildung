@@ -1,0 +1,209 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Nav from '../../../components/Nav.astro';
+
+const themen = [
+  {
+    titel: "Volks- und Betriebswirtschaft (WQ1)",
+    farbe: "blue",
+    themen: [
+      "Magisches Viereck: Vollbeschäftigung, Preisstabilität, Wachstum, Außengleichgewicht",
+      "Konjunkturphasen: Aufschwung, Boom, Abschwung, Depression",
+      "BIP und BNE – Unterschiede und Berechnung",
+      "Marktformen: Monopol, Oligopol, Polypol",
+      "Preiselastizität der Nachfrage",
+      "Rechtsformen: GmbH (25.000 €), AG (50.000 €), GbR, OHG, KG",
+      "Fixkosten vs. variable Kosten",
+      "Deckungsbeitrag = Erlös − variable Kosten",
+      "Break-Even = Fixkosten / Deckungsbeitrag pro Stück",
+      "Amortisationsrechnung und Rentabilitätsrechnung",
+      "SWOT-Analyse und BCG-Matrix",
+    ]
+  },
+  {
+    titel: "Rechnungswesen (WQ2)",
+    farbe: "blue",
+    themen: [
+      "Doppelte Buchführung: Jede Buchung im Soll und Haben",
+      "Buchungsregeln: Aktiv: Soll = Zugang, Passiv: Haben = Zugang",
+      "Bilanzstruktur: Aktiva (Mittelverwendung) und Passiva (Mittelherkunft)",
+      "GuV: Umsatzerlöse − Aufwendungen = Jahresüberschuss",
+      "EBIT, EBITDA, EBT – Ergebnisebenen",
+      "Eigenkapitalquote = EK / Gesamtkapital × 100 (Richtwert > 30 %)",
+      "Liquidität 1. Grades = Zahlungsmittel / kurzfr. Verbindlichkeiten",
+      "Cashflow = JÜ + Abschreibungen ± Veränderungen Working Capital",
+      "PDCA-Zyklus im Controlling",
+      "Balanced Scorecard: 4 Perspektiven (Finanzen, Kunden, Prozesse, Lernen)",
+    ]
+  },
+  {
+    titel: "Recht und Steuern (WQ3)",
+    farbe: "blue",
+    themen: [
+      "Vertragsschluss: Angebot + Annahme = Vertrag",
+      "Geschäftsfähigkeit: unter 7 J. = keine, 7–17 = beschränkt, ab 18 = voll",
+      "Werkvertrag (Erfolg geschuldet) vs. Dienstvertrag (Tätigkeit geschuldet)",
+      "Gewährleistung Kaufrecht: 2 Jahre, 1. Recht: Nacherfüllung",
+      "Rügepflicht im Handelskauf (§ 377 HGB): unverzüglich anzeigen",
+      "USt Regelsteuersatz 19 %, ermäßigt 7 %",
+      "Pflichtangaben auf Rechnung: 8 Punkte nach § 14 UStG",
+      "Körperschaftsteuer: 15 % + SolZ auf GmbH/AG-Gewinn",
+      "Kündigung: Probezeit = 2 Wochen, danach mind. 4 Wochen",
+      "Minijob-Grenze: 538 €/Monat (2024)",
+    ]
+  },
+  {
+    titel: "Unternehmensführung (WQ4)",
+    farbe: "blue",
+    themen: [
+      "PESTEL-Analyse: Politisch, Ökonomisch, Sozial, Technologisch, Ökologisch, Legal",
+      "Porters Five Forces: 5 Wettbewerbskräfte",
+      "Strategien: Kostenführerschaft, Differenzierung, Nischenstrategie (Porter)",
+      "Führungsstile nach Lewin: autoritär, kooperativ, laissez-faire",
+      "Situative Führung (Hersey/Blanchard): 4 Reifegrade",
+      "Maslow-Pyramide: 5 Bedürfnisebenen",
+      "SMART-Ziele: Spezifisch, Messbar, Akzeptiert, Realistisch, Terminiert",
+      "ISO 9001 – Qualitätsmanagementprinzipien",
+      "PDCA-Zyklus: Plan, Do, Check, Act",
+      "Magisches Dreieck PM: Leistung, Zeit, Kosten",
+    ]
+  },
+  {
+    titel: "Veranstaltungskonzeption (HQ1)",
+    farbe: "blue",
+    themen: [
+      "SMART-Ziele für Veranstaltungen",
+      "Zielgruppen-Analyse: demografisch, psychografisch, verhaltensorientiert",
+      "Persona-Erstellung",
+      "7P-Marketingmix: Product, Price, Place, Promotion, People, Process, Physical Evidence",
+      "Content-Marketing-Phasen: Pre-Event, Launch, Content, Last Call, Event, Post",
+      "Green Events: DIN ISO 20121",
+      "Briefing-Dokument: Auftraggeber, Ziele, Zielgruppe, Budget",
+      "Angebotsstruktur: Konzept, Programm, Budget, Kalkulation",
+      "Experience Economy: Erlebnis vor Produkt",
+    ]
+  },
+  {
+    titel: "Veranstaltungsrealisierung (HQ2)",
+    farbe: "blue",
+    themen: [
+      "Planungsdokumente: Masterplan, DAP, Run of Show, Call Sheet",
+      "Aufbaureihenfolge: Struktur → Rigging → Strom → Licht → Ton → Video → Deko",
+      "VStättVO: ab 200 Personen, Rettungswege 1,20 m, max. 30 m",
+      "Ordnerdienst: 1 pro 100 Besucher",
+      "Veranstaltungsleiter: Anwesenheitspflicht während Veranstaltung",
+      "Sicherheitskonzept: Pflichtinhalt und Rechtsgrundlage",
+      "Crowd Management: Einlass, Engpässe, Kommunikation",
+      "Leistungsverzeichnis als Grundlage für Ausschreibung",
+      "Nutzwertanalyse für Dienstleisterwahl",
+      "Werkvertrag vs. Dienstvertrag bei Technikdienstleistern",
+    ]
+  },
+  {
+    titel: "Personal und Führung (HQ3)",
+    farbe: "blue",
+    themen: [
+      "Tuckman-Phasen: Forming, Storming, Norming, Performing, Adjourning",
+      "Belbin-Rollen: 9 Teamrollen in 3 Kategorien",
+      "Thomas-Kilmann: 5 Konfliktstile",
+      "Glasl-Eskalationsmodell: 9 Stufen",
+      "Vier-Seiten-Modell (Schulz von Thun): Sach, Selbst, Beziehung, Appell",
+      "Gewaltfreie Kommunikation: Beobachtung–Gefühl–Bedürfnis–Bitte",
+      "Mitarbeitergespräch: Vorbereitung, Durchführung, Nachbereitung",
+      "ArbZG: max. 8h/Tag, Verlängerung auf 10h, 11h Ruhezeit",
+      "Mindestlohn und Mindestausbildungsvergütung",
+    ]
+  },
+  {
+    titel: "Marketing und Vertrieb (HQ4)",
+    farbe: "blue",
+    themen: [
+      "Produktlebenszyklus: 5 Phasen",
+      "Preisstrategien: Skimming, Penetration, Premium, Dynamic Pricing",
+      "Sponsoring: Hauptsponsor, Co-Sponsor, Medienpartner, Sachsponsor",
+      "ROMI = (Marketinggewinn − Kosten) / Kosten × 100",
+      "KPIs: Impressionen, Reichweite, CTR, Conversion Rate, NPS",
+      "Social-Media-Kanäle: LinkedIn (B2B), Instagram (visuell), TikTok (jung)",
+      "Pressemitteilung: Umgekehrtes Pyramidenprinzip, 6 W-Fragen",
+      "Budget-Methoden: Prozent, Competitive Parity, Task-Budget",
+      "UGC: User-Generated Content aktivieren",
+    ]
+  },
+];
+
+const colorMap: Record<string, { badge: string; dot: string; border: string }> = {
+  blue:   { badge: "bg-blue-500/10 text-blue-400", dot: "bg-blue-400", border: "border-blue-500/30" },
+};
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout title="Fachwirt Prüfungsvorbereitung" description="Prüfungsvorbereitung für den Geprüften Veranstaltungsfachwirt IHK.">
+  <Nav slot="nav" />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="mb-12">
+      <nav class="text-sm text-slate-500 mb-4">
+        <a href={`${base}/`} class="hover:text-slate-300 transition-colors">Start</a>
+        <span class="mx-2">/</span>
+        <a href={`${base}/fachwirt`} class="hover:text-slate-300 transition-colors">Fachwirt</a>
+        <span class="mx-2">/</span>
+        <span class="text-slate-300">Prüfungsvorbereitung</span>
+      </nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 mb-3">Prüfungsvorbereitung Fachwirt</h1>
+      <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+        Kompakte Zusammenfassung der prüfungsrelevanten Inhalte für den Geprüften Veranstaltungsfachwirt IHK.
+      </p>
+    </div>
+
+    <div class="mb-10 p-5 bg-blue-500/5 border border-blue-500/20 rounded-xl flex gap-4">
+      <div class="flex-shrink-0 w-8 h-8 bg-blue-500/15 rounded-lg flex items-center justify-center mt-0.5">
+        <svg class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <div>
+        <h3 class="font-semibold text-blue-300 mb-1.5">Fachwirt Prüfungstipps</h3>
+        <ul class="text-sm text-slate-400 space-y-1">
+          <li>• WQ-Prüfungen: 90 Minuten je Fach, Multiple Choice und offene Aufgaben</li>
+          <li>• HQ-Prüfungen: schriftlich + mündliche Prüfung (situationsbezogenes Fachgespräch)</li>
+          <li>• Formeln immer herleiten und mit Beispielen belegen</li>
+          <li>• Rechtsfragen: Gesetze kennen (BGB, HGB, ArbZG, UStG), nicht auswendig aber Grundprinzipien</li>
+          <li>• Praxisbeispiele aus der Veranstaltungsbranche in Antworten einbinden</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      {themen.map(thema => {
+        const c = colorMap[thema.farbe] ?? colorMap.blue;
+        return (
+          <div class:list={["bg-slate-900 border rounded-xl overflow-hidden", c.border]}>
+            <div class="px-6 py-4 border-b border-slate-800 flex items-center gap-3">
+              <div class:list={["w-2 h-2 rounded-full flex-shrink-0", c.dot]}></div>
+              <h2 class="font-bold text-lg text-blue-400">{thema.titel}</h2>
+            </div>
+            <div class="p-6">
+              <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+                {thema.themen.map(item => (
+                  <li class="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+                    <svg class="w-3.5 h-3.5 flex-shrink-0 mt-1 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                      <circle cx="10" cy="10" r="3" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="mt-12 p-8 bg-slate-900 border border-slate-800 rounded-2xl text-center">
+      <h3 class="text-xl font-bold text-slate-100 mb-3">Wissen testen</h3>
+      <p class="text-slate-400 mb-6">Überprüfe dein Wissen mit interaktiven Prüfungsfragen für den Fachwirt.</p>
+      <a href={`${base}/fachwirt/quiz`} class="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-xl transition-colors">
+        Quiz starten
+      </a>
+    </div>
+  </div>
+</Layout>
