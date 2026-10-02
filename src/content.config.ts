@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const lernfelderSchema = z.object({
   titel: z.string(),
@@ -11,12 +13,12 @@ const lernfelderSchema = z.object({
 });
 
 const lernfelder = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/lernfelder' }),
   schema: lernfelderSchema,
 });
 
 const fachwirt = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/fachwirt' }),
   schema: z.object({
     titel: z.string(),
     nummer: z.number(),
@@ -29,7 +31,7 @@ const fachwirt = defineCollection({
 });
 
 const meister = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/meister' }),
   schema: z.object({
     titel: z.string(),
     nummer: z.number(),

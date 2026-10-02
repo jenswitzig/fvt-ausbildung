@@ -1,22 +1,22 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Nav from '../../../components/Nav.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const sachgebiete = await getCollection('meister');
   return sachgebiete.map(sg => ({
-    params: { slug: sg.slug },
+    params: { slug: sg.id },
     props: { sg },
   }));
 }
 
 const { sg } = Astro.props;
-const { Content } = await sg.render();
+const { Content } = await render(sg);
 
 const allSachgebiete = await getCollection('meister');
 const sorted = allSachgebiete.sort((a, b) => a.data.nummer - b.data.nummer);
-const currentIndex = sorted.findIndex(s => s.slug === sg.slug);
+const currentIndex = sorted.findIndex(s => s.id === sg.id);
 const prev = sorted[currentIndex - 1];
 const next = sorted[currentIndex + 1];
 
@@ -91,7 +91,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <div class="flex justify-between gap-4 mt-16 pt-8 border-t border-slate-800">
       {prev ? (
-        <a href={`${base}/meister/sachgebiete/${prev.slug}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs">
+        <a href={`${base}/meister/sachgebiete/${prev.id}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs">
           <svg class="w-4 h-4 text-slate-500 group-hover:text-emerald-400 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
@@ -103,7 +103,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       ) : <div class="flex-1 max-w-xs"></div>}
 
       {next ? (
-        <a href={`${base}/meister/sachgebiete/${next.slug}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs text-right ml-auto">
+        <a href={`${base}/meister/sachgebiete/${next.id}`} class="group flex items-center gap-3 p-4 bg-slate-900 border border-slate-800 rounded-xl hover:border-slate-700 transition-colors flex-1 max-w-xs text-right ml-auto">
           <div class="min-w-0 flex-1">
             <div class="text-xs text-slate-500 mb-0.5">Weiter</div>
             <div class="text-sm font-medium text-slate-300 group-hover:text-slate-100 truncate">{next.data.titel}</div>
