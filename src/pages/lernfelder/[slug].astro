@@ -4,8 +4,8 @@ import { getCollection } from 'astro:content';
 export async function getStaticPaths() {
   const lernfelder = await getCollection('lernfelder');
   return lernfelder.map(lf => ({
-    params: { slug: lf.slug },
-    props: { slug: lf.slug },
+    params: { slug: lf.id },
+    props: { slug: lf.id },
   }));
 }
 
